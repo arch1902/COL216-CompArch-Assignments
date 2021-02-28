@@ -1,4 +1,4 @@
-#  To calculate area under curve
+#  MIPS Assembly Program for evaluating an expression in postfix format
 
 # ----------------------------------------
 #  Data declarations go in this section.
@@ -25,7 +25,7 @@ main:
 # -----
 # your program code goes here.
 
-la $a0, iMsg    #Ask for number of points
+la $a0, iMsg    
 li $v0, 4
 syscall
 
