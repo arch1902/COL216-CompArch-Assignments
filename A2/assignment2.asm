@@ -1,3 +1,6 @@
+
+#  MIPS Assembly Program for evaluating an expression in postfix format
+
 # ----------------------------------------
 #  Data declarations go in this section.
 
@@ -23,6 +26,7 @@ main:
 
 # -----
 # your program code goes here.
+
 
     # Getting the postfix Notation 
     la $a0, iMsg    
