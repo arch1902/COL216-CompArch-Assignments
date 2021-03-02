@@ -1,6 +1,3 @@
-
-#  MIPS Assembly Program for evaluating an expression in postfix format
-
 # ----------------------------------------
 #  Data declarations go in this section.
 
@@ -14,7 +11,8 @@ invalidchar: .ascii "Error !! The input contains an invalid character.\n"
 output: .asciiz "Postfix Evaluation : "
 EOL:        .asciiz "\n"
 index:      .word 0;
-input:      .space 1024 
+input:      .ascii "99999****\n"
+#"23+5-26*-99*+7+8+1-09*9*9*-2+5-9-33*7*+2-9+1-\n" 
 
 #  ----------------------------------------
 #  Program code goes in this section.
@@ -26,16 +24,6 @@ main:
 
 # -----
 # your program code goes here.
-
-
-    # Getting the postfix Notation 
-    la $a0, iMsg    
-    li $v0, 4
-    syscall
-    li $v0 , 8
-    la $a0 , input
-    li $a1 , 1024
-    syscall
 
     li $t1,0 
     la $t0,input
@@ -131,3 +119,4 @@ main:
         li $v0, 10
         syscall  
 .end main
+
