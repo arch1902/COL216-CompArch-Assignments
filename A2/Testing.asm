@@ -11,7 +11,7 @@ invalidchar: .ascii "Error !! The input contains an invalid character.\n"
 output: .asciiz "Postfix Evaluation : "
 EOL:        .asciiz "\n"
 index:      .word 0;
-input:      .ascii "99999****\n"
+input:      .ascii "37*8*6*4-5-2-5-1-8+9+7+5+86*4*3*4*9*5*-1-2-5-7+8+5+3+7+99*6*+\n"
 #"23+5-26*-99*+7+8+1-09*9*9*-2+5-9-33*7*+2-9+1-\n" 
 
 #  ----------------------------------------
@@ -21,6 +21,14 @@ input:      .ascii "99999****\n"
 .globl main 
 .ent main 
 main:
+
+    la $a0, iMsg    
+    li $v0, 4
+    syscall
+
+    la $a0, input   
+    li $v0, 4
+    syscall
 
 # -----
 # your program code goes here.
