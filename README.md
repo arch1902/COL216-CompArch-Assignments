@@ -1,1 +1,1 @@
-# COL216-CompArch-Assignments
+# COL216 Computer Architecture Assignments Spring'21
