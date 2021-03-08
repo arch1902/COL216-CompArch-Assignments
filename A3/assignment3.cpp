@@ -88,6 +88,7 @@ int main(int argc, char *argv[]) {
     for(int i=0;i<num;){
         curr=instructions[i];
         //Process
+        i++;
         print(); 
     }
   
