@@ -1,13 +1,23 @@
+// Use "make run" to compile and run on "text.txt"
+
+
 #include <iostream>
 #include<string>
 #include<algorithm>
 #include<fstream>
 #include<vector>
 #include<map>
+#include<regex>
+#include<sstream>
 using namespace std;
 
 fstream file1 ;
 map<string,int> reg;
+map<int,vector<string>> params;
+
+string trim(string str){
+    return regex_replace(str, regex("(^[ ]+)|([ ]+$)"),"");
+}
 
 void print(){
     cout<<"R0  [r0] = "<<reg["$r0"]<<endl;
@@ -41,7 +51,7 @@ void print(){
     cout<<"R28 [gp] = "<<reg["$gp"]<<endl;
     cout<<"R29 [sp] = "<<reg["$sp"]<<endl;
     cout<<"R30 [s8] = "<<reg["$s8"]<<endl;
-    cout<<"R31 [ra] = "<<reg["$ra"]<<endl;
+    cout<<"R31 [ra] = "<<reg["$ra"]<<endl<<endl;
 }
 
 void dectohex(int n){ 
@@ -68,7 +78,6 @@ void dectohex(int n){
 }
 
 
-
 int main(int argc, char *argv[]) {
 	// your code goes here
 
@@ -78,17 +87,74 @@ int main(int argc, char *argv[]) {
 
     string line;
     int num=0;
+    int x;
+    string Instruction;
     while(getline(file1,line)){
+        line = trim(line);
         instructions.push_back(line);
+        x = line.find_first_of(' ');
+        Instruction = line.substr(0,x);
+        params[num].push_back(Instruction);
+
+        stringstream s_stream(trim(line.substr(x)));
+        while(s_stream.good()) {
+            string substr;
+            getline(s_stream, substr, ',');
+            params[num].push_back(substr);
+        }
+
         num++;
     }
     file1.close();
 
     string curr;
+
+    
     for(int i=0;i<num;){
         curr=instructions[i];
+        Instruction=params[i][0];
+
+        if(Instruction=="add") {
+            reg[params[i][1]]=reg[params[i][2]]+reg[params[i][3]];
+            i++;
+
+        } else if (Instruction=="sub"){
+            reg[params[i][1]]=reg[params[i][2]]-reg[params[i][3]]; 
+            i++;
+
+        } else if (Instruction=="mul"){
+            reg[params[i][1]]=reg[params[i][2]]*reg[params[i][3]]; 
+            i++;
+            
+        } else if (Instruction=="beq"){
+            
+            
+        } else if (Instruction=="bne"){
+            
+            
+        } else if (Instruction=="slt"){
+            
+            
+        } else if (Instruction=="j"){
+            
+            
+        } else if (Instruction=="lw"){
+            reg[params[i][1]]=stoi(params[i][2]);
+            i++;
+            
+        } else if (Instruction=="sw"){
+          
+            
+        } else if (Instruction=="addi"){
+           
+            
+        } else {
+            cout << "Wrong Instruction !";
+        }
+        
         //Process
-        i++;
+        
+        cout<<"Integer Register : \n"<<endl;
         print(); 
     }
   
