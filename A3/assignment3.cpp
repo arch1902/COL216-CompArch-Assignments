@@ -18,15 +18,17 @@ map<int,vector<string>> params;
 map<string,int> label;
 map<int,int> data_memory;
 int data_pointer;
+map<string,int> statistics;
 vector<string> operations = {"add","sub","mul","beq","bne","slt","lw","sw","addi"};
 vector<string> registers = {"$r0","$at","$v0","$v1","$a0","$a1","$a2","$a3","$t0","$t1",
 "$t2","$t3","$t4","$t5","$t6","$t7","$s0","$s1","$s2","$s3","$s4","$s5","$s6","$s7","$t8",
 "$t9","$k0","$k1","$gp","$sp","$s8","$ra"};
 regex n("[0-9]+");
 regex l("([A-Z|a-z])[A-Z|a-z|0-9|_]+");
+int n_total;
 
-int INSTRUCTION_MEMORY = 2^19;
-int DATA_MEMORY = 2^19;
+int INSTRUCTION_MEMORY = 2^17;
+int DATA_MEMORY = 2^17;
 
 
 // int findfirst(string s, char c){
@@ -86,8 +88,44 @@ void print(){
     out<<"R31 [ra] = "<<reg["$ra"]<<endl<<endl;
 }
 
-void dectohex(int n){ 
+void print_hex(){
+    out<<"R0  [r0] = "<<dectohex(reg["$r0"])<<endl;
+    out<<"R1  [at] = "<<dectohex(reg["$at"])<<endl;
+    out<<"R2  [v0] = "<<dectohex(reg["$v0"])<<endl;
+    out<<"R3  [v1] = "<<dectohex(reg["$v1"])<<endl;
+    out<<"R4  [a0] = "<<dectohex(reg["$a0"])<<endl;
+    out<<"R5  [a1] = "<<dectohex(reg["$a1"])<<endl;
+    out<<"R6  [a2] = "<<dectohex(reg["$a2"])<<endl;
+    out<<"R7  [a3] = "<<dectohex(reg["$a3"])<<endl;
+    out<<"R8  [t0] = "<<dectohex(reg["$t0"])<<endl;
+    out<<"R9  [t1] = "<<dectohex(reg["$t1"])<<endl;
+    out<<"R10 [t2] = "<<dectohex(reg["$t2"])<<endl;
+    out<<"R11 [t3] = "<<dectohex(reg["$t3"])<<endl;
+    out<<"R12 [t4] = "<<dectohex(reg["$t4"])<<endl;
+    out<<"R13 [t5] = "<<dectohex(reg["$t5"])<<endl;
+    out<<"R14 [t6] = "<<dectohex(reg["$t6"])<<endl;
+    out<<"R15 [t7] = "<<dectohex(reg["$t7"])<<endl;
+    out<<"R16 [s0] = "<<dectohex(reg["$s0"])<<endl;
+    out<<"R17 [s1] = "<<dectohex(reg["$s1"])<<endl;
+    out<<"R18 [s2] = "<<dectohex(reg["$s2"])<<endl;
+    out<<"R19 [s3] = "<<dectohex(reg["$s3"])<<endl;
+    out<<"R20 [s4] = "<<dectohex(reg["$s4"])<<endl;
+    out<<"R21 [s5] = "<<dectohex(reg["$s5"])<<endl;
+    out<<"R22 [s6] = "<<dectohex(reg["$s6"])<<endl;
+    out<<"R23 [s7] = "<<dectohex(reg["$s7"])<<endl;
+    out<<"R24 [t8] = "<<dectohex(reg["$t8"])<<endl;
+    out<<"R25 [t9] = "<<dectohex(reg["$t9"])<<endl;
+    out<<"R26 [k0] = "<<dectohex(reg["$k0"])<<endl;
+    out<<"R27 [k1] = "<<dectohex(reg["$k1"])<<endl;
+    out<<"R28 [gp] = "<<dectohex(reg["$gp"])<<endl;
+    out<<"R29 [sp] = "<<dectohex(reg["$sp"])<<endl;
+    out<<"R30 [s8] = "<<dectohex(reg["$s8"])<<endl;
+    out<<"R31 [ra] = "<<dectohex(reg["$ra"])<<endl<<endl;
+}
+
+string dectohex(int n){ 
     char hexaDeciNum[100]; 
+    string hex;
     int i = 0; 
     while(n!=0) 
     {    
@@ -105,8 +143,10 @@ void dectohex(int n){
         } 
         n = n/16; 
     } 
-    for(int j=i-1; j>=0; j--) 
-        out << hexaDeciNum[j];
+    for(int j=i-1; j>=0; j--) {
+        hex = hex + hexaDeciNum[j];
+    }
+    return hex;
 }
 
 void validator_add(string s, int l, string instruction){
@@ -215,10 +255,12 @@ int main(int argc, char *argv[]) {
     while(getline(file1,line)){
         line = trim(line);
         instructions.push_back(line);
+        if(line == ""){
+            num++;
+            continue;
+        }
         x = line.find_first_of('$');
         Instruction = line;
-
-
         //cout<<(string::npos);
         //cout<<(x==string::npos);
         if(x==string::npos){
@@ -242,12 +284,10 @@ int main(int argc, char *argv[]) {
             }
         }else{
             
-            Instruction = trim(line.substr(0,x));
-            
+            Instruction = trim(line.substr(0,x));            
             validator(operations,Instruction,num+1);           
             params[num].push_back(Instruction);
-            string operands = trim(line.substr(x));
-            
+            string operands = trim(line.substr(x));            
             if (Instruction == "add"||Instruction =="sub"||Instruction =="mul"||Instruction =="slt"||Instruction =="addi"){  //$t1, $t2, $t3 
                 
                 validator_add(operands,num,Instruction);
@@ -282,9 +322,12 @@ int main(int argc, char *argv[]) {
     out.open("output.txt");
     int pc = 0;
     while(pc<num){
+        if(instructions[pc]==""){pc++;continue;}
+        n_total++;
         //cout<<pc<<endl;
         out<<"Integer Register : "<<pc+1<<"   "<<instructions[pc]<<" \n"<<endl;
         Instruction=params[pc][0];
+        statistics[Instruction] ++;
         if(Instruction=="add") {
             int y = (params[pc][3][0]=='$') ? reg[params[pc][3]] : stoi(params[pc][3]);
             reg[params[pc][1]]=reg[params[pc][2]]+y;
@@ -359,10 +402,25 @@ int main(int argc, char *argv[]) {
             pc++;     
         } else if( label.find(params[pc][0]) != label.end() ){
              pc ++;
+             n_total --;
         }else{
             continue;
         }     
-        print(); 
+        print();
+        cout<<" Number of clock cycles "<<n_total<<endl;
+        out<<" Number of clock cycles "<<n_total<<endl;
+        cout<<" Instruction Memory Used "<<num*4 <<" Bytes"<<endl;
+        out<<" Instruction Memory Used "<<num*4 <<" Bytes"<<endl;
+        cout<<" Data Memory Used "<<data_memory.size()*4 <<" Bytes"<<endl;
+        out<<" Data Memory Used "<<data_memory.size()*4 <<" Bytes"<<endl;
+        cout<<" Number of times each instruction was executed :"<<endl;
+        out<<" Number of times each instruction was executed :"<<endl;      
+        for (auto j: operations){
+            cout<< j<< " ->"<<statistics[j]<<endl;
+            out<< j << " ->"<<statistics[j]<<endl;
+        }
+            cout<< "j"<< " ->"<<statistics["j"]<<endl;
+            out<< "j" << " ->"<<statistics["j"]<<endl;
     }
     out.close();
 	return 0;

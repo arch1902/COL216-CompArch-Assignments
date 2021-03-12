@@ -1,4 +1,4 @@
-Integer Register : 1   addi $t1,$t0,5 
+Integer Register : 3   addi $t1,$t0,5 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -33,7 +33,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 2   addi $t2,$t0,1 
+ Number of clock cycles 1
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->0
+sub ->0
+mul ->0
+beq ->0
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->1
+j ->0
+Integer Register : 4   addi $t2,$t0,1 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -68,7 +82,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 3   sum: 
+ Number of clock cycles 2
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->0
+sub ->0
+mul ->0
+beq ->0
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->2
+j ->0
+Integer Register : 8   sum: 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -103,7 +131,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 4   add $t1,$t1,$t2 
+ Number of clock cycles 2
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->0
+sub ->0
+mul ->0
+beq ->0
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->2
+j ->0
+Integer Register : 9   add $t1,$t1,$t2 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -138,7 +180,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 5   addi $t0,$t0,1 
+ Number of clock cycles 3
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->1
+sub ->0
+mul ->0
+beq ->0
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->2
+j ->0
+Integer Register : 10   addi $t0,$t0,1 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -173,7 +229,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 6   beq $t0,5,exit 
+ Number of clock cycles 4
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->1
+sub ->0
+mul ->0
+beq ->0
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->3
+j ->0
+Integer Register : 11   beq $t0,5,exit 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -208,7 +278,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 7   j sum 
+ Number of clock cycles 5
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->1
+sub ->0
+mul ->0
+beq ->1
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->3
+j ->0
+Integer Register : 12   j sum 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -243,7 +327,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 3   sum: 
+ Number of clock cycles 6
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->1
+sub ->0
+mul ->0
+beq ->1
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->3
+j ->1
+Integer Register : 8   sum: 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -278,7 +376,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 4   add $t1,$t1,$t2 
+ Number of clock cycles 6
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->1
+sub ->0
+mul ->0
+beq ->1
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->3
+j ->1
+Integer Register : 9   add $t1,$t1,$t2 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -313,7 +425,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 5   addi $t0,$t0,1 
+ Number of clock cycles 7
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->2
+sub ->0
+mul ->0
+beq ->1
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->3
+j ->1
+Integer Register : 10   addi $t0,$t0,1 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -348,7 +474,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 6   beq $t0,5,exit 
+ Number of clock cycles 8
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->2
+sub ->0
+mul ->0
+beq ->1
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->4
+j ->1
+Integer Register : 11   beq $t0,5,exit 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -383,7 +523,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 7   j sum 
+ Number of clock cycles 9
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->2
+sub ->0
+mul ->0
+beq ->2
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->4
+j ->1
+Integer Register : 12   j sum 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -418,7 +572,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 3   sum: 
+ Number of clock cycles 10
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->2
+sub ->0
+mul ->0
+beq ->2
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->4
+j ->2
+Integer Register : 8   sum: 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -453,7 +621,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 4   add $t1,$t1,$t2 
+ Number of clock cycles 10
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->2
+sub ->0
+mul ->0
+beq ->2
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->4
+j ->2
+Integer Register : 9   add $t1,$t1,$t2 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -488,7 +670,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 5   addi $t0,$t0,1 
+ Number of clock cycles 11
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->3
+sub ->0
+mul ->0
+beq ->2
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->4
+j ->2
+Integer Register : 10   addi $t0,$t0,1 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -523,7 +719,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 6   beq $t0,5,exit 
+ Number of clock cycles 12
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->3
+sub ->0
+mul ->0
+beq ->2
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->5
+j ->2
+Integer Register : 11   beq $t0,5,exit 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -558,7 +768,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 7   j sum 
+ Number of clock cycles 13
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->3
+sub ->0
+mul ->0
+beq ->3
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->5
+j ->2
+Integer Register : 12   j sum 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -593,7 +817,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 3   sum: 
+ Number of clock cycles 14
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->3
+sub ->0
+mul ->0
+beq ->3
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->5
+j ->3
+Integer Register : 8   sum: 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -628,7 +866,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 4   add $t1,$t1,$t2 
+ Number of clock cycles 14
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->3
+sub ->0
+mul ->0
+beq ->3
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->5
+j ->3
+Integer Register : 9   add $t1,$t1,$t2 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -663,7 +915,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 5   addi $t0,$t0,1 
+ Number of clock cycles 15
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->4
+sub ->0
+mul ->0
+beq ->3
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->5
+j ->3
+Integer Register : 10   addi $t0,$t0,1 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -698,7 +964,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 6   beq $t0,5,exit 
+ Number of clock cycles 16
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->4
+sub ->0
+mul ->0
+beq ->3
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->6
+j ->3
+Integer Register : 11   beq $t0,5,exit 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -733,7 +1013,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 7   j sum 
+ Number of clock cycles 17
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->4
+sub ->0
+mul ->0
+beq ->4
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->6
+j ->3
+Integer Register : 12   j sum 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -768,7 +1062,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 3   sum: 
+ Number of clock cycles 18
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->4
+sub ->0
+mul ->0
+beq ->4
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->6
+j ->4
+Integer Register : 8   sum: 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -803,7 +1111,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 4   add $t1,$t1,$t2 
+ Number of clock cycles 18
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->4
+sub ->0
+mul ->0
+beq ->4
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->6
+j ->4
+Integer Register : 9   add $t1,$t1,$t2 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -838,7 +1160,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 5   addi $t0,$t0,1 
+ Number of clock cycles 19
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->5
+sub ->0
+mul ->0
+beq ->4
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->6
+j ->4
+Integer Register : 10   addi $t0,$t0,1 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -873,7 +1209,21 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 6   beq $t0,5,exit 
+ Number of clock cycles 20
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->5
+sub ->0
+mul ->0
+beq ->4
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->7
+j ->4
+Integer Register : 11   beq $t0,5,exit 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -908,7 +1258,7 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
-Integer Register : 8   exit: 
+Integer Register : 13   exit: 
 
 R0  [r0] = 0
 R1  [at] = 0
@@ -943,3 +1293,17 @@ R29 [sp] = 0
 R30 [s8] = 0
 R31 [ra] = 0
 
+ Number of clock cycles 21
+ Instruction Memory Used 52 Bytes
+ Data Memory Used 0 Bytes
+ Number of times each instruction was executed :
+add ->5
+sub ->0
+mul ->0
+beq ->5
+bne ->0
+slt ->0
+lw ->0
+sw ->0
+addi ->7
+j ->4
