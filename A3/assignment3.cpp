@@ -119,7 +119,7 @@ void validator_add(string s, int l, string instruction){
                         cout<<"Invalid second operator "<<substr<<"for operator "<<instruction;
                     }
             }
-            validator(registers,substr,l+1);
+            else validator(registers,substr,l+1);
             params[l].push_back(substr);
             count +=1;
         }
@@ -136,7 +136,7 @@ void validator_beq(string s, int l, string instruction){
         while(s_stream.good()) {
             getline(s_stream, substr, ',');
             substr = trim(substr);
-            cout<<substr<<"\n";
+            
             if(count==0){validator(registers,substr,l+1);}
             if(count ==1){
                 if(substr[0] =='$'){validator(registers,substr,l+1);}
@@ -156,7 +156,7 @@ void validator_beq(string s, int l, string instruction){
 }
 
 void validator_lw(string s, int l, string instruction){
-        cout<<"In lw \n";
+
         stringstream s_stream(s);
         int count = 0;
         string substr;
@@ -170,8 +170,11 @@ void validator_lw(string s, int l, string instruction){
                 q = substr.find_first_of('(');
                 if(q==string::npos){cout<<"Invalid Operand for "<<instruction<<" on line "<<l+1<<"\n";exit(-1);}
                 string lh = substr.substr(0,q);
-                //cout<<lh<<"\n";
-                if (regex_match(lh,n)){
+                // cout<<lh<<"\n";
+                if(lh==""){
+                    params[l].push_back("0");
+                }
+                else if (regex_match(lh,n)){
                     params[l].push_back(lh);
                 }else{cout<<"Invalid Operand for "<<instruction<<" on line "<<l+1;exit(-1);}
                 //(register) 
@@ -197,23 +200,22 @@ int main(int argc, char *argv[]) {
     vector<string> instructions;
     string line;
     int num=0;
-    int x;
+    size_t x;
  
     string Instruction;
     while(getline(file1,line)){
         line = trim(line);
         instructions.push_back(line);
-        x = findfirst(line,'$');
+        x = line.find_first_of('$');
         Instruction = line;
-        cout<<Instruction<<"FFFFFFFFFFFF\n";
-        cout<<x<<"\n";
+
+
         //cout<<(string::npos);
         //cout<<(x==string::npos);
-        if(true){
-            cout<<"Did not find FFFFFFFFFFFFFFFFF $";
+        if(x==string::npos){
+            
             if (Instruction.substr(0,2) == "j "){
-                Instruction = "j";
-                params[num].push_back(Instruction);
+                params[num].push_back("j");
                 string oprd = trim(Instruction.substr(2));
                 params[num].push_back(oprd);
             }else if(Instruction.back() == ':'){
@@ -230,20 +232,20 @@ int main(int argc, char *argv[]) {
                 exit(-1);
             }
         }else{
-            cout<<"found $\n";
+            
             Instruction = trim(line.substr(0,x));
-            cout<<Instruction<<"\n";
+            
             validator(operations,Instruction,num+1);           
             params[num].push_back(Instruction);
             string operands = trim(line.substr(x));
-            cout<<operands<<"\n";
+            
             if (Instruction == "add"||Instruction =="sub"||Instruction =="mul"||Instruction =="slt"||Instruction =="addi"){  //$t1, $t2, $t3 
-                cout<<"Am in wrong place"<<"\n";
+                
                 validator_add(operands,num,Instruction);
             }else if (Instruction=="beq"||Instruction =="bne"){
                 validator_beq(operands,num,Instruction);
             }else if (Instruction == "lw"||Instruction =="sw"){
-                cout<<"going lw \n";
+                
                 validator_lw(operands,num,Instruction);
             }else{
                 continue;
@@ -251,7 +253,7 @@ int main(int argc, char *argv[]) {
         }
         num++;
     }
-     for (auto const& j : params){
+    for (auto const& j : params){
          int c = j.first;
          vector<string> v = j.second;
          cout<<c<<"\n";
@@ -262,9 +264,9 @@ int main(int argc, char *argv[]) {
     }
     file1.close();
 
-    // string curr;
+    string curr;
 
-    // int pc = 0;
+    int pc = 0;
     // while(pc<num){
     //     curr=instructions[pc];
     //     Instruction=params[pc][0];
@@ -321,7 +323,7 @@ int main(int argc, char *argv[]) {
     //     out<<"Integer Register : \n"<<endl;
     //     print(); 
     // }
-    // out.close();
+    out.close();
 	return 0;
 }
 
