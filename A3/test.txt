@@ -1,5 +1,4 @@
-lw $t1,10
-lw $t0,5
 add $t2,$t1,$t0           
 mul $t3,$t1,$t0
 sub $t4,$t1,$t0
+lw $t2,10($t3)
