@@ -11,10 +11,13 @@
 #include <cstddef>
 using namespace std;
 
-fstream file1 ;
+fstream file1;
+ofstream out;
 map<string,int> reg;
 map<int,vector<string>> params;
 map<string,int> label;
+map<int,int> data_memory;
+int data_pointer;
 vector<string> operations = {"add","sub","mul","beq","bne","slt","lw","sw","addi"};
 vector<string> registers = {"$r0","$at","$v0","$v1","$a0","$a1","$a2","$a3","$t0","$t1",
 "$t2","$t3","$t4","$t5","$t6","$t7","$s0","$s1","$s2","$s3","$s4","$s5","$s6","$s7","$t8",
@@ -25,16 +28,15 @@ regex l("([A-Z|a-z])[A-Z|a-z|0-9|_]+");
 int INSTRUCTION_MEMORY = 2^19;
 int DATA_MEMORY = 2^19;
 
-fstream out("out.txt");
 
-int findfirst(string s, char c){
-    for (int i = 0;i<s.size();i++){
-        if (s[i]==c){
-            return i;
-        }
-    }
-    return -1;
-}
+// int findfirst(string s, char c){
+//     for (int i = 0;i<s.size();i++){
+//         if (s[i]==c){
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
 string trim(string str){
     return regex_replace(str, regex("(^[ ]+)|([ ]+$)"),"");
 }
@@ -118,6 +120,13 @@ void validator_add(string s, int l, string instruction){
                     if(!regex_match(substr,n)){
                         cout<<"Invalid second operator "<<substr<<"for operator "<<instruction;
                     }
+            }else if (count == 2){
+                if(substr[0] =='$'){validator(registers,substr,l+1);}
+                else{
+                    if(!regex_match(substr,n)){
+                        cout<<"Invalid second operator "<<substr<<"for operator "<<instruction;
+                    }
+                }
             }
             else validator(registers,substr,l+1);
             params[l].push_back(substr);
@@ -219,7 +228,7 @@ int main(int argc, char *argv[]) {
                 string oprd = trim(Instruction.substr(2));
                 params[num].push_back(oprd);
             }else if(Instruction.back() == ':'){
-                string b = Instruction.substr(0,Instruction.size()-1);
+                string b = trim(Instruction.substr(0,Instruction.size()-1));
                 if (regex_match(b,l)){
                      label[b] = num;
                      params[num].push_back(b);
@@ -252,6 +261,7 @@ int main(int argc, char *argv[]) {
             }
         }
         num++;
+        // instruction memory nums X 4
     }
     for (auto const& j : params){
          int c = j.first;
@@ -262,67 +272,98 @@ int main(int argc, char *argv[]) {
          }
          cout<<"\n";
     }
+    for(auto const& j : label){
+        cout<<j.first<<"->"<<j.second<<"   ";
+    }
+    cout<<endl;
     file1.close();
 
     string curr;
-
+    out.open("output.txt");
     int pc = 0;
-    // while(pc<num){
-    //     curr=instructions[pc];
-    //     Instruction=params[pc][0];
-
-    //     if(Instruction=="add") {
-    //         reg[params[pc][1]]=reg[params[pc][2]]+reg[params[pc][3]];
-    //         pc++;
-
-    //     } else if (Instruction=="sub"){
-    //         reg[params[pc][1]]=reg[params[pc][2]]-reg[params[pc][3]]; 
-    //         pc++;
-
-    //     } else if (Instruction=="mul"){
-    //         reg[params[pc][1]]=reg[params[pc][2]]*reg[params[pc][3]]; 
-    //         pc++;
-            
-    //     } else if (Instruction=="beq"){
-    //         if(reg[params[pc][1]]==reg[params[pc][2]]){
-    //             pc = stoi(reg[params[pc][3]]);
-    //         }else {
-    //             pc++;
-    //         }
-    //     } else if (Instruction=="bne"){
-    //         if(reg[params[pc][1]]!=reg[params[pc][2]]){
-    //             pc = stoi(reg[params[pc][3]]);
-    //         }else {
-    //             pc++;
-    //         }            
-    //     } else if (Instruction=="slt"){
-    //         if(reg[params[pc][1]]<reg[params[pc][2]]){
-    //             reg[params[pc][3]] = 1;
-    //         }else {
-    //             reg[params[pc][3]] = 0;
-    //         }
-    //         pc++; 
-    //     } else if (Instruction=="j"){
-    //         pc = params[pc][1];
-    //     } else if (Instruction=="lw"){
-    //         reg[params[pc][1]]=stoi(params[pc][2]);
-    //         pc++;
-            
-    //     } else if (Instruction=="sw"){
-          
-            
-    //     } else if (Instruction=="addi"){
-           
-            
-    //     } else {
-    //         out << "Wrong Instruction !";
-    //     }
-        
-    //     //Process
-        
-    //     out<<"Integer Register : \n"<<endl;
-    //     print(); 
-    // }
+    while(pc<num){
+        //cout<<pc<<endl;
+        out<<"Integer Register : "<<pc+1<<"   "<<instructions[pc]<<" \n"<<endl;
+        Instruction=params[pc][0];
+        if(Instruction=="add") {
+            int y = (params[pc][3][0]=='$') ? reg[params[pc][3]] : stoi(params[pc][3]);
+            reg[params[pc][1]]=reg[params[pc][2]]+y;
+            pc++;
+        } else if (Instruction=="sub"){
+            int y = (params[pc][3][0]=='$') ? reg[params[pc][3]] : stoi(params[pc][3]);
+            reg[params[pc][1]]=reg[params[pc][2]]-y;
+            pc++;
+        } else if (Instruction=="mul"){
+            int y = (params[pc][3][0]=='$') ? reg[params[pc][3]] : stoi(params[pc][3]);
+            reg[params[pc][1]]=reg[params[pc][2]]*y;
+            pc++;
+        } else if (Instruction=="beq"){
+            if (label.find(params[pc][3]) == label.end()){
+                cout << "Invalid Label on line "<<pc+1;
+                exit(-1);
+            }
+            int y = (params[pc][2][0]=='$') ? reg[params[pc][2]] : stoi(params[pc][2]);
+            cout<<"\n"<<y<<" "<<reg[params[pc][1]];
+            if (reg[params[pc][1]] == y){
+                pc = label[params[pc][3]];
+                //cout<<"FFFFF\n";
+                print();
+                continue;
+            }
+            pc++;
+        } else if (Instruction=="bne"){
+            if (label.find(params[pc][3]) == label.end()){
+                cout << "Invalid Label on line "<<pc+1;
+                exit(-1);
+            }
+            int y = (params[pc][2][0]=='$') ? reg[params[pc][2]] : stoi(params[pc][2]);
+            if (reg[params[pc][1]] != y){
+                pc = label[params[pc][3]];
+                print();
+                continue;
+            }
+            pc++;    
+        } else if (Instruction=="slt"){
+            int y = (params[pc][3][0]=='$') ? reg[params[pc][3]] : stoi(params[pc][3]);
+            if(reg[params[pc][2]]< y ){
+                reg[params[pc][1]] = 1;
+            }else {
+                reg[params[pc][1]] = 0;
+            }
+            pc++; 
+        } else if (Instruction=="j"){
+            if (label.find(params[pc][1]) == label.end()){
+                cout << "Invalid Label on line "<<pc+1;
+                exit(-1);
+            }
+            pc = label[params[pc][1]];
+        } else if (Instruction=="lw"){
+            int offset = stoi(params[pc][2]);
+            if((offset+reg[params[pc][3]])%4 != 0 ){
+                cout<<"Program tried to access invalid memory location. Memory address can only be multiples of 4.\n";
+                exit(-1);
+            }
+            reg[params[pc][1]] = data_memory[(offset+reg[params[pc][3]])];
+            pc++;           
+        } else if (Instruction=="sw"){
+        // 0 -1 , 4 - 189, 8 - 2537
+            int offset = stoi(params[pc][2]);
+            if((offset+reg[params[pc][3]])%4 != 0 ){
+                cout<<"Program tried to access invalid memory location. Memory address can only be multiples of 4.\n";
+                exit(-1);
+            }
+            data_memory[(offset+reg[params[pc][3]])] = reg[params[pc][1]];
+            pc++;
+        } else if (Instruction=="addi"){
+            reg[params[pc][1]]=reg[params[pc][2]]+stoi(params[pc][3]);
+            pc++;     
+        } else if( label.find(params[pc][0]) != label.end() ){
+             pc ++;
+        }else{
+            continue;
+        }     
+        print(); 
+    }
     out.close();
 	return 0;
 }
