@@ -1,0 +1,5 @@
+/home/aygupt/Desktop/Sem4/COP290/Traffic-density-estimation/makefile -f /home/aygupt/Desktop/Sem4/COL216/COL216-CompArch-Assignments/A3/makefile --dry-run --keep-going --print-directory
+/bin/sh: 1:  
+/home/aygupt/Desktop/Sem4/COP290/Traffic-density-estimation/makefile: Permission denied 
+
+ 
