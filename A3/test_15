@@ -1,0 +1,2 @@
+addi $r1,$zero, 10
+lw $r1, 12($zero)

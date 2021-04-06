@@ -1,0 +1,68 @@
+Clock cycle 1:
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+addi $r1 , $zero , 1
+$r1 = 1
+Clock cycle 2:
+ 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+addi $r2 , $zero , 8
+$r2 = 8
+Clock cycle 3:
+ 0 1 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+mul $r3 , $r1 , $r2
+$r3 = 8
+Clock cycle 4:
+ 0 1 8 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+addi $r3 , $r3 , -19
+$r3 = -11
+Clock cycle 5:
+ 0 1 8 -11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+slt $r4 ,  $r1,  $r2
+$r4 = 1
+Clock cycle 6:
+ 0 1 8 -11 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+addi $r5 , $r1 , 4
+$r5 = 5
+Clock cycle 7:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+DRAM request issued by Instruction lw $r4 , 0($r9)
+Clock cycle 8:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Clock cycle 9:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 2/10
+Clock cycle 10:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 3/10
+Clock cycle 11:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 4/10
+Clock cycle 12:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 5/10
+Clock cycle 13:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 6/10
+Clock cycle 14:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 7/10
+Clock cycle 15:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 8/10
+Clock cycle 16:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 9/10
+Clock cycle 17:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Activating row 0 Completed 10/10
+Clock cycle 18:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Accessing column 0 Completed 1/2
+Clock cycle 19:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Accessing column 0 Completed 2/2
+Completed DRAM accsess!!
+Memory at 0 = 5
+Clock cycle 20:
+ 0 1 8 -11 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+slt $r1 , $r5 , $r3
+$r1 = 0
