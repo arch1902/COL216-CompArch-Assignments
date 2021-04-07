@@ -1,0 +1,107 @@
+
+Clock Cycle1:
+addi $r1 , $zero , 3
+$r1 = 3
+
+Clock Cycle2:
+addi $r2 , $zero , 3
+$r2 = 3
+
+Clock Cycle3:
+mul $r3 , $r1 , $r2
+$r3 = 9
+
+Clock Cycle4:
+j x
+
+Clock Cycle5:
+addi $r5 , $r1 , 4
+$r5 = 7
+
+Clock Cycle6:
+Intialised instruction sw 0 7
+
+Clock Cycle7:
+Started sw 0 7
+Completed 1/12
+Intialised instruction lw 0 $r4
+
+Clock Cycle8:
+Completed 2/12
+slt $r1 , $r5 , $r3
+$r1 = 1
+
+Clock Cycle9:
+Completed 3/12
+
+Clock Cycle10:
+Completed 4/12
+
+Clock Cycle11:
+Completed 5/12
+
+Clock Cycle12:
+Completed 6/12
+
+Clock Cycle13:
+Completed 7/12
+
+Clock Cycle14:
+Completed 8/12
+
+Clock Cycle15:
+Completed 9/12
+
+Clock Cycle16:
+Completed 10/12
+
+Clock Cycle17:
+Completed 11/12
+
+Clock Cycle18:
+Completed 12/12
+Finished Instruction sw 0 7
+
+Clock Cycle19:
+Started lw 0 $r4
+Completed 1/2
+
+Clock Cycle20:
+Completed 2/2
+$r4 = 7
+Finished Instruction lw 0 $r4
+
+DRAM memory structure :
+
+Register Values :
+zero = 0
+r1 =  1
+r2 = 3
+r3 =  9
+r4 = 7
+r5 = 7
+r6 = 0
+r7 = 0
+r8 = 0
+r9 = 0
+s0 = 0
+s1 = 0
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+s8 = 0
+s9 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+sp = 0

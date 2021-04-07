@@ -1,0 +1,190 @@
+
+Clock Cycle1:
+addi $r1, $zero, 1
+$r1 = 1
+
+Clock Cycle2:
+addi $r2, $zero, 2
+$r2 = 2
+
+Clock Cycle3:
+Intialised instruction sw 1000 1
+
+Clock Cycle4:
+Started sw 1000 1
+Completed 1/12
+Intialised instruction sw 1024 2
+
+Clock Cycle5:
+Completed 2/12
+Intialised instruction lw 1000 $r3
+
+Clock Cycle6:
+Completed 3/12
+Intialised instruction lw 1024 $r4
+
+Clock Cycle7:
+Completed 4/12
+
+Clock Cycle8:
+Completed 5/12
+
+Clock Cycle9:
+Completed 6/12
+
+Clock Cycle10:
+Completed 7/12
+
+Clock Cycle11:
+Completed 8/12
+
+Clock Cycle12:
+Completed 9/12
+
+Clock Cycle13:
+Completed 10/12
+
+Clock Cycle14:
+Completed 11/12
+
+Clock Cycle15:
+Completed 12/12
+Finished Instruction sw 1000 1
+
+Clock Cycle16:
+Started lw 1000 $r3
+Completed 1/2
+
+Clock Cycle17:
+Completed 2/2
+$r3 = 1
+Finished Instruction lw 1000 $r3
+
+Clock Cycle18:
+Started sw 1024 2
+Completed 1/22
+
+Clock Cycle19:
+Completed 2/22
+
+Clock Cycle20:
+Completed 3/22
+
+Clock Cycle21:
+Completed 4/22
+
+Clock Cycle22:
+Completed 5/22
+
+Clock Cycle23:
+Completed 6/22
+
+Clock Cycle24:
+Completed 7/22
+
+Clock Cycle25:
+Completed 8/22
+
+Clock Cycle26:
+Completed 9/22
+
+Clock Cycle27:
+Completed 10/22
+Memory at 1000 = 1
+
+Clock Cycle28:
+Completed 11/22
+
+Clock Cycle29:
+Completed 12/22
+
+Clock Cycle30:
+Completed 13/22
+
+Clock Cycle31:
+Completed 14/22
+
+Clock Cycle32:
+Completed 15/22
+
+Clock Cycle33:
+Completed 16/22
+
+Clock Cycle34:
+Completed 17/22
+
+Clock Cycle35:
+Completed 18/22
+
+Clock Cycle36:
+Completed 19/22
+
+Clock Cycle37:
+Completed 20/22
+
+Clock Cycle38:
+Completed 21/22
+
+Clock Cycle39:
+Completed 22/22
+Finished Instruction sw 1024 2
+
+Clock Cycle40:
+Started lw 1024 $r4
+Completed 1/2
+
+Clock Cycle41:
+Completed 2/2
+$r4 = 2
+Finished Instruction lw 1024 $r4
+
+Clock Cycle42:
+add $r4, $r4, $r3
+$r4 = 3
+
+Clock Cycle43:
+Intialised instruction sw 1028 3
+
+Clock Cycle44:
+Started sw 1028 3
+Completed 1/2
+
+Clock Cycle45:
+Completed 2/2
+Finished Instruction sw 1028 3
+
+DRAM memory structure :
+Memory at row 0 column 250 address 1000 = 1
+
+Register Values :
+zero = 0
+r1 =  1
+r2 = 2
+r3 =  1
+r4 = 3
+r5 = 0
+r6 = 0
+r7 = 0
+r8 = 0
+r9 = 0
+s0 = 0
+s1 = 0
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+s8 = 0
+s9 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+sp = 0

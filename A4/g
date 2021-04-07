@@ -1,0 +1,16 @@
+main:
+	addi $r1, $zero, 1
+	addi $r2, $zero, 2
+	sw $r1, 1000($zero)
+	sw $r2, 1024($zero)
+	
+	lw $r3, 1000($zero)
+	lw $r4, 1024($zero)
+	
+	add $r4, $r4, $r3
+		
+	sw $r4, 1028($zero)
+	
+	
+
+exit:
