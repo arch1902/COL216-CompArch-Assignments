@@ -1,0 +1,6 @@
+addi $t1,$t1,4
+lw $t2,100($zero)
+sw $t1,100($zero)
+addi $t6,$t6,4
+addi $t5,$t5,4
+addi $t2,$t4,4

@@ -1,0 +1,238 @@
+
+Clock Cycle1:
+addi $r1,$zero,1000
+$r1 = 1000
+
+Clock Cycle2:
+addi $r2,$r2,1
+$r2 = 1
+
+Clock Cycle3:
+Intialised instruction sw 1000 1
+
+Clock Cycle4:
+Completed 1/12
+addi $r1,$r1,4
+$r1 = 1004
+
+Clock Cycle5:
+Completed 2/12
+addi $r2,$r2,1
+$r2 = 2
+
+Clock Cycle6:
+Completed 3/12
+bne $r2,10,loop
+
+Clock Cycle7:
+Completed 4/12
+Intialised instruction sw 1004 2
+
+Clock Cycle8:
+Completed 5/12
+addi $r1,$r1,4
+$r1 = 1008
+
+Clock Cycle9:
+Completed 6/12
+addi $r2,$r2,1
+$r2 = 3
+
+Clock Cycle10:
+Completed 7/12
+bne $r2,10,loop
+
+Clock Cycle11:
+Completed 8/12
+Intialised instruction sw 1008 3
+
+Clock Cycle12:
+Completed 9/12
+addi $r1,$r1,4
+$r1 = 1012
+
+Clock Cycle13:
+Completed 10/12
+addi $r2,$r2,1
+$r2 = 4
+
+Clock Cycle14:
+Completed 11/12
+bne $r2,10,loop
+
+Clock Cycle15:
+Completed 12/12
+Finished Instruction sw 1000 1
+Intialised instruction sw 1012 4
+
+Clock Cycle16:
+Completed 1/2
+addi $r1,$r1,4
+$r1 = 1016
+
+Clock Cycle17:
+Completed 2/2
+Finished Instruction sw 1004 2
+addi $r2,$r2,1
+$r2 = 5
+
+Clock Cycle18:
+Completed 1/2
+bne $r2,10,loop
+
+Clock Cycle19:
+Completed 2/2
+Finished Instruction sw 1008 3
+Intialised instruction sw 1016 5
+
+Clock Cycle20:
+Completed 1/2
+addi $r1,$r1,4
+$r1 = 1020
+
+Clock Cycle21:
+Completed 2/2
+Finished Instruction sw 1012 4
+addi $r2,$r2,1
+$r2 = 6
+
+Clock Cycle22:
+Completed 1/2
+bne $r2,10,loop
+
+Clock Cycle23:
+Completed 2/2
+Finished Instruction sw 1016 5
+Intialised instruction sw 1020 6
+
+Clock Cycle24:
+Completed 1/2
+addi $r1,$r1,4
+$r1 = 1024
+
+Clock Cycle25:
+Completed 2/2
+Finished Instruction sw 1020 6
+addi $r2,$r2,1
+$r2 = 7
+
+Clock Cycle26:
+bne $r2,10,loop
+
+Clock Cycle27:
+Intialised instruction sw 1024 7
+
+Clock Cycle28:
+Completed 1/22
+addi $r1,$r1,4
+$r1 = 1028
+
+Clock Cycle29:
+Completed 2/22
+addi $r2,$r2,1
+$r2 = 8
+
+Clock Cycle30:
+Completed 3/22
+bne $r2,10,loop
+
+Clock Cycle31:
+Completed 4/22
+Intialised instruction sw 1028 8
+
+Clock Cycle32:
+Completed 5/22
+addi $r1,$r1,4
+$r1 = 1032
+
+Clock Cycle33:
+Completed 6/22
+addi $r2,$r2,1
+$r2 = 9
+
+Clock Cycle34:
+Completed 7/22
+bne $r2,10,loop
+
+Clock Cycle35:
+Completed 8/22
+Intialised instruction sw 1032 9
+
+Clock Cycle36:
+Completed 9/22
+addi $r1,$r1,4
+$r1 = 1036
+
+Clock Cycle37:
+Completed 10/22
+Memory at 1000 = 1
+Memory at 1004 = 2
+Memory at 1008 = 3
+Memory at 1012 = 4
+Memory at 1016 = 5
+Memory at 1020 = 6
+addi $r2,$r2,1
+$r2 = 10
+
+Clock Cycle38:
+Completed 11/22
+bne $r2,10,loop
+
+Clock Cycle39:
+Completed 12/22
+
+Clock Cycle40:
+Completed 13/22
+
+Clock Cycle41:
+Completed 14/22
+
+Clock Cycle42:
+Completed 15/22
+
+Clock Cycle43:
+Completed 16/22
+
+Clock Cycle44:
+Completed 17/22
+
+Clock Cycle45:
+Completed 18/22
+
+Clock Cycle46:
+Completed 19/22
+
+Clock Cycle47:
+Completed 20/22
+
+Clock Cycle48:
+Completed 21/22
+
+Clock Cycle49:
+Completed 22/22
+Finished Instruction sw 1024 7
+
+Clock Cycle50:
+Completed 1/2
+
+Clock Cycle51:
+Completed 2/2
+Finished Instruction sw 1028 8
+
+Clock Cycle52:
+Completed 1/2
+
+Clock Cycle53:
+Completed 2/2
+Finished Instruction sw 1032 9
+
+DRAM memory structure :
+Memory at row 0 column 250 address 1000 = 1
+Memory at row 0 column 251 address 1004 = 2
+Memory at row 0 column 252 address 1008 = 3
+Memory at row 0 column 253 address 1012 = 4
+Memory at row 0 column 254 address 1016 = 5
+Memory at row 0 column 255 address 1020 = 6
+
+Register Values :
+0 1036 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
