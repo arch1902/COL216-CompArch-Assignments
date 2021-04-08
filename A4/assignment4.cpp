@@ -405,6 +405,14 @@ int main(int argc, char *argv[]) {
         if (pc<num && label.find(params[pc][0])!=label.end()){pc++;continue;}
         clock_cycle++;
         out<<"\n"<<"Clock Cycle"<<clock_cycle<<":"<<endl;
+        for (auto const & string_vec : Dram_queue) {
+            out<<"( ";
+            for (auto const & str : string_vec) {
+                out << str<<", ";
+            }
+            out<<" ) ";
+        }
+        out<<endl;
         bool flag = false;
         string removed_register;
         //DRAM 
@@ -475,6 +483,7 @@ int main(int argc, char *argv[]) {
                     }
                     out<<"Finished Instruction "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<endl;
                     Dram_queue.erase(Dram_queue.begin());
+                    sort_queue();
                     //Dram_queue[0][3] = to_string(stoi(Dram_queue[0][3])+1);
                     break;
                 }

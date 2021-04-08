@@ -1,0 +1,536 @@
+
+Clock Cycle1:
+
+addi $s0, $zero, 1000
+$s0 = 1000
+
+Clock Cycle2:
+
+addi $s1, $zero, 2500
+$s1 = 2500
+
+Clock Cycle3:
+
+addi $t0, $zero, 1
+$t0 = 1
+
+Clock Cycle4:
+
+addi $t1, $zero, 2
+$t1 = 2
+
+Clock Cycle5:
+
+addi $t2, $zero, 3
+$t2 = 3
+
+Clock Cycle6:
+
+addi $t3, $zero, 4
+$t3 = 4
+
+Clock Cycle7:
+
+Intialised instruction sw 1000 1
+
+Clock Cycle8:
+( sw, 1000, 1, 0, 0,  ) 
+Started sw 1000 1
+Completed 1/12
+addi $s0,$s0,1000
+$s0 = 2000
+
+Clock Cycle9:
+( sw, 1000, 1, 1, 12,  ) 
+Completed 2/12
+Intialised instruction sw 2500 2
+
+Clock Cycle10:
+( sw, 1000, 1, 2, 12,  ) ( sw, 2500, 2, 0, 0,  ) 
+Completed 3/12
+Intialised instruction sw 2004 3
+
+Clock Cycle11:
+( sw, 1000, 1, 3, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) 
+Completed 4/12
+Intialised instruction sw 2504 0
+
+Clock Cycle12:
+( sw, 1000, 1, 4, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) 
+Completed 5/12
+Intialised instruction lw 2000 $t5
+
+Clock Cycle13:
+( sw, 1000, 1, 5, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 6/12
+
+Clock Cycle14:
+( sw, 1000, 1, 6, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 7/12
+
+Clock Cycle15:
+( sw, 1000, 1, 7, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 8/12
+
+Clock Cycle16:
+( sw, 1000, 1, 8, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 9/12
+
+Clock Cycle17:
+( sw, 1000, 1, 9, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 10/12
+
+Clock Cycle18:
+( sw, 1000, 1, 10, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 11/12
+
+Clock Cycle19:
+( sw, 1000, 1, 11, 12,  ) ( sw, 2500, 2, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 12/12
+Finished Instruction sw 1000 1
+
+Clock Cycle20:
+( sw, 2500, 2, 0, 0,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Started sw 2500 2
+Completed 1/22
+
+Clock Cycle21:
+( sw, 2500, 2, 1, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 2/22
+
+Clock Cycle22:
+( sw, 2500, 2, 2, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 3/22
+
+Clock Cycle23:
+( sw, 2500, 2, 3, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 4/22
+
+Clock Cycle24:
+( sw, 2500, 2, 4, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 5/22
+
+Clock Cycle25:
+( sw, 2500, 2, 5, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 6/22
+
+Clock Cycle26:
+( sw, 2500, 2, 6, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 7/22
+
+Clock Cycle27:
+( sw, 2500, 2, 7, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 8/22
+
+Clock Cycle28:
+( sw, 2500, 2, 8, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 9/22
+
+Clock Cycle29:
+( sw, 2500, 2, 9, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 10/22
+Memory at 1000 = 1
+
+Clock Cycle30:
+( sw, 2500, 2, 10, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 11/22
+
+Clock Cycle31:
+( sw, 2500, 2, 11, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 12/22
+
+Clock Cycle32:
+( sw, 2500, 2, 12, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 13/22
+
+Clock Cycle33:
+( sw, 2500, 2, 13, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 14/22
+
+Clock Cycle34:
+( sw, 2500, 2, 14, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 15/22
+
+Clock Cycle35:
+( sw, 2500, 2, 15, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 16/22
+
+Clock Cycle36:
+( sw, 2500, 2, 16, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 17/22
+
+Clock Cycle37:
+( sw, 2500, 2, 17, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 18/22
+
+Clock Cycle38:
+( sw, 2500, 2, 18, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 19/22
+
+Clock Cycle39:
+( sw, 2500, 2, 19, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 20/22
+
+Clock Cycle40:
+( sw, 2500, 2, 20, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 21/22
+
+Clock Cycle41:
+( sw, 2500, 2, 21, 22,  ) ( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 22/22
+Finished Instruction sw 2500 2
+
+Clock Cycle42:
+( sw, 2504, 0, 0, 0,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Started sw 2504 0
+Completed 1/2
+
+Clock Cycle43:
+( sw, 2504, 0, 1, 2,  ) ( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 2/2
+Finished Instruction sw 2504 0
+
+Clock Cycle44:
+( sw, 2004, 3, 0, 0,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Started sw 2004 3
+Completed 1/22
+
+Clock Cycle45:
+( sw, 2004, 3, 1, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 2/22
+
+Clock Cycle46:
+( sw, 2004, 3, 2, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 3/22
+
+Clock Cycle47:
+( sw, 2004, 3, 3, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 4/22
+
+Clock Cycle48:
+( sw, 2004, 3, 4, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 5/22
+
+Clock Cycle49:
+( sw, 2004, 3, 5, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 6/22
+
+Clock Cycle50:
+( sw, 2004, 3, 6, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 7/22
+
+Clock Cycle51:
+( sw, 2004, 3, 7, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 8/22
+
+Clock Cycle52:
+( sw, 2004, 3, 8, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 9/22
+
+Clock Cycle53:
+( sw, 2004, 3, 9, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 10/22
+Memory at 2500 = 2
+
+Clock Cycle54:
+( sw, 2004, 3, 10, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 11/22
+
+Clock Cycle55:
+( sw, 2004, 3, 11, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 12/22
+
+Clock Cycle56:
+( sw, 2004, 3, 12, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 13/22
+
+Clock Cycle57:
+( sw, 2004, 3, 13, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 14/22
+
+Clock Cycle58:
+( sw, 2004, 3, 14, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 15/22
+
+Clock Cycle59:
+( sw, 2004, 3, 15, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 16/22
+
+Clock Cycle60:
+( sw, 2004, 3, 16, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 17/22
+
+Clock Cycle61:
+( sw, 2004, 3, 17, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 18/22
+
+Clock Cycle62:
+( sw, 2004, 3, 18, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 19/22
+
+Clock Cycle63:
+( sw, 2004, 3, 19, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 20/22
+
+Clock Cycle64:
+( sw, 2004, 3, 20, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 21/22
+
+Clock Cycle65:
+( sw, 2004, 3, 21, 22,  ) ( lw, 2000, $t5, 0, 0,  ) 
+Completed 22/22
+Finished Instruction sw 2004 3
+
+Clock Cycle66:
+( lw, 2000, $t5, 0, 0,  ) 
+Started lw 2000 $t5
+Completed 1/2
+
+Clock Cycle67:
+( lw, 2000, $t5, 1, 2,  ) 
+Completed 2/2
+$t5 = 0
+Finished Instruction lw 2000 $t5
+
+Clock Cycle68:
+
+addi $t5,$t5,100
+$t5 = 100
+
+Clock Cycle69:
+
+Intialised instruction lw 2500 $t6
+
+Clock Cycle70:
+( lw, 2500, $t6, 0, 0,  ) 
+Started lw 2500 $t6
+Completed 1/22
+Intialised instruction lw 2004 $t7
+
+Clock Cycle71:
+( lw, 2500, $t6, 1, 22,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 2/22
+Intialised instruction lw 2504 $t8
+
+Clock Cycle72:
+( lw, 2500, $t6, 2, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 3/22
+
+Clock Cycle73:
+( lw, 2500, $t6, 3, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 4/22
+
+Clock Cycle74:
+( lw, 2500, $t6, 4, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 5/22
+
+Clock Cycle75:
+( lw, 2500, $t6, 5, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 6/22
+
+Clock Cycle76:
+( lw, 2500, $t6, 6, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 7/22
+
+Clock Cycle77:
+( lw, 2500, $t6, 7, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 8/22
+
+Clock Cycle78:
+( lw, 2500, $t6, 8, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 9/22
+
+Clock Cycle79:
+( lw, 2500, $t6, 9, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 10/22
+Memory at 2004 = 3
+
+Clock Cycle80:
+( lw, 2500, $t6, 10, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 11/22
+
+Clock Cycle81:
+( lw, 2500, $t6, 11, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 12/22
+
+Clock Cycle82:
+( lw, 2500, $t6, 12, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 13/22
+
+Clock Cycle83:
+( lw, 2500, $t6, 13, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 14/22
+
+Clock Cycle84:
+( lw, 2500, $t6, 14, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 15/22
+
+Clock Cycle85:
+( lw, 2500, $t6, 15, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 16/22
+
+Clock Cycle86:
+( lw, 2500, $t6, 16, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 17/22
+
+Clock Cycle87:
+( lw, 2500, $t6, 17, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 18/22
+
+Clock Cycle88:
+( lw, 2500, $t6, 18, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 19/22
+
+Clock Cycle89:
+( lw, 2500, $t6, 19, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 20/22
+
+Clock Cycle90:
+( lw, 2500, $t6, 20, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 21/22
+
+Clock Cycle91:
+( lw, 2500, $t6, 21, 22,  ) ( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 22/22
+$t6 = 2
+Finished Instruction lw 2500 $t6
+
+Clock Cycle92:
+( lw, 2504, $t8, 0, 0,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Started lw 2504 $t8
+Completed 1/2
+
+Clock Cycle93:
+( lw, 2504, $t8, 1, 2,  ) ( lw, 2004, $t7, 0, 0,  ) 
+Completed 2/2
+$t8 = 0
+Finished Instruction lw 2504 $t8
+
+Clock Cycle94:
+( lw, 2004, $t7, 0, 0,  ) 
+Started lw 2004 $t7
+Completed 1/22
+
+Clock Cycle95:
+( lw, 2004, $t7, 1, 22,  ) 
+Completed 2/22
+
+Clock Cycle96:
+( lw, 2004, $t7, 2, 22,  ) 
+Completed 3/22
+
+Clock Cycle97:
+( lw, 2004, $t7, 3, 22,  ) 
+Completed 4/22
+
+Clock Cycle98:
+( lw, 2004, $t7, 4, 22,  ) 
+Completed 5/22
+
+Clock Cycle99:
+( lw, 2004, $t7, 5, 22,  ) 
+Completed 6/22
+
+Clock Cycle100:
+( lw, 2004, $t7, 6, 22,  ) 
+Completed 7/22
+
+Clock Cycle101:
+( lw, 2004, $t7, 7, 22,  ) 
+Completed 8/22
+
+Clock Cycle102:
+( lw, 2004, $t7, 8, 22,  ) 
+Completed 9/22
+
+Clock Cycle103:
+( lw, 2004, $t7, 9, 22,  ) 
+Completed 10/22
+
+Clock Cycle104:
+( lw, 2004, $t7, 10, 22,  ) 
+Completed 11/22
+
+Clock Cycle105:
+( lw, 2004, $t7, 11, 22,  ) 
+Completed 12/22
+
+Clock Cycle106:
+( lw, 2004, $t7, 12, 22,  ) 
+Completed 13/22
+
+Clock Cycle107:
+( lw, 2004, $t7, 13, 22,  ) 
+Completed 14/22
+
+Clock Cycle108:
+( lw, 2004, $t7, 14, 22,  ) 
+Completed 15/22
+
+Clock Cycle109:
+( lw, 2004, $t7, 15, 22,  ) 
+Completed 16/22
+
+Clock Cycle110:
+( lw, 2004, $t7, 16, 22,  ) 
+Completed 17/22
+
+Clock Cycle111:
+( lw, 2004, $t7, 17, 22,  ) 
+Completed 18/22
+
+Clock Cycle112:
+( lw, 2004, $t7, 18, 22,  ) 
+Completed 19/22
+
+Clock Cycle113:
+( lw, 2004, $t7, 19, 22,  ) 
+Completed 20/22
+
+Clock Cycle114:
+( lw, 2004, $t7, 20, 22,  ) 
+Completed 21/22
+
+Clock Cycle115:
+( lw, 2004, $t7, 21, 22,  ) 
+Completed 22/22
+$t7 = 3
+Finished Instruction lw 2004 $t7
+
+DRAM memory structure :
+Memory at row 0 column 250 address 1000 = 1
+Memory at row 1 column 245 address 2004 = 3
+Memory at row 2 column 113 address 2500 = 2
+
+Register Values :
+zero = 0
+r1 =  0
+r2 = 0
+r3 =  0
+r4 = 0
+r5 = 0
+r6 = 0
+r7 = 0
+r8 = 0
+r9 = 0
+s0 = 2000
+s1 = 2500
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+s8 = 0
+s9 = 0
+t0 = 1
+t1 = 2
+t2 = 3
+t3 = 4
+t4 = 0
+t5 = 100
+t6 = 2
+t7 = 3
+t8 = 0
+t9 = 0
+sp = 0

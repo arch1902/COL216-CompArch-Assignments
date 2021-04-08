@@ -1,0 +1,314 @@
+
+Clock Cycle1:
+
+addi $r1,$r1,1000
+$r1 = 1000
+
+Clock Cycle2:
+
+Intialised instruction lw 0 $r1
+
+Clock Cycle3:
+( lw, 0, $r1, 0, 0,  ) 
+Started lw 0 $r1
+Completed 1/12
+Intialised instruction lw 1024 $r2
+
+Clock Cycle4:
+( lw, 0, $r1, 1, 12,  ) ( lw, 1024, $r2, 0, 0,  ) 
+Completed 2/12
+Intialised instruction lw 2048 $r3
+
+Clock Cycle5:
+( lw, 0, $r1, 2, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 3/12
+
+Clock Cycle6:
+( lw, 0, $r1, 3, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 4/12
+
+Clock Cycle7:
+( lw, 0, $r1, 4, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 5/12
+
+Clock Cycle8:
+( lw, 0, $r1, 5, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 6/12
+
+Clock Cycle9:
+( lw, 0, $r1, 6, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 7/12
+
+Clock Cycle10:
+( lw, 0, $r1, 7, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 8/12
+
+Clock Cycle11:
+( lw, 0, $r1, 8, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 9/12
+
+Clock Cycle12:
+( lw, 0, $r1, 9, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 10/12
+
+Clock Cycle13:
+( lw, 0, $r1, 10, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 11/12
+
+Clock Cycle14:
+( lw, 0, $r1, 11, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 12/12
+$r1 = 0
+Finished Instruction lw 0 $r1
+
+Clock Cycle15:
+( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Started lw 1024 $r2
+Completed 1/22
+
+Clock Cycle16:
+( lw, 1024, $r2, 1, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 2/22
+
+Clock Cycle17:
+( lw, 1024, $r2, 2, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 3/22
+
+Clock Cycle18:
+( lw, 1024, $r2, 3, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 4/22
+
+Clock Cycle19:
+( lw, 1024, $r2, 4, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 5/22
+
+Clock Cycle20:
+( lw, 1024, $r2, 5, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 6/22
+
+Clock Cycle21:
+( lw, 1024, $r2, 6, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 7/22
+
+Clock Cycle22:
+( lw, 1024, $r2, 7, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 8/22
+
+Clock Cycle23:
+( lw, 1024, $r2, 8, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 9/22
+
+Clock Cycle24:
+( lw, 1024, $r2, 9, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 10/22
+
+Clock Cycle25:
+( lw, 1024, $r2, 10, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 11/22
+
+Clock Cycle26:
+( lw, 1024, $r2, 11, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 12/22
+
+Clock Cycle27:
+( lw, 1024, $r2, 12, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 13/22
+
+Clock Cycle28:
+( lw, 1024, $r2, 13, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 14/22
+
+Clock Cycle29:
+( lw, 1024, $r2, 14, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 15/22
+
+Clock Cycle30:
+( lw, 1024, $r2, 15, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 16/22
+
+Clock Cycle31:
+( lw, 1024, $r2, 16, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 17/22
+
+Clock Cycle32:
+( lw, 1024, $r2, 17, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 18/22
+
+Clock Cycle33:
+( lw, 1024, $r2, 18, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 19/22
+
+Clock Cycle34:
+( lw, 1024, $r2, 19, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 20/22
+
+Clock Cycle35:
+( lw, 1024, $r2, 20, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 21/22
+
+Clock Cycle36:
+( lw, 1024, $r2, 21, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Completed 22/22
+$r2 = 0
+Finished Instruction lw 1024 $r2
+
+Clock Cycle37:
+( lw, 2048, $r3, 0, 0,  ) 
+Started lw 2048 $r3
+Completed 1/22
+
+Clock Cycle38:
+( lw, 2048, $r3, 1, 22,  ) 
+Completed 2/22
+
+Clock Cycle39:
+( lw, 2048, $r3, 2, 22,  ) 
+Completed 3/22
+
+Clock Cycle40:
+( lw, 2048, $r3, 3, 22,  ) 
+Completed 4/22
+
+Clock Cycle41:
+( lw, 2048, $r3, 4, 22,  ) 
+Completed 5/22
+
+Clock Cycle42:
+( lw, 2048, $r3, 5, 22,  ) 
+Completed 6/22
+
+Clock Cycle43:
+( lw, 2048, $r3, 6, 22,  ) 
+Completed 7/22
+
+Clock Cycle44:
+( lw, 2048, $r3, 7, 22,  ) 
+Completed 8/22
+
+Clock Cycle45:
+( lw, 2048, $r3, 8, 22,  ) 
+Completed 9/22
+
+Clock Cycle46:
+( lw, 2048, $r3, 9, 22,  ) 
+Completed 10/22
+
+Clock Cycle47:
+( lw, 2048, $r3, 10, 22,  ) 
+Completed 11/22
+
+Clock Cycle48:
+( lw, 2048, $r3, 11, 22,  ) 
+Completed 12/22
+
+Clock Cycle49:
+( lw, 2048, $r3, 12, 22,  ) 
+Completed 13/22
+
+Clock Cycle50:
+( lw, 2048, $r3, 13, 22,  ) 
+Completed 14/22
+
+Clock Cycle51:
+( lw, 2048, $r3, 14, 22,  ) 
+Completed 15/22
+
+Clock Cycle52:
+( lw, 2048, $r3, 15, 22,  ) 
+Completed 16/22
+
+Clock Cycle53:
+( lw, 2048, $r3, 16, 22,  ) 
+Completed 17/22
+
+Clock Cycle54:
+( lw, 2048, $r3, 17, 22,  ) 
+Completed 18/22
+
+Clock Cycle55:
+( lw, 2048, $r3, 18, 22,  ) 
+Completed 19/22
+
+Clock Cycle56:
+( lw, 2048, $r3, 19, 22,  ) 
+Completed 20/22
+
+Clock Cycle57:
+( lw, 2048, $r3, 20, 22,  ) 
+Completed 21/22
+
+Clock Cycle58:
+( lw, 2048, $r3, 21, 22,  ) 
+Completed 22/22
+$r3 = 0
+Finished Instruction lw 2048 $r3
+
+Clock Cycle59:
+
+addi $r3,$r3,1
+$r3 = 1
+
+Clock Cycle60:
+
+addi $r3,$r3,1
+$r3 = 2
+
+Clock Cycle61:
+
+addi $r3,$r3,1
+$r3 = 3
+
+Clock Cycle62:
+
+addi $r3,$r3,1
+$r3 = 4
+
+Clock Cycle63:
+
+addi $r3,$r3,1
+$r3 = 5
+
+Clock Cycle64:
+
+addi $r3,$r3,1
+$r3 = 6
+
+Clock Cycle65:
+
+addi $r3,$r3,1
+$r3 = 7
+
+DRAM memory structure :
+
+Register Values :
+zero = 0
+r1 =  0
+r2 = 0
+r3 =  7
+r4 = 0
+r5 = 0
+r6 = 0
+r7 = 0
+r8 = 0
+r9 = 0
+s0 = 0
+s1 = 0
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+s8 = 0
+s9 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+sp = 0

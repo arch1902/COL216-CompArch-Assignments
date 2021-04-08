@@ -1,0 +1,285 @@
+
+Clock Cycle1:
+
+addi $r2,$r2,10
+$r2 = 10
+
+Clock Cycle2:
+
+Intialised instruction lw 100 $r2
+
+Clock Cycle3:
+( lw, 100, $r2, 0, 0,  ) 
+Started lw 100 $r2
+Completed 1/12
+
+Clock Cycle4:
+( lw, 100, $r2, 1, 12,  ) 
+Completed 2/12
+
+Clock Cycle5:
+( lw, 100, $r2, 2, 12,  ) 
+Completed 3/12
+
+Clock Cycle6:
+( lw, 100, $r2, 3, 12,  ) 
+Completed 4/12
+
+Clock Cycle7:
+( lw, 100, $r2, 4, 12,  ) 
+Completed 5/12
+
+Clock Cycle8:
+( lw, 100, $r2, 5, 12,  ) 
+Completed 6/12
+
+Clock Cycle9:
+( lw, 100, $r2, 6, 12,  ) 
+Completed 7/12
+
+Clock Cycle10:
+( lw, 100, $r2, 7, 12,  ) 
+Completed 8/12
+
+Clock Cycle11:
+( lw, 100, $r2, 8, 12,  ) 
+Completed 9/12
+
+Clock Cycle12:
+( lw, 100, $r2, 9, 12,  ) 
+Completed 10/12
+
+Clock Cycle13:
+( lw, 100, $r2, 10, 12,  ) 
+Completed 11/12
+
+Clock Cycle14:
+( lw, 100, $r2, 11, 12,  ) 
+Completed 12/12
+$r2 = 0
+Finished Instruction lw 100 $r2
+
+Clock Cycle15:
+
+Intialised instruction lw 2000 $r2
+
+Clock Cycle16:
+( lw, 2000, $r2, 0, 0,  ) 
+Started lw 2000 $r2
+Completed 1/22
+
+Clock Cycle17:
+( lw, 2000, $r2, 1, 22,  ) 
+Completed 2/22
+
+Clock Cycle18:
+( lw, 2000, $r2, 2, 22,  ) 
+Completed 3/22
+
+Clock Cycle19:
+( lw, 2000, $r2, 3, 22,  ) 
+Completed 4/22
+
+Clock Cycle20:
+( lw, 2000, $r2, 4, 22,  ) 
+Completed 5/22
+
+Clock Cycle21:
+( lw, 2000, $r2, 5, 22,  ) 
+Completed 6/22
+
+Clock Cycle22:
+( lw, 2000, $r2, 6, 22,  ) 
+Completed 7/22
+
+Clock Cycle23:
+( lw, 2000, $r2, 7, 22,  ) 
+Completed 8/22
+
+Clock Cycle24:
+( lw, 2000, $r2, 8, 22,  ) 
+Completed 9/22
+
+Clock Cycle25:
+( lw, 2000, $r2, 9, 22,  ) 
+Completed 10/22
+
+Clock Cycle26:
+( lw, 2000, $r2, 10, 22,  ) 
+Completed 11/22
+
+Clock Cycle27:
+( lw, 2000, $r2, 11, 22,  ) 
+Completed 12/22
+
+Clock Cycle28:
+( lw, 2000, $r2, 12, 22,  ) 
+Completed 13/22
+
+Clock Cycle29:
+( lw, 2000, $r2, 13, 22,  ) 
+Completed 14/22
+
+Clock Cycle30:
+( lw, 2000, $r2, 14, 22,  ) 
+Completed 15/22
+
+Clock Cycle31:
+( lw, 2000, $r2, 15, 22,  ) 
+Completed 16/22
+
+Clock Cycle32:
+( lw, 2000, $r2, 16, 22,  ) 
+Completed 17/22
+
+Clock Cycle33:
+( lw, 2000, $r2, 17, 22,  ) 
+Completed 18/22
+
+Clock Cycle34:
+( lw, 2000, $r2, 18, 22,  ) 
+Completed 19/22
+
+Clock Cycle35:
+( lw, 2000, $r2, 19, 22,  ) 
+Completed 20/22
+
+Clock Cycle36:
+( lw, 2000, $r2, 20, 22,  ) 
+Completed 21/22
+
+Clock Cycle37:
+( lw, 2000, $r2, 21, 22,  ) 
+Completed 22/22
+$r2 = 0
+Finished Instruction lw 2000 $r2
+
+Clock Cycle38:
+
+Intialised instruction lw 200 $r2
+
+Clock Cycle39:
+( lw, 200, $r2, 0, 0,  ) 
+Started lw 200 $r2
+Completed 1/22
+
+Clock Cycle40:
+( lw, 200, $r2, 1, 22,  ) 
+Completed 2/22
+
+Clock Cycle41:
+( lw, 200, $r2, 2, 22,  ) 
+Completed 3/22
+
+Clock Cycle42:
+( lw, 200, $r2, 3, 22,  ) 
+Completed 4/22
+
+Clock Cycle43:
+( lw, 200, $r2, 4, 22,  ) 
+Completed 5/22
+
+Clock Cycle44:
+( lw, 200, $r2, 5, 22,  ) 
+Completed 6/22
+
+Clock Cycle45:
+( lw, 200, $r2, 6, 22,  ) 
+Completed 7/22
+
+Clock Cycle46:
+( lw, 200, $r2, 7, 22,  ) 
+Completed 8/22
+
+Clock Cycle47:
+( lw, 200, $r2, 8, 22,  ) 
+Completed 9/22
+
+Clock Cycle48:
+( lw, 200, $r2, 9, 22,  ) 
+Completed 10/22
+
+Clock Cycle49:
+( lw, 200, $r2, 10, 22,  ) 
+Completed 11/22
+
+Clock Cycle50:
+( lw, 200, $r2, 11, 22,  ) 
+Completed 12/22
+
+Clock Cycle51:
+( lw, 200, $r2, 12, 22,  ) 
+Completed 13/22
+
+Clock Cycle52:
+( lw, 200, $r2, 13, 22,  ) 
+Completed 14/22
+
+Clock Cycle53:
+( lw, 200, $r2, 14, 22,  ) 
+Completed 15/22
+
+Clock Cycle54:
+( lw, 200, $r2, 15, 22,  ) 
+Completed 16/22
+
+Clock Cycle55:
+( lw, 200, $r2, 16, 22,  ) 
+Completed 17/22
+
+Clock Cycle56:
+( lw, 200, $r2, 17, 22,  ) 
+Completed 18/22
+
+Clock Cycle57:
+( lw, 200, $r2, 18, 22,  ) 
+Completed 19/22
+
+Clock Cycle58:
+( lw, 200, $r2, 19, 22,  ) 
+Completed 20/22
+
+Clock Cycle59:
+( lw, 200, $r2, 20, 22,  ) 
+Completed 21/22
+
+Clock Cycle60:
+( lw, 200, $r2, 21, 22,  ) 
+Completed 22/22
+$r2 = 0
+Finished Instruction lw 200 $r2
+
+DRAM memory structure :
+
+Register Values :
+zero = 0
+r1 =  0
+r2 = 0
+r3 =  0
+r4 = 0
+r5 = 0
+r6 = 0
+r7 = 0
+r8 = 0
+r9 = 0
+s0 = 0
+s1 = 0
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+s8 = 0
+s9 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+sp = 0
