@@ -447,7 +447,7 @@ int main(int argc, char *argv[]) {
     string input_file = argv[1];
     int ROW_ACCESS_DELAY = atoi(argv[2]);
     int COL_ACCESS_DELAY = atoi(argv[3]);
-    out.open(input_file.substr(0,input_file.size()-4)+"_output.txt");
+    out.open(input_file.substr(0,input_file.size())+"_output.txt");
 
     while(getline(file1,line)){
         line = trim(line);
@@ -675,37 +675,37 @@ int main(int argc, char *argv[]) {
     }
     if(curr!=-1) DRAM[curr] = row_buffer;        //row buffer copied back to DRAM after the last lw/sw instruction
     // Prints the relevant statistics of the MIPS code. 
-    cout<<"Total Number of clock cycles: "<<n_total<<endl;
-    out<<"Total Number of clock cycles: "<<n_total<<endl;
+    cout<<"Total Number of clock cycles = "<<n_total<<endl;
+    out<<"Total Number of clock cycles = "<<n_total<<endl;
 
-    cout<<"Total Number of Row-buffer Updates: "<<num_rbf<<endl;
-    out<<"Total Number of Row-buffer Updates: "<<num_rbf<<endl;
+    cout<<"Total Number of Row-buffer Updates = "<<num_rbf<<endl;
+    out<<"Total Number of Row-buffer Updates = "<<num_rbf<<endl;
 
-    cout<<"Instruction Memory Used: "<<num*4 <<" Bytes"<<endl;
+    //cout<<"Instruction Memory Used: "<<num*4 <<" Bytes"<<endl;
     out<<"Instruction Memory Used: "<<num*4 <<" Bytes"<<endl;
 
-    cout<<"Data Memory Used: "<<data_memory.size()*4 <<" Bytes"<<endl;
+    //cout<<"Data Memory Used: "<<data_memory.size()*4 <<" Bytes"<<endl;
     out<<"Data Memory Used: "<<data_memory.size()*4 <<" Bytes"<<endl;
 
-    cout<<"Number of times each instruction was executed :"<<endl;
+    //cout<<"Number of times each instruction was executed :"<<endl;
     out<<"Number of times each instruction was executed :"<<endl; 
 
     for (auto j: operations){
-        cout<< j<< " ->"<<statistics[j]<<endl;
+        //cout<< j<< " ->"<<statistics[j]<<endl;
         out<< j << " ->"<<statistics[j]<<endl;
     }
-    cout<< "j"<< " -> "<<statistics["j"]<<endl;
+    //cout<< "j"<< " -> "<<statistics["j"]<<endl;
     out<< "j" << " -> "<<statistics["j"]<<endl;
 
 
-    cout<<"-----------------------------------------"<<endl;
-    cout<< "Data Memory at the end of Execution:" << endl;
+    //cout<<"-----------------------------------------"<<endl;
+    //cout<< "Data Memory at the end of Execution:" << endl;
 
     out<<"-----------------------------------------"<<endl;
     out<< "Data Memory at the end of Execution:" << endl;
 
     for(auto v : data_memory){
-        cout<<v.first<<"-"<<v.first+3<<": "<<v.second<<endl;
+        //cout<<v.first<<"-"<<v.first+3<<": "<<v.second<<endl;
         out<<v.first<<"-"<<v.first+3<<": "<<v.second<<endl;
     }
 

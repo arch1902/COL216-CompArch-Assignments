@@ -19,9 +19,9 @@ map<string,int> label;
 map<int,int> data_memory;
 map<string,int> statistics;
 vector<string> operations = {"add","sub","mul","beq","bne","slt","lw","sw","addi"};
-vector<string> registers = {"$zero","$at","$v0","$v1","$a0","$a1","$a2","$a3","$k0","$k1","$ra","$t0","$t1",
-"$t2","$t3","$t4","$t5","$t6","$t7","$t8","$t9","$s0","$s1","$s2","$s3","$s4","$s5","$s6","$s7","$gp",
-"$fp","$sp"};
+vector<string> registers = {"$zero","$r0","$r1","$r2","$r3","$r4","$r5","$r6","$r7","$r8","$r9","$t0","$t1",
+"$t2","$t3","$t4","$t5","$t6","$t7","$t8","$t9","$s0","$s1","$s2","$s3","$s4","$s5","$s6","$s7","$t8",
+"$s9","$sp"};
 vector<string> instructions; //Vector containing all instructions 
 regex n("[-]?[0-9]+");  //for checking if a string is convertible to an Integer
 regex l("([A-Z|a-z])[A-Z|a-z|0-9|_]*"); // for Label
@@ -35,7 +35,6 @@ int pc = 0;
 int num=0;
 int row_activate = 0;
 int row_writeback = 0;
-int row_buffer_updates = 0;
 vector<vector<int>> Dram_Memory;
 vector<int> Row_buffer;
 vector<vector<string>> Dram_queue;
@@ -72,6 +71,15 @@ void validator(vector<string> V, string s,int l){
 // Prints the registers in decimal format
 void print(){
     out<<"zero = "<<reg["$zero"]<<endl;
+    out<<"r1 =  "<<reg["$r1"]<<endl;
+    out<<"r2 = "<<reg["$r2"]<<endl;
+    out<<"r3 =  "<<reg["$r3"]<<endl;
+    out<<"r4 = "<<reg["$r4"]<<endl;
+    out<<"r5 = "<<reg["$r5"]<<endl;
+    out<<"r6 = "<<reg["$r6"]<<endl;
+    out<<"r7 = "<<reg["$r7"]<<endl;
+    out<<"r8 = "<<reg["$r8"]<<endl;
+    out<<"r9 = "<<reg["$r9"]<<endl;
     out<<"s0 = "<<reg["$s0"]<<endl;
     out<<"s1 = "<<reg["$s1"]<<endl;
     out<<"s2 = "<<reg["$s2"]<<endl;
@@ -80,6 +88,8 @@ void print(){
     out<<"s5 = "<<reg["$s5"]<<endl;
     out<<"s6 = "<<reg["$s6"]<<endl;
     out<<"s7 = "<<reg["$s7"]<<endl;
+    out<<"s8 = "<<reg["$s8"]<<endl;
+    out<<"s9 = "<<reg["$s9"]<<endl;
     out<<"t0 = "<<reg["$t0"]<<endl;
     out<<"t1 = "<<reg["$t1"]<<endl;
     out<<"t2 = "<<reg["$t2"]<<endl;
@@ -90,18 +100,7 @@ void print(){
     out<<"t7 = "<<reg["$t7"]<<endl;
     out<<"t8 = "<<reg["$t8"]<<endl;
     out<<"t9 = "<<reg["$t9"]<<endl;
-    out<<"v0 = "<<reg["$v0"]<<endl;
-    out<<"v1 = "<<reg["$v1"]<<endl;
-    out<<"a0 = "<<reg["$a0"]<<endl;
-    out<<"a1 = "<<reg["$a1"]<<endl;
-    out<<"a2 = "<<reg["$a2"]<<endl;
-    out<<"a3 = "<<reg["$a3"]<<endl;
-    out<<"k0 = "<<reg["$k1"]<<endl;
-    out<<"gp = "<<reg["$gp"]<<endl;
     out<<"sp = "<<reg["$sp"]<<endl;
-    out<<"fp = "<<reg["$fp"]<<endl;
-    out<<"ra = "<<reg["$ra"]<<endl;
-    out<<"at = "<<reg["$at"]<<endl;
 }
 
 
@@ -324,11 +323,9 @@ int main(int argc, char *argv[]) {
     file1.open(argv[1]);
     if(!file1.is_open()){cout<<"File not found"<<endl;exit(-1);}
     string input_file = argv[1];
-    out.open(input_file+"_part2_output.txt");
+    out.open(input_file+"_a4_adv_output.txt");
     string line;
     size_t x;
-    ROW_ACCESS_DELAY = atoi(argv[2]);
-    COL_ACCESS_DELAY = atoi(argv[3]);
  
     string Instruction;
     while(getline(file1,line)){
@@ -407,21 +404,7 @@ int main(int argc, char *argv[]) {
         if (pc>=num && Dram_queue.empty()){break;}
         if (pc<num && label.find(params[pc][0])!=label.end()){pc++;continue;}
         clock_cycle++;
-        out<<"\n"<<"Clock Cycle "<<clock_cycle<<":"<<endl;
-        // for (auto const & string_vec : Dram_queue) {
-        //     out<<"( ";
-        //     for (auto const & str : string_vec) {
-        //         out << str<<", ";
-        //     }
-        //     out<<" ) ";
-        // }
-        // out<<endl;
-        // for(auto x:Blocking_registers){
-        //     out<<"( ";
-        //     out <<x.first<<","<<x.second;
-        //     out<<" ) ";
-        // }
-        
+        out<<"\n"<<"Clock Cycle "<<clock_cycle<<" :"<<endl;
         bool flag = false;
         string removed_register;
         //DRAM 
@@ -429,7 +412,7 @@ int main(int argc, char *argv[]) {
             vector<string> Curr_executed = Dram_queue[0];
             int address = stoi(Curr_executed[1]);
             int row = address/1024;
-            int  col = address%1024;
+            int col = address%1024;
             if(address>INSTRUCTION_MEMORY || col%4 !=0){
                 cout<<"Program tried to access invalid memory address "<<address<<endl;
                 exit(-1);
@@ -437,21 +420,17 @@ int main(int argc, char *argv[]) {
             // for(auto k: Dram_queue[0]){
             //      cout<<k<<" ";
             // }
-            // cout<<endl;
+            //cout<<endl;
             while(true){
                 //out<<Dram_queue[0][3]<<endl;0
                 if (Dram_queue[0][3]=="0"){
-                    out<<"Started "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<" on Line "<<Dram_queue[0][5]<<endl;
+                    out<<"Started "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<endl;
                     int curr = 0;
-                    if(Dram_queue[0][0]=="sw") row_buffer_updates++;
                     if(last_buffer_row!=row){
                         curr += ROW_ACCESS_DELAY;
-                        row_buffer_updates++;
                         if (last_buffer_row!=-1){
                             curr += ROW_ACCESS_DELAY;
-                            out<<"Row "<<last_buffer_row<<" will be copied back to DRAM and ";
                         }
-                        out<<"Row "<<row<<" will be activated\n";
                     }
                     curr += COL_ACCESS_DELAY;
                     Dram_queue[0][4] = to_string(curr);
@@ -494,9 +473,9 @@ int main(int argc, char *argv[]) {
                     if(Dram_queue[0][0] =="sw"){
                         Row_buffer[col/4] = stoi(Dram_queue[0][2]);
                     }
-                    out<<"Finished Instruction "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<" on Line "<<Dram_queue[0][5]<<endl;
+                    out<<"Finished Instruction "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<endl;
                     Dram_queue.erase(Dram_queue.begin());
-                    sort_queue();
+                    sort_queue(); 
                     //Dram_queue[0][3] = to_string(stoi(Dram_queue[0][3])+1);
                     break;
                 }
@@ -512,19 +491,19 @@ int main(int argc, char *argv[]) {
                 string relevant_registor = params[pc][1];
                 int offset = stoi(params[pc][2]);
                 int address = offset+reg[params[pc][3]];
-                Dram_queue.push_back({"lw",to_string(address),relevant_registor,"0","0",to_string(pc+1)}); 
+                Dram_queue.push_back({"lw",to_string(address),relevant_registor,"0","0"}); 
                 sort_queue();  
                 Blocking_registers[relevant_registor] ++;
-                out<< "DRAM Reques(Read) Issued for "<<"lw "<<address<<" "<<relevant_registor<<" on Line "<<pc+1<<endl;        
+                out<< "Intialised instruction "<<"lw "<<address<<" "<<relevant_registor<<endl;        
                 pc++;
                 continue;
             }else if(Instruction == "sw"){
                 string relevant_registor = params[pc][1];
                 int offset = stoi(params[pc][2]);
                 int address = offset+reg[params[pc][3]];
-                Dram_queue.push_back({"sw",to_string(address),to_string(reg[relevant_registor]),"0","0",to_string(pc+1)});  
+                Dram_queue.push_back({"sw",to_string(address),to_string(reg[relevant_registor]),"0","0"});  
                 sort_queue();
-                out<< "DRAM Request(Write) Issued for "<<"sw "<<address<<" "<<reg[relevant_registor]<<" on Line "<<pc+1<<endl;         
+                out<< "Intialised instruction "<<"sw "<<address<<" "<<reg[relevant_registor]<<endl;         
                 pc++;
                 continue;
             }else if (Instruction == "add"){ 
@@ -566,12 +545,7 @@ int main(int argc, char *argv[]) {
             flag = false;
         }
     }
-    cout<<"Total Number of cycles taken = "<<clock_cycle<<endl;
-    cout<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
-
-    out<<"Total Number of cycles taken = "<<clock_cycle<<endl;
-    out<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl;  
-
+    cout<<"Number of cycles taken = "<<clock_cycle<<endl;
 
     out<<"\n"<<"DRAM memory structure :"<<endl;
     for(int j = 0;j<512;j++){
@@ -581,7 +555,7 @@ int main(int argc, char *argv[]) {
             }
         }
     }
-    out<<"\n"<<"Integer Register Values :"<<endl;
+    out<<"\n"<<"Register Values :"<<endl;
     print();
 	return 0;
 }

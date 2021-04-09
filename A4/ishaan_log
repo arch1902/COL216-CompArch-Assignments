@@ -1,0 +1,69 @@
+Total number of cycles: 60
+Total number of row buffer updates(loading new row into buffer or modifying row buffer): 6
+
+Memory content at the end of the execution:
+
+1000-1003: 1
+1004-1007: 3
+2500-2503: 2
+
+Every cycle description
+
+Cycle numbers     Instructions                  Register changed    DRAM operations          DRAM changes                  Address of completed instruction        
+
+cycle 1:          addi $s0, $zero, 1000         $s0 = 1000          N.A.                     N.A.                          0                                       
+cycle 2:          addi $s1, $zero, 2500         $s1 = 2500          N.A.                     N.A.                          4                                       
+cycle 3:          addi $t0, $zero, 1            $t0 = 1             N.A.                     N.A.                          8                                       
+cycle 4:          addi $t1, $zero, 2            $t1 = 2             N.A.                     N.A.                          12                                      
+cycle 5:          addi $t2, $zero, 3            $t2 = 3             N.A.                     N.A.                          16                                      
+cycle 6:          addi $t3, $zero, 4            $t3 = 4             N.A.                     N.A.                          20                                      
+cycle 7:          sw $t0, 0($s0)                N.A                 DRAM request issued      N.A                           N.A                                     
+cycle 8-17:       sw $t0, 0($s0)                N.A.                Activated row 0          N.A.                          N.A                                     
+cycle 18-19:      sw $t0, 0($s0)                N.A.                Column access 1000       memory address 1000-1003=1    24                                      
+cycle 20:         lw $t5, 0($s0)                N.A.                DRAM request issued      N.A.                          N.A                                     
+cycle 21-22:      lw $t5, 0($s0)                N.A.                Column access 1000       $t5 = 1                       40                                      
+cycle 23:         addi $t5, $t5, 10             $t5 = 11            DRAM request issued      N.A.                          44                                      
+cycle 24-25:      sw $t2, 4($s0)                N.A.                Column access 1004       memory address 1004-1007=3    32                                      
+cycle 26:         lw $t7, 4($s0)                N.A.                DRAM request issued      N.A.                          N.A                                     
+cycle 27-28:      lw $t7, 4($s0)                N.A.                Column access 1004       $t7 = 3                       52                                      
+cycle 29:         sw $t1, 0($s1)                N.A.                DRAM request issued      N.A.                          N.A                                     
+cycle 30-39:      sw $t1, 0($s1)                N.A.                Writeback row 0          N.A.                          N.A                                     
+cycle 40-49:      sw $t1, 0($s1)                N.A.                Activated row 2          N.A.                          N.A                                     
+cycle 50-51:      sw $t1, 0($s1)                N.A.                Column access 452        memory address 2500-2503=2    28                                      
+cycle 52:         sw $t4, 4($s1)                N.A.                DRAM request issued      N.A.                          N.A                                     
+cycle 53-54:      sw $t4, 4($s1)                N.A.                Column access 456        memory address 2504-2507=0    36                                      
+cycle 55:         lw $t6, 0($s1)                N.A.                DRAM request issued      N.A.                          N.A                                     
+cycle 56-57:      lw $t6, 0($s1)                N.A.                Column access 452        $t6 = 2                       48                                      
+cycle 58:         lw $t8, 4($s1)                N.A.                DRAM request issued      N.A.                          N.A                                     
+cycle 59-60:      lw $t8, 4($s1)                N.A.                Column access 456        $t8 = 0                       56                                      
+
+The number of times each instruction was executed is given below : 
+
+Instruction no: 1 was executed 1 times.
+Instruction no: 2 was executed 1 times.
+Instruction no: 3 was executed 1 times.
+Instruction no: 4 was executed 1 times.
+Instruction no: 5 was executed 1 times.
+Instruction no: 6 was executed 1 times.
+Instruction no: 7 was executed 1 times.
+Instruction no: 8 was executed 1 times.
+Instruction no: 9 was executed 1 times.
+Instruction no: 10 was executed 1 times.
+Instruction no: 11 was executed 1 times.
+Instruction no: 12 was executed 1 times.
+Instruction no: 13 was executed 1 times.
+Instruction no: 14 was executed 1 times.
+Instruction no: 15 was executed 1 times.
+
+The number of times each type of instruction was executed is given below : 
+
+Operation add was executed 0 times.
+Operation sub was executed 0 times.
+Operation mul was executed 0 times.
+Operation beq was executed 0 times.
+Operation bne was executed 0 times.
+Operation slt was executed 0 times.
+Operation j was executed 0 times.
+Operation lw was executed 4 times.
+Operation sw was executed 4 times.
+Operation addi was executed 7 times.

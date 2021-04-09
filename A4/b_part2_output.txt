@@ -1,734 +1,172 @@
 
 Clock Cycle1:
-addi $r1,$r1,1000
-$r1 = 1000
+addi $s1,$s1,1000
+$s1 = 1000
 
 Clock Cycle2:
-addi $r2,$r2,2000
-$r2 = 2000
+addi $s2,$s2,2000
+$s2 = 2000
 
 Clock Cycle3:
-Intialised instruction sw 1000 0
-
-Clock Cycle4:
-Started sw 1000 0
-Completed 1/12
-Intialised instruction lw 2000 $t0
-
-Clock Cycle5:
-Completed 2/12
-Intialised instruction sw 1000 0
-
-Clock Cycle6:
-Completed 3/12
-Intialised instruction sw 1000 0
-
-Clock Cycle7:
-Completed 4/12
-Intialised instruction sw 1000 0
-
-Clock Cycle8:
-Completed 5/12
-Intialised instruction sw 1000 0
-
-Clock Cycle9:
-Completed 6/12
-Intialised instruction sw 1000 0
-
-Clock Cycle10:
-Completed 7/12
-Intialised instruction sw 1000 0
-
-Clock Cycle11:
-Completed 8/12
-Intialised instruction sw 1000 0
-
-Clock Cycle12:
-Completed 9/12
-Intialised instruction sw 1000 0
-
-Clock Cycle13:
-Completed 10/12
-Intialised instruction sw 1000 0
-
-Clock Cycle14:
-Completed 11/12
-Intialised instruction sw 1000 0
-
-Clock Cycle15:
-Completed 12/12
-Finished Instruction sw 1000 0
-Intialised instruction sw 1000 0
-
-Clock Cycle16:
-Started sw 1000 0
-Completed 1/2
-Intialised instruction sw 1000 0
-
-Clock Cycle17:
-Completed 2/2
-Finished Instruction sw 1000 0
-Intialised instruction sw 1000 0
-
-Clock Cycle18:
-Started sw 1000 0
-Completed 1/2
-Intialised instruction sw 1000 0
-
-Clock Cycle19:
-Completed 2/2
-Finished Instruction sw 1000 0
-Intialised instruction sw 1000 0
-
-Clock Cycle20:
-Started sw 1000 0
-Completed 1/2
-Intialised instruction sw 1000 0
-
-Clock Cycle21:
-Completed 2/2
-Finished Instruction sw 1000 0
-Intialised instruction sw 1000 0
-
-Clock Cycle22:
-Started sw 1000 0
-Completed 1/2
-Intialised instruction sw 1000 0
-
-Clock Cycle23:
-Completed 2/2
-Finished Instruction sw 1000 0
-Intialised instruction sw 1000 0
-
-Clock Cycle24:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle25:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle26:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle27:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle28:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle29:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle30:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle31:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle32:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle33:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle34:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle35:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle36:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle37:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle38:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle39:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle40:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle41:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle42:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle43:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle44:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle45:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle46:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle47:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle48:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle49:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle50:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle51:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle52:
-Started sw 1000 0
-Completed 1/2
-
-Clock Cycle53:
-Completed 2/2
-Finished Instruction sw 1000 0
-
-Clock Cycle54:
-Started lw 2000 $t0
-Completed 1/22
-
-Clock Cycle55:
-Completed 2/22
-
-Clock Cycle56:
-Completed 3/22
-
-Clock Cycle57:
-Completed 4/22
-
-Clock Cycle58:
-Completed 5/22
-
-Clock Cycle59:
-Completed 6/22
-
-Clock Cycle60:
-Completed 7/22
-
-Clock Cycle61:
-Completed 8/22
-
-Clock Cycle62:
-Completed 9/22
-
-Clock Cycle63:
-Completed 10/22
-
-Clock Cycle64:
-Completed 11/22
-
-Clock Cycle65:
-Completed 12/22
-
-Clock Cycle66:
-Completed 13/22
-
-Clock Cycle67:
-Completed 14/22
-
-Clock Cycle68:
-Completed 15/22
-
-Clock Cycle69:
-Completed 16/22
-
-Clock Cycle70:
-Completed 17/22
-
-Clock Cycle71:
-Completed 18/22
-
-Clock Cycle72:
-Completed 19/22
-
-Clock Cycle73:
-Completed 20/22
-
-Clock Cycle74:
-Completed 21/22
-
-Clock Cycle75:
-Completed 22/22
-$t0 = 0
-Finished Instruction lw 2000 $t0
-
-Clock Cycle76:
 addi $t0,$t0,1
 $t0 = 1
 
-Clock Cycle77:
+Clock Cycle4:
+DRAM Request(Write) Issued for sw 1000 1 on Line 4
+
+Clock Cycle5:
+Started sw 1000 1 on Line 4
+Row 0 will be activated
+Completed 1/12
+DRAM Request(Write) Issued for sw 2000 1 on Line 5
+
+Clock Cycle6:
+Completed 2/12
+DRAM Reques(Read) Issued for lw 2000 $t0 on Line 6
+
+Clock Cycle7:
+Completed 3/12
+DRAM Request(Write) Issued for sw 1000 0 on Line 7
+
+Clock Cycle8:
+Completed 4/12
+
+Clock Cycle9:
+Completed 5/12
+
+Clock Cycle10:
+Completed 6/12
+
+Clock Cycle11:
+Completed 7/12
+
+Clock Cycle12:
+Completed 8/12
+
+Clock Cycle13:
+Completed 9/12
+
+Clock Cycle14:
+Completed 10/12
+
+Clock Cycle15:
+Completed 11/12
+
+Clock Cycle16:
+Completed 12/12
+Finished Instruction sw 1000 1 on Line 4
+
+Clock Cycle17:
+Started sw 1000 0 on Line 7
+Completed 1/2
+
+Clock Cycle18:
+Completed 2/2
+Finished Instruction sw 1000 0 on Line 7
+
+Clock Cycle19:
+Started sw 2000 1 on Line 5
+Row 0 will be copied back to DRAM and Row 1 will be activated
+Completed 1/22
+
+Clock Cycle20:
+Completed 2/22
+
+Clock Cycle21:
+Completed 3/22
+
+Clock Cycle22:
+Completed 4/22
+
+Clock Cycle23:
+Completed 5/22
+
+Clock Cycle24:
+Completed 6/22
+
+Clock Cycle25:
+Completed 7/22
+
+Clock Cycle26:
+Completed 8/22
+
+Clock Cycle27:
+Completed 9/22
+
+Clock Cycle28:
+Completed 10/22
+
+Clock Cycle29:
+Completed 11/22
+
+Clock Cycle30:
+Completed 12/22
+
+Clock Cycle31:
+Completed 13/22
+
+Clock Cycle32:
+Completed 14/22
+
+Clock Cycle33:
+Completed 15/22
+
+Clock Cycle34:
+Completed 16/22
+
+Clock Cycle35:
+Completed 17/22
+
+Clock Cycle36:
+Completed 18/22
+
+Clock Cycle37:
+Completed 19/22
+
+Clock Cycle38:
+Completed 20/22
+
+Clock Cycle39:
+Completed 21/22
+
+Clock Cycle40:
+Completed 22/22
+Finished Instruction sw 2000 1 on Line 5
+
+Clock Cycle41:
+Started lw 2000 $t0 on Line 6
+Completed 1/2
+
+Clock Cycle42:
+Completed 2/2
+$t0 = 1
+Finished Instruction lw 2000 $t0 on Line 6
+
+Clock Cycle43:
 addi $t0,$t0,1
 $t0 = 2
 
-Clock Cycle78:
+Clock Cycle44:
 addi $t0,$t0,1
 $t0 = 3
 
-Clock Cycle79:
+Clock Cycle45:
 addi $t0,$t0,1
 $t0 = 4
 
-Clock Cycle80:
-addi $t0,$t0,1
-$t0 = 5
-
-Clock Cycle81:
-addi $t0,$t0,1
-$t0 = 6
-
-Clock Cycle82:
-addi $t0,$t0,1
-$t0 = 7
-
-Clock Cycle83:
-addi $t0,$t0,1
-$t0 = 8
-
-Clock Cycle84:
-addi $t0,$t0,1
-$t0 = 9
-
-Clock Cycle85:
-addi $t0,$t0,1
-$t0 = 10
-
-Clock Cycle86:
-addi $t0,$t0,1
-$t0 = 11
-
-Clock Cycle87:
-addi $t0,$t0,1
-$t0 = 12
-
-Clock Cycle88:
-addi $t0,$t0,1
-$t0 = 13
-
-Clock Cycle89:
-addi $t0,$t0,1
-$t0 = 14
-
-Clock Cycle90:
-addi $t0,$t0,1
-$t0 = 15
-
-Clock Cycle91:
-addi $t0,$t0,1
-$t0 = 16
-
-Clock Cycle92:
-addi $t0,$t0,1
-$t0 = 17
-
-Clock Cycle93:
-addi $t0,$t0,1
-$t0 = 18
-
-Clock Cycle94:
-addi $t0,$t0,1
-$t0 = 19
-
-Clock Cycle95:
-addi $t0,$t0,1
-$t0 = 20
-
-Clock Cycle96:
-addi $t0,$t0,1
-$t0 = 21
-
-Clock Cycle97:
-addi $t0,$t0,1
-$t0 = 22
-
-Clock Cycle98:
-addi $t0,$t0,1
-$t0 = 23
-
-Clock Cycle99:
-addi $t0,$t0,1
-$t0 = 24
-
-Clock Cycle100:
-addi $t0,$t0,1
-$t0 = 25
-
-Clock Cycle101:
-addi $t0,$t0,1
-$t0 = 26
-
-Clock Cycle102:
-addi $t0,$t0,1
-$t0 = 27
-
-Clock Cycle103:
-addi $t0,$t0,1
-$t0 = 28
-
-Clock Cycle104:
-addi $t0,$t0,1
-$t0 = 29
-
-Clock Cycle105:
-addi $t0,$t0,1
-$t0 = 30
-
-Clock Cycle106:
-addi $t0,$t0,1
-$t0 = 31
-
-Clock Cycle107:
-addi $t0,$t0,1
-$t0 = 32
-
-Clock Cycle108:
-addi $t0,$t0,1
-$t0 = 33
-
-Clock Cycle109:
-addi $t0,$t0,1
-$t0 = 34
-
-Clock Cycle110:
-addi $t0,$t0,1
-$t0 = 35
-
-Clock Cycle111:
-addi $t0,$t0,1
-$t0 = 36
-
-Clock Cycle112:
-addi $t0,$t0,1
-$t0 = 37
-
-Clock Cycle113:
-addi $t0,$t0,1
-$t0 = 38
-
-Clock Cycle114:
-addi $t0,$t0,1
-$t0 = 39
-
-Clock Cycle115:
-addi $t0,$t0,1
-$t0 = 40
-
-Clock Cycle116:
-addi $t0,$t0,1
-$t0 = 41
-
-Clock Cycle117:
-addi $t0,$t0,1
-$t0 = 42
-
-Clock Cycle118:
-addi $t0,$t0,1
-$t0 = 43
-
-Clock Cycle119:
-addi $t0,$t0,1
-$t0 = 44
-
-Clock Cycle120:
-addi $t0,$t0,1
-$t0 = 45
-
-Clock Cycle121:
-addi $t0,$t0,1
-$t0 = 46
-
-Clock Cycle122:
-addi $t0,$t0,1
-$t0 = 47
-
-Clock Cycle123:
-addi $t0,$t0,1
-$t0 = 48
-
-Clock Cycle124:
-addi $t0,$t0,1
-$t0 = 49
-
-Clock Cycle125:
-addi $t0,$t0,1
-$t0 = 50
-
-Clock Cycle126:
-addi $t0,$t0,1
-$t0 = 51
-
-Clock Cycle127:
-addi $t0,$t0,1
-$t0 = 52
-
-Clock Cycle128:
-addi $t0,$t0,1
-$t0 = 53
-
-Clock Cycle129:
-addi $t0,$t0,1
-$t0 = 54
-
-Clock Cycle130:
-addi $t0,$t0,1
-$t0 = 55
-
-Clock Cycle131:
-addi $t0,$t0,1
-$t0 = 56
-
-Clock Cycle132:
-addi $t0,$t0,1
-$t0 = 57
-
-Clock Cycle133:
-addi $t0,$t0,1
-$t0 = 58
-
-Clock Cycle134:
-addi $t0,$t0,1
-$t0 = 59
-
-Clock Cycle135:
-addi $t0,$t0,1
-$t0 = 60
-
-Clock Cycle136:
-addi $t0,$t0,1
-$t0 = 61
-
-Clock Cycle137:
-addi $t0,$t0,1
-$t0 = 62
-
-Clock Cycle138:
-addi $t0,$t0,1
-$t0 = 63
-
-Clock Cycle139:
-addi $t0,$t0,1
-$t0 = 64
-
-Clock Cycle140:
-addi $t0,$t0,1
-$t0 = 65
-
-Clock Cycle141:
-addi $t0,$t0,1
-$t0 = 66
-
-Clock Cycle142:
-addi $t0,$t0,1
-$t0 = 67
-
-Clock Cycle143:
-addi $t0,$t0,1
-$t0 = 68
-
-Clock Cycle144:
-addi $t0,$t0,1
-$t0 = 69
-
-Clock Cycle145:
-addi $t0,$t0,1
-$t0 = 70
-
-Clock Cycle146:
-addi $t0,$t0,1
-$t0 = 71
-
-Clock Cycle147:
-addi $t0,$t0,1
-$t0 = 72
-
-Clock Cycle148:
-addi $t0,$t0,1
-$t0 = 73
-
-Clock Cycle149:
-addi $t0,$t0,1
-$t0 = 74
-
-Clock Cycle150:
-addi $t0,$t0,1
-$t0 = 75
-
-Clock Cycle151:
-addi $t0,$t0,1
-$t0 = 76
-
-Clock Cycle152:
-addi $t0,$t0,1
-$t0 = 77
-
-Clock Cycle153:
-addi $t0,$t0,1
-$t0 = 78
-
-Clock Cycle154:
-addi $t0,$t0,1
-$t0 = 79
-
-Clock Cycle155:
-addi $t0,$t0,1
-$t0 = 80
-
-Clock Cycle156:
-addi $t0,$t0,1
-$t0 = 81
-
-Clock Cycle157:
-addi $t0,$t0,1
-$t0 = 82
-
-Clock Cycle158:
-addi $t0,$t0,1
-$t0 = 83
-
-Clock Cycle159:
-addi $t0,$t0,1
-$t0 = 84
-
-Clock Cycle160:
-addi $t0,$t0,1
-$t0 = 85
-
-Clock Cycle161:
-addi $t0,$t0,1
-$t0 = 86
-
-Clock Cycle162:
-addi $t0,$t0,1
-$t0 = 87
-
-Clock Cycle163:
-addi $t0,$t0,1
-$t0 = 88
-
-Clock Cycle164:
-addi $t0,$t0,1
-$t0 = 89
-
-Clock Cycle165:
-addi $t0,$t0,1
-$t0 = 90
-
-Clock Cycle166:
-addi $t0,$t0,1
-$t0 = 91
-
-Clock Cycle167:
-addi $t0,$t0,1
-$t0 = 92
-
-Clock Cycle168:
-addi $t0,$t0,1
-$t0 = 93
-
-Clock Cycle169:
-addi $t0,$t0,1
-$t0 = 94
-
-Clock Cycle170:
-addi $t0,$t0,1
-$t0 = 95
-
-Clock Cycle171:
-addi $t0,$t0,1
-$t0 = 96
-
-Clock Cycle172:
-addi $t0,$t0,1
-$t0 = 97
-
-Clock Cycle173:
-addi $t0,$t0,1
-$t0 = 98
-
-Clock Cycle174:
-addi $t0,$t0,1
-$t0 = 99
-
-Clock Cycle175:
-addi $t0,$t0,1
-$t0 = 100
-
-Clock Cycle176:
-addi $t0,$t0,1
-$t0 = 101
-
-Clock Cycle177:
-addi $t0,$t0,1
-$t0 = 102
-
-Clock Cycle178:
-addi $t0,$t0,1
-$t0 = 103
-
-Clock Cycle179:
-addi $t0,$t0,1
-$t0 = 104
-
 DRAM memory structure :
 
-Register Values :
+Integer Register Values :
 zero = 0
-r1 =  1000
-r2 = 2000
-r3 =  0
-r4 = 0
-r5 = 0
-r6 = 0
-r7 = 0
-r8 = 0
-r9 = 0
 s0 = 0
-s1 = 0
-s2 = 0
+s1 = 1000
+s2 = 2000
 s3 = 0
 s4 = 0
 s5 = 0
 s6 = 0
 s7 = 0
-s8 = 0
-s9 = 0
-t0 = 104
+t0 = 4
 t1 = 0
 t2 = 0
 t3 = 0
@@ -738,4 +176,15 @@ t6 = 0
 t7 = 0
 t8 = 0
 t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
 sp = 0
+fp = 0
+ra = 0
+at = 0
