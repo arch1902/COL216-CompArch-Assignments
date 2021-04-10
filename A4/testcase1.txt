@@ -6,18 +6,17 @@ main:
 	addi $t2, $zero, 3
 	addi $t3, $zero, 4
 
-	sw $t0, 0($s0)
-    addi $s0,$s0,1000
+	sw $t0, 0($s0)	
 	sw $t1, 0($s1)	
 	
 	sw $t2, 4($s0)	
 	sw $t4, 4($s1)	
 	
 	lw $t5, 0($s0)
-    addi $t5,$t5,100
-	lw $t6, 0($s1)
-	lw $t7, 4($s0)
-	lw $t8, 4($s1)
+	addi $t5,$t5,10
+	lw $t6, 0($s1)	
+	lw $t7, 4($s1)	
+	lw $t8, 4($s1)	
 
 
 exit:

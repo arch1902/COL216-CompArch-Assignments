@@ -1,4 +1,0 @@
-addi $r2,$r2,10
-lw $r2,100($zero)
-lw $r2,2000($zero)
-lw $r2,200($zero)

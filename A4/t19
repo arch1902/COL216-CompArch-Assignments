@@ -1,0 +1,7 @@
+addi $s1,$s1,1
+sw $s1, 1000($zero)
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+lw $s2, 1000($zero)
