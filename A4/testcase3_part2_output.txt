@@ -1,0 +1,123 @@
+
+Clock Cycle 1:
+DRAM Reques(Read) Issued for lw 200 $s3 on Line 1
+
+Clock Cycle 2:
+Started lw 200 $s3 on Line 1
+Row 0 will be activated
+Completed 1/12
+
+Clock Cycle 3:
+Completed 2/12
+
+Clock Cycle 4:
+Completed 3/12
+
+Clock Cycle 5:
+Completed 4/12
+
+Clock Cycle 6:
+Completed 5/12
+
+Clock Cycle 7:
+Completed 6/12
+
+Clock Cycle 8:
+Completed 7/12
+
+Clock Cycle 9:
+Completed 8/12
+
+Clock Cycle 10:
+Completed 9/12
+
+Clock Cycle 11:
+Completed 10/12
+
+Clock Cycle 12:
+Completed 11/12
+
+Clock Cycle 13:
+Completed 12/12
+$s3 = 0
+Finished Instruction lw 200 $s3 on Line 1
+
+Clock Cycle 14:
+DRAM Reques(Read) Issued for lw 1200 $s3 on Line 2
+
+Clock Cycle 15:
+Started lw 1200 $s3 on Line 2
+Row 0 will be copied back to DRAM and Row 1 will be activated
+Completed 1/12
+
+Clock Cycle 16:
+Completed 2/12
+
+Clock Cycle 17:
+Completed 3/12
+
+Clock Cycle 18:
+Completed 4/12
+
+Clock Cycle 19:
+Completed 5/12
+
+Clock Cycle 20:
+Completed 6/12
+
+Clock Cycle 21:
+Completed 7/12
+
+Clock Cycle 22:
+Completed 8/12
+
+Clock Cycle 23:
+Completed 9/12
+
+Clock Cycle 24:
+Completed 10/12
+
+Clock Cycle 25:
+Completed 11/12
+
+Clock Cycle 26:
+Completed 12/12
+$s3 = 0
+Finished Instruction lw 1200 $s3 on Line 2
+Total Number of cycles taken = 26
+Total Number of Row Buffer Updates = 2
+
+DRAM memory structure :
+
+Integer Register Values :
+zero = 0
+s0 = 0
+s1 = 0
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0

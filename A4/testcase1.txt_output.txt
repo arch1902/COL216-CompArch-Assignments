@@ -361,12 +361,12 @@ DATA MEMORY:
 2500-2503: 2
 -----------------------------------------
 
-Cycle 66 --> sw $t3, 4($s1)
+Cycle 66 --> sw $t4, 4($s1)
 DRAM request issued : WRITE
 
-Cycle 67-88 --> sw $t3, 4($s1)
+Cycle 67-88 --> sw $t4, 4($s1)
 ROW 0 copied back to DRAM and ROW 2 activated
-Data from Register $t3 stored at the column offset in row buffer
+Data from Register $t4 stored at the column offset in row buffer
 INTEGER REGISTERS :
 R0  [zero] = 0
 R1  [r0] = 0
@@ -405,7 +405,7 @@ DATA MEMORY:
 1000-1003: 1
 1004-1007: 3
 2500-2503: 2
-2504-2507: 4
+2504-2507: 0
 -----------------------------------------
 
 Cycle 89 --> lw $t5, 0($s0)
@@ -452,7 +452,7 @@ DATA MEMORY:
 1000-1003: 1
 1004-1007: 3
 2500-2503: 2
-2504-2507: 4
+2504-2507: 0
 -----------------------------------------
 
 Cycle 112 --> lw $t6, 0($s1)
@@ -499,7 +499,7 @@ DATA MEMORY:
 1000-1003: 1
 1004-1007: 3
 2500-2503: 2
-2504-2507: 4
+2504-2507: 0
 -----------------------------------------
 
 Cycle 135 --> lw $t7, 4($s0)
@@ -546,7 +546,7 @@ DATA MEMORY:
 1000-1003: 1
 1004-1007: 3
 2500-2503: 2
-2504-2507: 4
+2504-2507: 0
 -----------------------------------------
 
 Cycle 158 --> lw $t8, 4($s1)
@@ -575,7 +575,7 @@ R15 [t4] = 0
 R16 [t5] = 1
 R17 [t6] = 2
 R18 [t7] = 3
-R19 [t8] = 4
+R19 [t8] = 0
 R20 [t9] = 0
 R21 [s0] = 1000
 R22 [s1] = 2500
@@ -593,12 +593,12 @@ DATA MEMORY:
 1000-1003: 1
 1004-1007: 3
 2500-2503: 2
-2504-2507: 4
+2504-2507: 0
 -----------------------------------------
 
 Total Number of clock cycles = 180
 Total Number of Row-buffer Updates = 12
-Instruction Memory Used: 80 Bytes
+Instruction Memory Used: 88 Bytes
 Data Memory Used: 16 Bytes
 Number of times each instruction was executed :
 add ->0
@@ -616,4 +616,4 @@ Data Memory at the end of Execution:
 1000-1003: 1
 1004-1007: 3
 2500-2503: 2
-2504-2507: 4
+2504-2507: 0

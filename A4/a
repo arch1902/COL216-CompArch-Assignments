@@ -1,0 +1,9 @@
+addi $s1,$zero,1
+addi $s2,$zero,2
+addi $s3,$zero,3
+addi $s4,$zero,4
+addi $s5,$zero,5
+sw $s5,100($zero)
+lw $s1,100($zero)
+lw $s2,2100($zero)
+lw $s3,1100($zero)

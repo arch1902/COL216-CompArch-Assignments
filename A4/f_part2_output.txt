@@ -1,213 +1,208 @@
 
-Clock Cycle1:
+Clock Cycle 1:
 addi $s0, $zero, 1000
 $s0 = 1000
 
-Clock Cycle2:
+Clock Cycle 2:
 addi $s1, $zero, 2500
 $s1 = 2500
 
-Clock Cycle3:
+Clock Cycle 3:
 addi $t0, $zero, 1
 $t0 = 1
 
-Clock Cycle4:
+Clock Cycle 4:
 addi $t1, $zero, 2
 $t1 = 2
 
-Clock Cycle5:
+Clock Cycle 5:
 addi $t2, $zero, 3
 $t2 = 3
 
-Clock Cycle6:
+Clock Cycle 6:
 addi $t3, $zero, 4
 $t3 = 4
 
-Clock Cycle7:
-Intialised instruction sw 1000 1
+Clock Cycle 7:
+DRAM Request(Write) Issued for sw 1000 1 on Line 8
 
-Clock Cycle8:
-Started sw 1000 1
+Clock Cycle 8:
+Started sw 1000 1 on Line 8
+Row 0 will be activated
 Completed 1/12
-Intialised instruction sw 2500 2
+DRAM Request(Write) Issued for sw 2500 2 on Line 9
 
-Clock Cycle9:
+Clock Cycle 9:
 Completed 2/12
-Intialised instruction sw 1004 3
+DRAM Request(Write) Issued for sw 1004 3 on Line 10
 
-Clock Cycle10:
+Clock Cycle 10:
 Completed 3/12
-Intialised instruction sw 2504 4
+DRAM Request(Write) Issued for sw 2504 4 on Line 11
 
-Clock Cycle11:
+Clock Cycle 11:
 Completed 4/12
-Intialised instruction lw 1000 $t5
+DRAM Reques(Read) Issued for lw 1000 $t5 on Line 12
 
-Clock Cycle12:
+Clock Cycle 12:
 Completed 5/12
-Intialised instruction lw 2500 $t6
+DRAM Reques(Read) Issued for lw 2500 $t6 on Line 13
 
-Clock Cycle13:
+Clock Cycle 13:
 Completed 6/12
-Intialised instruction lw 1004 $t7
+DRAM Reques(Read) Issued for lw 1004 $t7 on Line 14
 
-Clock Cycle14:
+Clock Cycle 14:
 Completed 7/12
-Intialised instruction lw 2504 $t8
+DRAM Reques(Read) Issued for lw 2504 $t8 on Line 15
 
-Clock Cycle15:
+Clock Cycle 15:
 Completed 8/12
 
-Clock Cycle16:
+Clock Cycle 16:
 Completed 9/12
 
-Clock Cycle17:
+Clock Cycle 17:
 Completed 10/12
 
-Clock Cycle18:
+Clock Cycle 18:
 Completed 11/12
 
-Clock Cycle19:
+Clock Cycle 19:
 Completed 12/12
-Finished Instruction sw 1000 1
+Finished Instruction sw 1000 1 on Line 8
 
-Clock Cycle20:
-Started sw 1004 3
+Clock Cycle 20:
+Started sw 1004 3 on Line 10
 Completed 1/2
 
-Clock Cycle21:
+Clock Cycle 21:
 Completed 2/2
-Finished Instruction sw 1004 3
+Finished Instruction sw 1004 3 on Line 10
 
-Clock Cycle22:
-Started lw 1000 $t5
+Clock Cycle 22:
+Started lw 1000 $t5 on Line 12
 Completed 1/2
 
-Clock Cycle23:
+Clock Cycle 23:
 Completed 2/2
 $t5 = 1
-Finished Instruction lw 1000 $t5
+Finished Instruction lw 1000 $t5 on Line 12
 
-Clock Cycle24:
-Started lw 1004 $t7
+Clock Cycle 24:
+Started lw 1004 $t7 on Line 14
 Completed 1/2
 
-Clock Cycle25:
+Clock Cycle 25:
 Completed 2/2
 $t7 = 3
-Finished Instruction lw 1004 $t7
+Finished Instruction lw 1004 $t7 on Line 14
 
-Clock Cycle26:
-Started sw 2500 2
+Clock Cycle 26:
+Started sw 2500 2 on Line 9
+Row 0 will be copied back to DRAM and Row 2 will be activated
 Completed 1/22
 
-Clock Cycle27:
+Clock Cycle 27:
 Completed 2/22
 
-Clock Cycle28:
+Clock Cycle 28:
 Completed 3/22
 
-Clock Cycle29:
+Clock Cycle 29:
 Completed 4/22
 
-Clock Cycle30:
+Clock Cycle 30:
 Completed 5/22
 
-Clock Cycle31:
+Clock Cycle 31:
 Completed 6/22
 
-Clock Cycle32:
+Clock Cycle 32:
 Completed 7/22
 
-Clock Cycle33:
+Clock Cycle 33:
 Completed 8/22
 
-Clock Cycle34:
+Clock Cycle 34:
 Completed 9/22
 
-Clock Cycle35:
+Clock Cycle 35:
 Completed 10/22
 Memory at 1000 = 1
 Memory at 1004 = 3
 
-Clock Cycle36:
+Clock Cycle 36:
 Completed 11/22
 
-Clock Cycle37:
+Clock Cycle 37:
 Completed 12/22
 
-Clock Cycle38:
+Clock Cycle 38:
 Completed 13/22
 
-Clock Cycle39:
+Clock Cycle 39:
 Completed 14/22
 
-Clock Cycle40:
+Clock Cycle 40:
 Completed 15/22
 
-Clock Cycle41:
+Clock Cycle 41:
 Completed 16/22
 
-Clock Cycle42:
+Clock Cycle 42:
 Completed 17/22
 
-Clock Cycle43:
+Clock Cycle 43:
 Completed 18/22
 
-Clock Cycle44:
+Clock Cycle 44:
 Completed 19/22
 
-Clock Cycle45:
+Clock Cycle 45:
 Completed 20/22
 
-Clock Cycle46:
+Clock Cycle 46:
 Completed 21/22
 
-Clock Cycle47:
+Clock Cycle 47:
 Completed 22/22
-Finished Instruction sw 2500 2
+Finished Instruction sw 2500 2 on Line 9
 
-Clock Cycle48:
-Started sw 2504 4
+Clock Cycle 48:
+Started sw 2504 4 on Line 11
 Completed 1/2
 
-Clock Cycle49:
+Clock Cycle 49:
 Completed 2/2
-Finished Instruction sw 2504 4
+Finished Instruction sw 2504 4 on Line 11
 
-Clock Cycle50:
-Started lw 2500 $t6
+Clock Cycle 50:
+Started lw 2500 $t6 on Line 13
 Completed 1/2
 
-Clock Cycle51:
+Clock Cycle 51:
 Completed 2/2
 $t6 = 2
-Finished Instruction lw 2500 $t6
+Finished Instruction lw 2500 $t6 on Line 13
 
-Clock Cycle52:
-Started lw 2504 $t8
+Clock Cycle 52:
+Started lw 2504 $t8 on Line 15
 Completed 1/2
 
-Clock Cycle53:
+Clock Cycle 53:
 Completed 2/2
 $t8 = 4
-Finished Instruction lw 2504 $t8
+Finished Instruction lw 2504 $t8 on Line 15
+Total Number of cycles taken = 53
+Total Number of Row Buffer Updates = 6
 
 DRAM memory structure :
 Memory at row 0 column 250 address 1000 = 1
 Memory at row 0 column 251 address 1004 = 3
 
-Register Values :
+Integer Register Values :
 zero = 0
-r1 =  0
-r2 = 0
-r3 =  0
-r4 = 0
-r5 = 0
-r6 = 0
-r7 = 0
-r8 = 0
-r9 = 0
 s0 = 1000
 s1 = 2500
 s2 = 0
@@ -216,8 +211,6 @@ s4 = 0
 s5 = 0
 s6 = 0
 s7 = 0
-s8 = 0
-s9 = 0
 t0 = 1
 t1 = 2
 t2 = 3
@@ -228,4 +221,15 @@ t6 = 2
 t7 = 3
 t8 = 4
 t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
 sp = 0
+fp = 0
+ra = 0
+at = 0

@@ -1,267 +1,203 @@
 
-Clock Cycle1:
+Clock Cycle 1:
+addi $s2,$s2,10
+$s2 = 10
 
-addi $r2,$r2,10
-$r2 = 10
+Clock Cycle 2:
+DRAM Reques(Read) Issued for lw 100 $s2 on Line 2
 
-Clock Cycle2:
-
-Intialised instruction lw 100 $r2
-
-Clock Cycle3:
-( lw, 100, $r2, 0, 0,  ) 
-Started lw 100 $r2
+Clock Cycle 3:
+Started lw 100 $s2 on Line 2
+Row 0 will be activated
 Completed 1/12
 
-Clock Cycle4:
-( lw, 100, $r2, 1, 12,  ) 
+Clock Cycle 4:
 Completed 2/12
 
-Clock Cycle5:
-( lw, 100, $r2, 2, 12,  ) 
+Clock Cycle 5:
 Completed 3/12
 
-Clock Cycle6:
-( lw, 100, $r2, 3, 12,  ) 
+Clock Cycle 6:
 Completed 4/12
 
-Clock Cycle7:
-( lw, 100, $r2, 4, 12,  ) 
+Clock Cycle 7:
 Completed 5/12
 
-Clock Cycle8:
-( lw, 100, $r2, 5, 12,  ) 
+Clock Cycle 8:
 Completed 6/12
 
-Clock Cycle9:
-( lw, 100, $r2, 6, 12,  ) 
+Clock Cycle 9:
 Completed 7/12
 
-Clock Cycle10:
-( lw, 100, $r2, 7, 12,  ) 
+Clock Cycle 10:
 Completed 8/12
 
-Clock Cycle11:
-( lw, 100, $r2, 8, 12,  ) 
+Clock Cycle 11:
 Completed 9/12
 
-Clock Cycle12:
-( lw, 100, $r2, 9, 12,  ) 
+Clock Cycle 12:
 Completed 10/12
 
-Clock Cycle13:
-( lw, 100, $r2, 10, 12,  ) 
+Clock Cycle 13:
 Completed 11/12
 
-Clock Cycle14:
-( lw, 100, $r2, 11, 12,  ) 
+Clock Cycle 14:
 Completed 12/12
-$r2 = 0
-Finished Instruction lw 100 $r2
+$s2 = 0
+Finished Instruction lw 100 $s2 on Line 2
 
-Clock Cycle15:
+Clock Cycle 15:
+DRAM Reques(Read) Issued for lw 2000 $s2 on Line 3
 
-Intialised instruction lw 2000 $r2
-
-Clock Cycle16:
-( lw, 2000, $r2, 0, 0,  ) 
-Started lw 2000 $r2
+Clock Cycle 16:
+Started lw 2000 $s2 on Line 3
+Row 0 will be copied back to DRAM and Row 1 will be activated
 Completed 1/22
 
-Clock Cycle17:
-( lw, 2000, $r2, 1, 22,  ) 
+Clock Cycle 17:
 Completed 2/22
 
-Clock Cycle18:
-( lw, 2000, $r2, 2, 22,  ) 
+Clock Cycle 18:
 Completed 3/22
 
-Clock Cycle19:
-( lw, 2000, $r2, 3, 22,  ) 
+Clock Cycle 19:
 Completed 4/22
 
-Clock Cycle20:
-( lw, 2000, $r2, 4, 22,  ) 
+Clock Cycle 20:
 Completed 5/22
 
-Clock Cycle21:
-( lw, 2000, $r2, 5, 22,  ) 
+Clock Cycle 21:
 Completed 6/22
 
-Clock Cycle22:
-( lw, 2000, $r2, 6, 22,  ) 
+Clock Cycle 22:
 Completed 7/22
 
-Clock Cycle23:
-( lw, 2000, $r2, 7, 22,  ) 
+Clock Cycle 23:
 Completed 8/22
 
-Clock Cycle24:
-( lw, 2000, $r2, 8, 22,  ) 
+Clock Cycle 24:
 Completed 9/22
 
-Clock Cycle25:
-( lw, 2000, $r2, 9, 22,  ) 
+Clock Cycle 25:
 Completed 10/22
 
-Clock Cycle26:
-( lw, 2000, $r2, 10, 22,  ) 
+Clock Cycle 26:
 Completed 11/22
 
-Clock Cycle27:
-( lw, 2000, $r2, 11, 22,  ) 
+Clock Cycle 27:
 Completed 12/22
 
-Clock Cycle28:
-( lw, 2000, $r2, 12, 22,  ) 
+Clock Cycle 28:
 Completed 13/22
 
-Clock Cycle29:
-( lw, 2000, $r2, 13, 22,  ) 
+Clock Cycle 29:
 Completed 14/22
 
-Clock Cycle30:
-( lw, 2000, $r2, 14, 22,  ) 
+Clock Cycle 30:
 Completed 15/22
 
-Clock Cycle31:
-( lw, 2000, $r2, 15, 22,  ) 
+Clock Cycle 31:
 Completed 16/22
 
-Clock Cycle32:
-( lw, 2000, $r2, 16, 22,  ) 
+Clock Cycle 32:
 Completed 17/22
 
-Clock Cycle33:
-( lw, 2000, $r2, 17, 22,  ) 
+Clock Cycle 33:
 Completed 18/22
 
-Clock Cycle34:
-( lw, 2000, $r2, 18, 22,  ) 
+Clock Cycle 34:
 Completed 19/22
 
-Clock Cycle35:
-( lw, 2000, $r2, 19, 22,  ) 
+Clock Cycle 35:
 Completed 20/22
 
-Clock Cycle36:
-( lw, 2000, $r2, 20, 22,  ) 
+Clock Cycle 36:
 Completed 21/22
 
-Clock Cycle37:
-( lw, 2000, $r2, 21, 22,  ) 
+Clock Cycle 37:
 Completed 22/22
-$r2 = 0
-Finished Instruction lw 2000 $r2
+$s2 = 0
+Finished Instruction lw 2000 $s2 on Line 3
 
-Clock Cycle38:
+Clock Cycle 38:
+DRAM Reques(Read) Issued for lw 200 $s2 on Line 4
 
-Intialised instruction lw 200 $r2
-
-Clock Cycle39:
-( lw, 200, $r2, 0, 0,  ) 
-Started lw 200 $r2
+Clock Cycle 39:
+Started lw 200 $s2 on Line 4
+Row 1 will be copied back to DRAM and Row 0 will be activated
 Completed 1/22
 
-Clock Cycle40:
-( lw, 200, $r2, 1, 22,  ) 
+Clock Cycle 40:
 Completed 2/22
 
-Clock Cycle41:
-( lw, 200, $r2, 2, 22,  ) 
+Clock Cycle 41:
 Completed 3/22
 
-Clock Cycle42:
-( lw, 200, $r2, 3, 22,  ) 
+Clock Cycle 42:
 Completed 4/22
 
-Clock Cycle43:
-( lw, 200, $r2, 4, 22,  ) 
+Clock Cycle 43:
 Completed 5/22
 
-Clock Cycle44:
-( lw, 200, $r2, 5, 22,  ) 
+Clock Cycle 44:
 Completed 6/22
 
-Clock Cycle45:
-( lw, 200, $r2, 6, 22,  ) 
+Clock Cycle 45:
 Completed 7/22
 
-Clock Cycle46:
-( lw, 200, $r2, 7, 22,  ) 
+Clock Cycle 46:
 Completed 8/22
 
-Clock Cycle47:
-( lw, 200, $r2, 8, 22,  ) 
+Clock Cycle 47:
 Completed 9/22
 
-Clock Cycle48:
-( lw, 200, $r2, 9, 22,  ) 
+Clock Cycle 48:
 Completed 10/22
 
-Clock Cycle49:
-( lw, 200, $r2, 10, 22,  ) 
+Clock Cycle 49:
 Completed 11/22
 
-Clock Cycle50:
-( lw, 200, $r2, 11, 22,  ) 
+Clock Cycle 50:
 Completed 12/22
 
-Clock Cycle51:
-( lw, 200, $r2, 12, 22,  ) 
+Clock Cycle 51:
 Completed 13/22
 
-Clock Cycle52:
-( lw, 200, $r2, 13, 22,  ) 
+Clock Cycle 52:
 Completed 14/22
 
-Clock Cycle53:
-( lw, 200, $r2, 14, 22,  ) 
+Clock Cycle 53:
 Completed 15/22
 
-Clock Cycle54:
-( lw, 200, $r2, 15, 22,  ) 
+Clock Cycle 54:
 Completed 16/22
 
-Clock Cycle55:
-( lw, 200, $r2, 16, 22,  ) 
+Clock Cycle 55:
 Completed 17/22
 
-Clock Cycle56:
-( lw, 200, $r2, 17, 22,  ) 
+Clock Cycle 56:
 Completed 18/22
 
-Clock Cycle57:
-( lw, 200, $r2, 18, 22,  ) 
+Clock Cycle 57:
 Completed 19/22
 
-Clock Cycle58:
-( lw, 200, $r2, 19, 22,  ) 
+Clock Cycle 58:
 Completed 20/22
 
-Clock Cycle59:
-( lw, 200, $r2, 20, 22,  ) 
+Clock Cycle 59:
 Completed 21/22
 
-Clock Cycle60:
-( lw, 200, $r2, 21, 22,  ) 
+Clock Cycle 60:
 Completed 22/22
-$r2 = 0
-Finished Instruction lw 200 $r2
+$s2 = 0
+Finished Instruction lw 200 $s2 on Line 4
+Total Number of cycles taken = 60
+Total Number of Row Buffer Updates = 3
 
 DRAM memory structure :
 
-Register Values :
+Integer Register Values :
 zero = 0
-r1 =  0
-r2 = 0
-r3 =  0
-r4 = 0
-r5 = 0
-r6 = 0
-r7 = 0
-r8 = 0
-r9 = 0
 s0 = 0
 s1 = 0
 s2 = 0
@@ -270,8 +206,6 @@ s4 = 0
 s5 = 0
 s6 = 0
 s7 = 0
-s8 = 0
-s9 = 0
 t0 = 0
 t1 = 0
 t2 = 0
@@ -282,4 +216,15 @@ t6 = 0
 t7 = 0
 t8 = 0
 t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
 sp = 0
+fp = 0
+ra = 0
+at = 0

@@ -1,26 +1,26 @@
-addi $r1,$r1,1000
-lw $r1, 0($zero)
-lw $r2,1024($zero)
-lw $r3, 2048($zero)
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
-addi $r3,$r3,1
+addi $s1,$s1,1000
+lw $s1, 0($zero)
+lw $s2,1024($zero)
+lw $s3, 2048($zero)
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1
+addi $s3,$s3,1

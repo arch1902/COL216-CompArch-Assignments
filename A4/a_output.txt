@@ -1,4 +1,4 @@
-Cycle 1 --> addi $s2,$s2,10
+Cycle 1 --> addi $s1,$zero,1
 INTEGER REGISTERS :
 R0  [zero] = 0
 R1  [r0] = 0
@@ -22,8 +22,8 @@ R18 [t7] = 0
 R19 [t8] = 0
 R20 [t9] = 0
 R21 [s0] = 0
-R22 [s1] = 0
-R23 [s2] = 10
+R22 [s1] = 1
+R23 [s2] = 0
 R24 [s3] = 0
 R25 [s4] = 0
 R26 [s5] = 0
@@ -36,12 +36,88 @@ R31 [sp] = 0
 DATA MEMORY:
 -----------------------------------------
 
-Cycle 2 --> lw $s2,100($zero)
+Cycle 2 --> addi $s2,$zero,2
+INTEGER REGISTERS :
+R0  [zero] = 0
+R1  [r0] = 0
+R2  [r1] = 0
+R3  [r2] = 0
+R4  [r3] = 0
+R5  [r4] = 0
+R6  [r5] = 0
+R7  [r6] = 0
+R8  [r7] = 0
+R9  [r8] = 0
+R10 [r9] = 0
+R11 [t0] = 0
+R12 [t1] = 0
+R13 [t2] = 0
+R14 [t3] = 0
+R15 [t4] = 0
+R16 [t5] = 0
+R17 [t6] = 0
+R18 [t7] = 0
+R19 [t8] = 0
+R20 [t9] = 0
+R21 [s0] = 0
+R22 [s1] = 1
+R23 [s2] = 2
+R24 [s3] = 0
+R25 [s4] = 0
+R26 [s5] = 0
+R27 [s6] = 0
+R28 [s7] = 0
+R29 [s8] = 0
+R30 [s9] = 0
+R31 [sp] = 0
+
+DATA MEMORY:
+-----------------------------------------
+
+Cycle 3 --> addi $s3,$zero,3
+INTEGER REGISTERS :
+R0  [zero] = 0
+R1  [r0] = 0
+R2  [r1] = 0
+R3  [r2] = 0
+R4  [r3] = 0
+R5  [r4] = 0
+R6  [r5] = 0
+R7  [r6] = 0
+R8  [r7] = 0
+R9  [r8] = 0
+R10 [r9] = 0
+R11 [t0] = 0
+R12 [t1] = 0
+R13 [t2] = 0
+R14 [t3] = 0
+R15 [t4] = 0
+R16 [t5] = 0
+R17 [t6] = 0
+R18 [t7] = 0
+R19 [t8] = 0
+R20 [t9] = 0
+R21 [s0] = 0
+R22 [s1] = 1
+R23 [s2] = 2
+R24 [s3] = 3
+R25 [s4] = 0
+R26 [s5] = 0
+R27 [s6] = 0
+R28 [s7] = 0
+R29 [s8] = 0
+R30 [s9] = 0
+R31 [sp] = 0
+
+DATA MEMORY:
+-----------------------------------------
+
+Cycle 4 --> lw $s1,100($zero)
 DRAM request issued : READ
 
-Cycle 3-14 --> lw $s2,100($zero)
+Cycle 5-16 --> lw $s1,100($zero)
 ROW 0 activated
-Data at the column offset from the row buffer loaded to Register $s2
+Data at the column offset from the row buffer loaded to Register $s1
 INTEGER REGISTERS :
 R0  [zero] = 0
 R1  [r0] = 0
@@ -66,8 +142,8 @@ R19 [t8] = 0
 R20 [t9] = 0
 R21 [s0] = 0
 R22 [s1] = 0
-R23 [s2] = 0
-R24 [s3] = 0
+R23 [s2] = 2
+R24 [s3] = 3
 R25 [s4] = 0
 R26 [s5] = 0
 R27 [s6] = 0
@@ -80,11 +156,11 @@ DATA MEMORY:
 100-103: 0
 -----------------------------------------
 
-Cycle 15 --> lw $s2,2000($zero)
+Cycle 17 --> lw $s2,2100($zero)
 DRAM request issued : READ
 
-Cycle 16-37 --> lw $s2,2000($zero)
-ROW 0 copied back to DRAM and ROW 1 activated
+Cycle 18-39 --> lw $s2,2100($zero)
+ROW 0 copied back to DRAM and ROW 2 activated
 Data at the column offset from the row buffer loaded to Register $s2
 INTEGER REGISTERS :
 R0  [zero] = 0
@@ -111,7 +187,7 @@ R20 [t9] = 0
 R21 [s0] = 0
 R22 [s1] = 0
 R23 [s2] = 0
-R24 [s3] = 0
+R24 [s3] = 3
 R25 [s4] = 0
 R26 [s5] = 0
 R27 [s6] = 0
@@ -122,15 +198,15 @@ R31 [sp] = 0
 
 DATA MEMORY:
 100-103: 0
-2000-2003: 0
+2100-2103: 0
 -----------------------------------------
 
-Cycle 38 --> lw $s2,200($zero)
+Cycle 40 --> lw $s3,1100($zero)
 DRAM request issued : READ
 
-Cycle 39-60 --> lw $s2,200($zero)
-ROW 1 copied back to DRAM and ROW 0 activated
-Data at the column offset from the row buffer loaded to Register $s2
+Cycle 41-62 --> lw $s3,1100($zero)
+ROW 2 copied back to DRAM and ROW 1 activated
+Data at the column offset from the row buffer loaded to Register $s3
 INTEGER REGISTERS :
 R0  [zero] = 0
 R1  [r0] = 0
@@ -167,13 +243,13 @@ R31 [sp] = 0
 
 DATA MEMORY:
 100-103: 0
-200-203: 0
-2000-2003: 0
+1100-1103: 0
+2100-2103: 0
 -----------------------------------------
 
-Total Number of clock cycles = 60
+Total Number of clock cycles = 62
 Total Number of Row-buffer Updates = 3
-Instruction Memory Used: 16 Bytes
+Instruction Memory Used: 24 Bytes
 Data Memory Used: 12 Bytes
 Number of times each instruction was executed :
 add ->0
@@ -184,10 +260,10 @@ bne ->0
 slt ->0
 lw ->5
 sw ->0
-addi ->1
+addi ->3
 j -> 0
 -----------------------------------------
 Data Memory at the end of Execution:
 100-103: 0
-200-203: 0
-2000-2003: 0
+1100-1103: 0
+2100-2103: 0

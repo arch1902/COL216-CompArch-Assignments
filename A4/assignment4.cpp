@@ -33,10 +33,13 @@ int clock_cycle = 0;
 int last_buffer_row = -1;
 int pc = 0;
 int num=0;
+int num2 = 0;
 int row_activate = 0;
 int row_writeback = 0;
 int row_buffer_updates = 0;
+int dirty_bit = 0;
 vector<vector<int>> Dram_Memory;
+map<int,int> line_number;
 vector<int> Row_buffer;
 vector<vector<string>> Dram_queue;
 map<string,int>  Blocking_registers;
@@ -107,7 +110,7 @@ void print(){
 
 // Validator for the operands of instructions "add","sub","mul","addi","slt"
 //Operator $reg1,reg2,reg3/Int
-void validator_add(string s, int l, string instruction){
+void validator_add(string s, int l, int m, string instruction){
         stringstream s_stream(s);
         int count = 0;
         string substr;
@@ -139,7 +142,7 @@ void validator_add(string s, int l, string instruction){
                 }
             }
             else validator(registers,substr,l+1);
-            params[l].push_back(substr);
+            params[m].push_back(substr);
             count +=1;
         }
         if (count != 3){
@@ -149,7 +152,7 @@ void validator_add(string s, int l, string instruction){
 }
 // Validator for instructions "bne" and "beq"
 // beq $reg1,$reg2/Int,label
-void validator_beq(string s, int l, string instruction){
+void validator_beq(string s, int l,int m, string instruction){
         stringstream s_stream(s);   
         int count = 0;
         string substr;
@@ -171,7 +174,7 @@ void validator_beq(string s, int l, string instruction){
                     }
                 }
             }
-            params[l].push_back(substr);
+            params[m].push_back(substr);
             count +=1;
         }
         if (count != 3){
@@ -181,7 +184,7 @@ void validator_beq(string s, int l, string instruction){
 }
 //Validator for Instructions "lw" and "sw"
 //lw $reg1,off($reg2)
-void validator_lw(string s, int l, string instruction){
+void validator_lw(string s, int l,int m, string instruction){
 
         stringstream s_stream(s);
         int count = 0;
@@ -189,7 +192,7 @@ void validator_lw(string s, int l, string instruction){
         while(s_stream.good()) {    
             getline(s_stream, substr, ',');
             substr = trim(substr);
-            if(count==0){validator(registers,substr,l+1);params[l].push_back(substr);}
+            if(count==0){validator(registers,substr,l+1);params[m].push_back(substr);}
             if(count ==1){
                 //off(reg)
                 size_t q;
@@ -198,21 +201,21 @@ void validator_lw(string s, int l, string instruction){
                 string lh = substr.substr(0,q);
                 // cout<<lh<<"\n";
                 if(lh==""){
-                    params[l].push_back("0");
+                    params[m].push_back("0");
                 }
                 else if (regex_match(lh,n)){
                     if (abs(stoll(lh))>pow(2,16)){
                         cout<<"Error! I-type instruction cannot exceed 2^16 in MIPS on line "<<l+1<<endl;
                         exit(-1); 
                     }
-                    params[l].push_back(lh);
+                    params[m].push_back(lh);
                 }else{cout<<"Invalid Operand for "<<instruction<<" on line "<<l+1<<endl;exit(-1);}
                 //(register) 
                 string rh = substr.substr(q);
                 if (rh[0] != '(' || rh.back() != ')'){cout<<"Invalid Operand for "<<instruction<<" on line "<<l+1<<endl;exit(-1);}
                 rh = trim(rh.substr(1,rh.size()-2));
                 validator(registers,rh,l);
-                params[l].push_back(rh);
+                params[m].push_back(rh);
             }
             count +=1;
         }
@@ -333,6 +336,7 @@ int main(int argc, char *argv[]) {
     string Instruction;
     while(getline(file1,line)){
         line = trim(line);
+        num2++;
         if(line == ""){
             continue;
         }
@@ -350,35 +354,36 @@ int main(int argc, char *argv[]) {
                 if (regex_match(b,l)){
                     if(label.find(b) != label.end()){
                         cout<<"Same Label can't be defined twice"<<endl;
-                        cout<<"Label "<<b<<" is defined on lines "<<label[b]+1<<" and "<<num+1<<endl;
+                        cout<<"Label "<<b<<" is defined on lines "<<label[b]+1<<" and "<<num2<<endl;
                         exit(-1);
                     }
                      label[b] = num;
                      params[num].push_back(b);
                  }else{
-                     cout<< "Invaid Label format on line"<<num+1;
+                     cout<< "Invaid Label format on line"<<num2;
                      exit(-1);
                  }
              }else{
-                cout<< "Invalid Input "<<Instruction<<" on line "<<num+1;
+                cout<< "Invalid Input "<<Instruction<<" on line "<<num2;
                 exit(-1);
             }
         }else{
             // The line contains $ symbol
             Instruction = trim(line.substr(0,x));           
-            validator(operations,Instruction,num+1);           
+            validator(operations,Instruction,num2);           
             params[num].push_back(Instruction);
             string operands = trim(line.substr(x));            
             if (Instruction == "add"||Instruction =="sub"||Instruction =="mul"||Instruction =="slt"||Instruction =="addi"){  //$t1, $t2, $t3                
-                validator_add(operands,num,Instruction);
+                validator_add(operands,num2-1,num,Instruction);
             }else if (Instruction=="beq"||Instruction =="bne"){
-                validator_beq(operands,num,Instruction);
+                validator_beq(operands,num2-1,num,Instruction);
             }else if (Instruction == "lw"||Instruction =="sw"){
-                validator_lw(operands,num,Instruction);
+                validator_lw(operands,num2-1,num,Instruction);
             }else{
                 continue;
             }
         }
+        line_number[num] = num2;
         num++;
         // Throws an error if number of commands is more than Instruction storage limit.
         if (num>INSTRUCTION_MEMORY){
@@ -448,10 +453,15 @@ int main(int argc, char *argv[]) {
                         curr += ROW_ACCESS_DELAY;
                         row_buffer_updates++;
                         if (last_buffer_row!=-1){
+                            if(dirty_bit){
                             curr += ROW_ACCESS_DELAY;
                             out<<"Row "<<last_buffer_row<<" will be copied back to DRAM and ";
+                            }else{
+                               out<<"Row "<<last_buffer_row<<" need NOT be copied back to DRAM and "; 
+                            }
                         }
                         out<<"Row "<<row<<" will be activated\n";
+                        dirty_bit = 0;
                     }
                     curr += COL_ACCESS_DELAY;
                     Dram_queue[0][4] = to_string(curr);
@@ -493,6 +503,7 @@ int main(int argc, char *argv[]) {
                     }
                     if(Dram_queue[0][0] =="sw"){
                         Row_buffer[col/4] = stoi(Dram_queue[0][2]);
+                        dirty_bit = 1;
                     }
                     out<<"Finished Instruction "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<" on Line "<<Dram_queue[0][5]<<endl;
                     Dram_queue.erase(Dram_queue.begin());
@@ -512,19 +523,19 @@ int main(int argc, char *argv[]) {
                 string relevant_registor = params[pc][1];
                 int offset = stoi(params[pc][2]);
                 int address = offset+reg[params[pc][3]];
-                Dram_queue.push_back({"lw",to_string(address),relevant_registor,"0","0",to_string(pc+1)}); 
+                Dram_queue.push_back({"lw",to_string(address),relevant_registor,"0","0",to_string(line_number[pc])}); 
                 sort_queue();  
                 Blocking_registers[relevant_registor] ++;
-                out<< "DRAM Reques(Read) Issued for "<<"lw "<<address<<" "<<relevant_registor<<" on Line "<<pc+1<<endl;        
+                out<< "DRAM Request(Read) Issued for "<<"lw "<<address<<" "<<relevant_registor<<" on Line "<<line_number[pc]<<endl;        
                 pc++;
                 continue;
             }else if(Instruction == "sw"){
                 string relevant_registor = params[pc][1];
                 int offset = stoi(params[pc][2]);
                 int address = offset+reg[params[pc][3]];
-                Dram_queue.push_back({"sw",to_string(address),to_string(reg[relevant_registor]),"0","0",to_string(pc+1)});  
+                Dram_queue.push_back({"sw",to_string(address),to_string(reg[relevant_registor]),"0","0",to_string(line_number[pc])});  
                 sort_queue();
-                out<< "DRAM Request(Write) Issued for "<<"sw "<<address<<" "<<reg[relevant_registor]<<" on Line "<<pc+1<<endl;         
+                out<< "DRAM Request(Write) Issued for "<<"sw "<<address<<" "<<reg[relevant_registor]<<" on Line "<<line_number[pc]<<endl;         
                 pc++;
                 continue;
             }else if (Instruction == "add"){ 

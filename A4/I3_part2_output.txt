@@ -1,306 +1,295 @@
 
-Clock Cycle1:
+Clock Cycle 1:
+addi $s1,$s1,1000
+$s1 = 1000
 
-addi $r1,$r1,1000
-$r1 = 1000
+Clock Cycle 2:
+DRAM Reques(Read) Issued for lw 0 $s1 on Line 2
 
-Clock Cycle2:
-
-Intialised instruction lw 0 $r1
-
-Clock Cycle3:
-( lw, 0, $r1, 0, 0,  ) 
-Started lw 0 $r1
+Clock Cycle 3:
+Started lw 0 $s1 on Line 2
+Row 0 will be activated
 Completed 1/12
-Intialised instruction lw 1024 $r2
+DRAM Reques(Read) Issued for lw 1024 $s2 on Line 3
 
-Clock Cycle4:
-( lw, 0, $r1, 1, 12,  ) ( lw, 1024, $r2, 0, 0,  ) 
+Clock Cycle 4:
 Completed 2/12
-Intialised instruction lw 2048 $r3
+DRAM Reques(Read) Issued for lw 2048 $s3 on Line 4
 
-Clock Cycle5:
-( lw, 0, $r1, 2, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 5:
 Completed 3/12
 
-Clock Cycle6:
-( lw, 0, $r1, 3, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 6:
 Completed 4/12
 
-Clock Cycle7:
-( lw, 0, $r1, 4, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 7:
 Completed 5/12
 
-Clock Cycle8:
-( lw, 0, $r1, 5, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 8:
 Completed 6/12
 
-Clock Cycle9:
-( lw, 0, $r1, 6, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 9:
 Completed 7/12
 
-Clock Cycle10:
-( lw, 0, $r1, 7, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 10:
 Completed 8/12
 
-Clock Cycle11:
-( lw, 0, $r1, 8, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 11:
 Completed 9/12
 
-Clock Cycle12:
-( lw, 0, $r1, 9, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 12:
 Completed 10/12
 
-Clock Cycle13:
-( lw, 0, $r1, 10, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 13:
 Completed 11/12
 
-Clock Cycle14:
-( lw, 0, $r1, 11, 12,  ) ( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 14:
 Completed 12/12
-$r1 = 0
-Finished Instruction lw 0 $r1
+$s1 = 0
+Finished Instruction lw 0 $s1 on Line 2
 
-Clock Cycle15:
-( lw, 1024, $r2, 0, 0,  ) ( lw, 2048, $r3, 0, 0,  ) 
-Started lw 1024 $r2
+Clock Cycle 15:
+Started lw 1024 $s2 on Line 3
+Row 0 will be copied back to DRAM and Row 1 will be activated
 Completed 1/22
 
-Clock Cycle16:
-( lw, 1024, $r2, 1, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 16:
 Completed 2/22
 
-Clock Cycle17:
-( lw, 1024, $r2, 2, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 17:
 Completed 3/22
 
-Clock Cycle18:
-( lw, 1024, $r2, 3, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 18:
 Completed 4/22
 
-Clock Cycle19:
-( lw, 1024, $r2, 4, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 19:
 Completed 5/22
 
-Clock Cycle20:
-( lw, 1024, $r2, 5, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 20:
 Completed 6/22
 
-Clock Cycle21:
-( lw, 1024, $r2, 6, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 21:
 Completed 7/22
 
-Clock Cycle22:
-( lw, 1024, $r2, 7, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 22:
 Completed 8/22
 
-Clock Cycle23:
-( lw, 1024, $r2, 8, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 23:
 Completed 9/22
 
-Clock Cycle24:
-( lw, 1024, $r2, 9, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 24:
 Completed 10/22
 
-Clock Cycle25:
-( lw, 1024, $r2, 10, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 25:
 Completed 11/22
 
-Clock Cycle26:
-( lw, 1024, $r2, 11, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 26:
 Completed 12/22
 
-Clock Cycle27:
-( lw, 1024, $r2, 12, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 27:
 Completed 13/22
 
-Clock Cycle28:
-( lw, 1024, $r2, 13, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 28:
 Completed 14/22
 
-Clock Cycle29:
-( lw, 1024, $r2, 14, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 29:
 Completed 15/22
 
-Clock Cycle30:
-( lw, 1024, $r2, 15, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 30:
 Completed 16/22
 
-Clock Cycle31:
-( lw, 1024, $r2, 16, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 31:
 Completed 17/22
 
-Clock Cycle32:
-( lw, 1024, $r2, 17, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 32:
 Completed 18/22
 
-Clock Cycle33:
-( lw, 1024, $r2, 18, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 33:
 Completed 19/22
 
-Clock Cycle34:
-( lw, 1024, $r2, 19, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 34:
 Completed 20/22
 
-Clock Cycle35:
-( lw, 1024, $r2, 20, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 35:
 Completed 21/22
 
-Clock Cycle36:
-( lw, 1024, $r2, 21, 22,  ) ( lw, 2048, $r3, 0, 0,  ) 
+Clock Cycle 36:
 Completed 22/22
-$r2 = 0
-Finished Instruction lw 1024 $r2
+$s2 = 0
+Finished Instruction lw 1024 $s2 on Line 3
 
-Clock Cycle37:
-( lw, 2048, $r3, 0, 0,  ) 
-Started lw 2048 $r3
+Clock Cycle 37:
+Started lw 2048 $s3 on Line 4
+Row 1 will be copied back to DRAM and Row 2 will be activated
 Completed 1/22
 
-Clock Cycle38:
-( lw, 2048, $r3, 1, 22,  ) 
+Clock Cycle 38:
 Completed 2/22
 
-Clock Cycle39:
-( lw, 2048, $r3, 2, 22,  ) 
+Clock Cycle 39:
 Completed 3/22
 
-Clock Cycle40:
-( lw, 2048, $r3, 3, 22,  ) 
+Clock Cycle 40:
 Completed 4/22
 
-Clock Cycle41:
-( lw, 2048, $r3, 4, 22,  ) 
+Clock Cycle 41:
 Completed 5/22
 
-Clock Cycle42:
-( lw, 2048, $r3, 5, 22,  ) 
+Clock Cycle 42:
 Completed 6/22
 
-Clock Cycle43:
-( lw, 2048, $r3, 6, 22,  ) 
+Clock Cycle 43:
 Completed 7/22
 
-Clock Cycle44:
-( lw, 2048, $r3, 7, 22,  ) 
+Clock Cycle 44:
 Completed 8/22
 
-Clock Cycle45:
-( lw, 2048, $r3, 8, 22,  ) 
+Clock Cycle 45:
 Completed 9/22
 
-Clock Cycle46:
-( lw, 2048, $r3, 9, 22,  ) 
+Clock Cycle 46:
 Completed 10/22
 
-Clock Cycle47:
-( lw, 2048, $r3, 10, 22,  ) 
+Clock Cycle 47:
 Completed 11/22
 
-Clock Cycle48:
-( lw, 2048, $r3, 11, 22,  ) 
+Clock Cycle 48:
 Completed 12/22
 
-Clock Cycle49:
-( lw, 2048, $r3, 12, 22,  ) 
+Clock Cycle 49:
 Completed 13/22
 
-Clock Cycle50:
-( lw, 2048, $r3, 13, 22,  ) 
+Clock Cycle 50:
 Completed 14/22
 
-Clock Cycle51:
-( lw, 2048, $r3, 14, 22,  ) 
+Clock Cycle 51:
 Completed 15/22
 
-Clock Cycle52:
-( lw, 2048, $r3, 15, 22,  ) 
+Clock Cycle 52:
 Completed 16/22
 
-Clock Cycle53:
-( lw, 2048, $r3, 16, 22,  ) 
+Clock Cycle 53:
 Completed 17/22
 
-Clock Cycle54:
-( lw, 2048, $r3, 17, 22,  ) 
+Clock Cycle 54:
 Completed 18/22
 
-Clock Cycle55:
-( lw, 2048, $r3, 18, 22,  ) 
+Clock Cycle 55:
 Completed 19/22
 
-Clock Cycle56:
-( lw, 2048, $r3, 19, 22,  ) 
+Clock Cycle 56:
 Completed 20/22
 
-Clock Cycle57:
-( lw, 2048, $r3, 20, 22,  ) 
+Clock Cycle 57:
 Completed 21/22
 
-Clock Cycle58:
-( lw, 2048, $r3, 21, 22,  ) 
+Clock Cycle 58:
 Completed 22/22
-$r3 = 0
-Finished Instruction lw 2048 $r3
+$s3 = 0
+Finished Instruction lw 2048 $s3 on Line 4
 
-Clock Cycle59:
+Clock Cycle 59:
+addi $s3,$s3,1
+$s3 = 1
 
-addi $r3,$r3,1
-$r3 = 1
+Clock Cycle 60:
+addi $s3,$s3,1
+$s3 = 2
 
-Clock Cycle60:
+Clock Cycle 61:
+addi $s3,$s3,1
+$s3 = 3
 
-addi $r3,$r3,1
-$r3 = 2
+Clock Cycle 62:
+addi $s3,$s3,1
+$s3 = 4
 
-Clock Cycle61:
+Clock Cycle 63:
+addi $s3,$s3,1
+$s3 = 5
 
-addi $r3,$r3,1
-$r3 = 3
+Clock Cycle 64:
+addi $s3,$s3,1
+$s3 = 6
 
-Clock Cycle62:
+Clock Cycle 65:
+addi $s3,$s3,1
+$s3 = 7
 
-addi $r3,$r3,1
-$r3 = 4
+Clock Cycle 66:
+addi $s3,$s3,1
+$s3 = 8
 
-Clock Cycle63:
+Clock Cycle 67:
+addi $s3,$s3,1
+$s3 = 9
 
-addi $r3,$r3,1
-$r3 = 5
+Clock Cycle 68:
+addi $s3,$s3,1
+$s3 = 10
 
-Clock Cycle64:
+Clock Cycle 69:
+addi $s3,$s3,1
+$s3 = 11
 
-addi $r3,$r3,1
-$r3 = 6
+Clock Cycle 70:
+addi $s3,$s3,1
+$s3 = 12
 
-Clock Cycle65:
+Clock Cycle 71:
+addi $s3,$s3,1
+$s3 = 13
 
-addi $r3,$r3,1
-$r3 = 7
+Clock Cycle 72:
+addi $s3,$s3,1
+$s3 = 14
+
+Clock Cycle 73:
+addi $s3,$s3,1
+$s3 = 15
+
+Clock Cycle 74:
+addi $s3,$s3,1
+$s3 = 16
+
+Clock Cycle 75:
+addi $s3,$s3,1
+$s3 = 17
+
+Clock Cycle 76:
+addi $s3,$s3,1
+$s3 = 18
+
+Clock Cycle 77:
+addi $s3,$s3,1
+$s3 = 19
+
+Clock Cycle 78:
+addi $s3,$s3,1
+$s3 = 20
+
+Clock Cycle 79:
+addi $s3,$s3,1
+$s3 = 21
+
+Clock Cycle 80:
+addi $s3,$s3,1
+$s3 = 22
+Total Number of cycles taken = 80
+Total Number of Row Buffer Updates = 3
 
 DRAM memory structure :
 
-Register Values :
+Integer Register Values :
 zero = 0
-r1 =  0
-r2 = 0
-r3 =  7
-r4 = 0
-r5 = 0
-r6 = 0
-r7 = 0
-r8 = 0
-r9 = 0
 s0 = 0
 s1 = 0
 s2 = 0
-s3 = 0
+s3 = 22
 s4 = 0
 s5 = 0
 s6 = 0
 s7 = 0
-s8 = 0
-s9 = 0
 t0 = 0
 t1 = 0
 t2 = 0
@@ -311,4 +300,15 @@ t6 = 0
 t7 = 0
 t8 = 0
 t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
 sp = 0
+fp = 0
+ra = 0
+at = 0
