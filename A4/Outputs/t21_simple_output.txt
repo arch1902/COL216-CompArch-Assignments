@@ -1,0 +1,292 @@
+
+Clock Cycle 1:
+DRAM Request(Write) Issued for sw 100 0 on Line 1
+
+Clock Cycle 2:
+Started sw 100 0 on Line 1
+Row 0 will be activated
+Completed 1/12
+DRAM Request(Read) Issued for lw 1100 $s2 on Line 2
+
+Clock Cycle 3:
+Completed 2/12
+DRAM Request(Write) Issued for sw 2100 0 on Line 3
+
+Clock Cycle 4:
+Completed 3/12
+DRAM Request(Read) Issued for lw 2108 $s3 on Line 4
+
+Clock Cycle 5:
+Completed 4/12
+
+Clock Cycle 6:
+Completed 5/12
+
+Clock Cycle 7:
+Completed 6/12
+
+Clock Cycle 8:
+Completed 7/12
+
+Clock Cycle 9:
+Completed 8/12
+
+Clock Cycle 10:
+Completed 9/12
+
+Clock Cycle 11:
+Completed 10/12
+
+Clock Cycle 12:
+Completed 11/12
+
+Clock Cycle 13:
+Completed 12/12
+Finished Instruction sw 100 0 on Line 1
+
+Clock Cycle 14:
+Started lw 1100 $s2 on Line 2
+Row 0 will be copied back to DRAM and Row 1 will be activated
+Completed 1/22
+
+Clock Cycle 15:
+Completed 2/22
+
+Clock Cycle 16:
+Completed 3/22
+
+Clock Cycle 17:
+Completed 4/22
+
+Clock Cycle 18:
+Completed 5/22
+
+Clock Cycle 19:
+Completed 6/22
+
+Clock Cycle 20:
+Completed 7/22
+
+Clock Cycle 21:
+Completed 8/22
+
+Clock Cycle 22:
+Completed 9/22
+
+Clock Cycle 23:
+Completed 10/22
+
+Clock Cycle 24:
+Completed 11/22
+
+Clock Cycle 25:
+Completed 12/22
+
+Clock Cycle 26:
+Completed 13/22
+
+Clock Cycle 27:
+Completed 14/22
+
+Clock Cycle 28:
+Completed 15/22
+
+Clock Cycle 29:
+Completed 16/22
+
+Clock Cycle 30:
+Completed 17/22
+
+Clock Cycle 31:
+Completed 18/22
+
+Clock Cycle 32:
+Completed 19/22
+
+Clock Cycle 33:
+Completed 20/22
+
+Clock Cycle 34:
+Completed 21/22
+
+Clock Cycle 35:
+Completed 22/22
+$s2 = 0
+Finished Instruction lw 1100 $s2 on Line 2
+
+Clock Cycle 36:
+Started sw 2100 0 on Line 3
+Row 1 need NOT be copied back to DRAM and Row 2 will be activated
+Completed 1/12
+
+Clock Cycle 37:
+Completed 2/12
+
+Clock Cycle 38:
+Completed 3/12
+
+Clock Cycle 39:
+Completed 4/12
+
+Clock Cycle 40:
+Completed 5/12
+
+Clock Cycle 41:
+Completed 6/12
+
+Clock Cycle 42:
+Completed 7/12
+
+Clock Cycle 43:
+Completed 8/12
+
+Clock Cycle 44:
+Completed 9/12
+
+Clock Cycle 45:
+Completed 10/12
+
+Clock Cycle 46:
+Completed 11/12
+
+Clock Cycle 47:
+Completed 12/12
+Finished Instruction sw 2100 0 on Line 3
+
+Clock Cycle 48:
+Started lw 2108 $s3 on Line 4
+Completed 1/2
+
+Clock Cycle 49:
+Completed 2/2
+$s3 = 0
+Finished Instruction lw 2108 $s3 on Line 4
+
+Clock Cycle 50:
+DRAM Request(Write) Issued for sw 2100 0 on Line 5
+
+Clock Cycle 51:
+Started sw 2100 0 on Line 5
+Completed 1/2
+DRAM Request(Write) Issued for sw 2100 0 on Line 6
+
+Clock Cycle 52:
+Completed 2/2
+Finished Instruction sw 2100 0 on Line 5
+DRAM Request(Write) Issued for sw 2100 0 on Line 7
+
+Clock Cycle 53:
+Started sw 2100 0 on Line 6
+Completed 1/2
+DRAM Request(Write) Issued for sw 2100 0 on Line 8
+
+Clock Cycle 54:
+Completed 2/2
+Finished Instruction sw 2100 0 on Line 6
+DRAM Request(Write) Issued for sw 2100 0 on Line 9
+
+Clock Cycle 55:
+Started sw 2100 0 on Line 7
+Completed 1/2
+DRAM Request(Write) Issued for sw 2100 0 on Line 10
+
+Clock Cycle 56:
+Completed 2/2
+Finished Instruction sw 2100 0 on Line 7
+addi $s3,$s3,1
+$s3 = 1
+
+Clock Cycle 57:
+Started sw 2100 0 on Line 8
+Completed 1/2
+addi $s2,$s2,1
+$s2 = 1
+
+Clock Cycle 58:
+Completed 2/2
+Finished Instruction sw 2100 0 on Line 8
+addi $s2,$s2,1
+$s2 = 2
+
+Clock Cycle 59:
+Started sw 2100 0 on Line 9
+Completed 1/2
+addi $s2,$s2,1
+$s2 = 3
+
+Clock Cycle 60:
+Completed 2/2
+Finished Instruction sw 2100 0 on Line 9
+addi $s2,$s2,1
+$s2 = 4
+
+Clock Cycle 61:
+Started sw 2100 0 on Line 10
+Completed 1/2
+addi $s2,$s2,1
+$s2 = 5
+
+Clock Cycle 62:
+Completed 2/2
+Finished Instruction sw 2100 0 on Line 10
+addi $s2,$s2,1
+$s2 = 6
+
+Clock Cycle 63:
+addi $s2,$s2,1
+$s2 = 7
+
+Clock Cycle 64:
+addi $s2,$s2,1
+$s2 = 8
+
+Clock Cycle 65:
+addi $s2,$s2,1
+$s2 = 9
+
+Clock Cycle 66:
+addi $s2,$s2,1
+$s2 = 10
+
+Clock Cycle 67:
+addi $s2,$s2,1
+$s2 = 11
+
+RELEVANT STATISTICS :->
+Total Number of cycles taken = 67
+Total Number of Row Buffer Updates = 11
+
+DRAM memory structure :
+
+Integer Register Values :
+zero = 0
+s0 = 0
+s1 = 0
+s2 = 11
+s3 = 1
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0

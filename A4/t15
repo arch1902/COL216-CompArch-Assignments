@@ -1,0 +1,9 @@
+addi $s1 , $zero , 1     
+addi $s2 , $zero , 8
+mul $s3 , $s1 , $s2 
+addi $s3 , $s3 , -19
+slt $s4 ,  $s1,  $s2
+addi $s5 , $s1 , 4
+sw   $s5 , 0($t1)
+lw $s4 , 0($t2)
+slt $s1 , $s5 , $s3

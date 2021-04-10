@@ -1,0 +1,181 @@
+
+Clock Cycle 1:
+addi $t0, $zero, 1
+$t0 = 1
+
+Clock Cycle 2:
+DRAM Request(Write) Issued for sw 1000 1 on Line 2
+
+Clock Cycle 3:
+Started sw 1000 1 on Line 2
+Row 0 will be activated
+Completed 1/12
+DRAM Request(Write) Issued for sw 1024 1 on Line 3
+
+Clock Cycle 4:
+Completed 2/12
+DRAM Request(Read) Issued for lw 1000 $t0 on Line 4
+
+Clock Cycle 5:
+Completed 3/12
+DRAM Request(Read) Issued for lw 1024 $t1 on Line 5
+
+Clock Cycle 6:
+Completed 4/12
+
+Clock Cycle 7:
+Completed 5/12
+
+Clock Cycle 8:
+Completed 6/12
+
+Clock Cycle 9:
+Completed 7/12
+
+Clock Cycle 10:
+Completed 8/12
+
+Clock Cycle 11:
+Completed 9/12
+
+Clock Cycle 12:
+Completed 10/12
+
+Clock Cycle 13:
+Completed 11/12
+
+Clock Cycle 14:
+Completed 12/12
+Finished Instruction sw 1000 1 on Line 2
+
+Clock Cycle 15:
+Started lw 1000 $t0 on Line 4
+Completed 1/2
+
+Clock Cycle 16:
+Completed 2/2
+$t0 = 1
+Finished Instruction lw 1000 $t0 on Line 4
+
+Clock Cycle 17:
+Started sw 1024 1 on Line 3
+Row 0 will be copied back to DRAM and Row 1 will be activated
+Completed 1/22
+
+Clock Cycle 18:
+Completed 2/22
+
+Clock Cycle 19:
+Completed 3/22
+
+Clock Cycle 20:
+Completed 4/22
+
+Clock Cycle 21:
+Completed 5/22
+
+Clock Cycle 22:
+Completed 6/22
+
+Clock Cycle 23:
+Completed 7/22
+
+Clock Cycle 24:
+Completed 8/22
+
+Clock Cycle 25:
+Completed 9/22
+
+Clock Cycle 26:
+Completed 10/22
+Memory at 1000 = 1
+
+Clock Cycle 27:
+Completed 11/22
+
+Clock Cycle 28:
+Completed 12/22
+
+Clock Cycle 29:
+Completed 13/22
+
+Clock Cycle 30:
+Completed 14/22
+
+Clock Cycle 31:
+Completed 15/22
+
+Clock Cycle 32:
+Completed 16/22
+
+Clock Cycle 33:
+Completed 17/22
+
+Clock Cycle 34:
+Completed 18/22
+
+Clock Cycle 35:
+Completed 19/22
+
+Clock Cycle 36:
+Completed 20/22
+
+Clock Cycle 37:
+Completed 21/22
+
+Clock Cycle 38:
+Completed 22/22
+Finished Instruction sw 1024 1 on Line 3
+
+Clock Cycle 39:
+Started lw 1024 $t1 on Line 5
+Completed 1/2
+
+Clock Cycle 40:
+Completed 2/2
+$t1 = 1
+Finished Instruction lw 1024 $t1 on Line 5
+
+Clock Cycle 41:
+add $t0, $t0, $t1
+$t0 = 2
+
+RELEVANT STATISTICS :->
+Total Number of cycles taken = 41
+Total Number of Row Buffer Updates = 4
+
+DRAM memory structure :
+Memory at row 0 column 250 address 1000 = 1
+
+Integer Register Values :
+zero = 0
+s0 = 0
+s1 = 0
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 2
+t1 = 1
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
