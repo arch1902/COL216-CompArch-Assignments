@@ -1,0 +1,446 @@
+
+Clock Cycle 1:
+ Current CPU Blocking 
+
+addi $s0, $zero, 1000
+$s0 = 1000
+
+Clock Cycle 2:
+ Current CPU Blocking 
+
+addi $s1, $zero, 2500
+$s1 = 2500
+
+Clock Cycle 3:
+ Current CPU Blocking 
+
+addi $t0, $zero, 1
+$t0 = 1
+
+Clock Cycle 4:
+ Current CPU Blocking 
+
+addi $t1, $zero, 2
+$t1 = 2
+
+Clock Cycle 5:
+ Current CPU Blocking 
+
+addi $t2, $zero, 3
+$t2 = 3
+
+Clock Cycle 6:
+ Current CPU Blocking 
+
+addi $t3, $zero, 4
+$t3 = 4
+
+Clock Cycle 7:
+ Current CPU Blocking 
+
+DRAM Request(Write) Issued for sw 1000 1 on Line 9
+
+Clock Cycle 8:
+ Current CPU Blocking 
+(sw, 1000, 1, 0, 0, 9, )
+Started sw 1000 1 on Line 9
+Row 0 will be activated
+Completed 1/12
+DRAM Request(Write) Issued for sw 2500 2 on Line 10
+
+Clock Cycle 9:
+ Current CPU Blocking 
+(sw, 1000, 1, 1, 12, 9, )(sw, 2500, 2, 0, 0, 10, )
+Completed 2/12
+DRAM Request(Write) Issued for sw 1004 3 on Line 12
+
+Clock Cycle 10:
+ Current CPU Blocking 
+(sw, 1000, 1, 2, 12, 9, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )
+Completed 3/12
+DRAM Request(Write) Issued for sw 2504 0 on Line 13
+
+Clock Cycle 11:
+ Current CPU Blocking 
+(sw, 1000, 1, 3, 12, 9, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 4/12
+DRAM Request(Read) Issued for lw 1000 $t5 on Line 15
+
+Clock Cycle 12:
+ Current CPU Blocking 
+(sw, 1000, 1, 4, 12, 9, )(sw, 1004, 3, 0, 0, 12, )(lw, 1000, $t5, 0, 0, 15, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 5/12
+
+Clock Cycle 13:
+ Current CPU Blocking $t5
+(sw, 1000, 1, 5, 12, 9, )(lw, 1000, $t5, 0, 0, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 6/12
+
+Clock Cycle 14:
+ Current CPU Blocking $t5
+(sw, 1000, 1, 6, 12, 9, )(lw, 1000, $t5, 0, 0, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 7/12
+
+Clock Cycle 15:
+ Current CPU Blocking $t5
+(sw, 1000, 1, 7, 12, 9, )(lw, 1000, $t5, 0, 0, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 8/12
+
+Clock Cycle 16:
+ Current CPU Blocking $t5
+(sw, 1000, 1, 8, 12, 9, )(lw, 1000, $t5, 0, 0, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 9/12
+
+Clock Cycle 17:
+ Current CPU Blocking $t5
+(sw, 1000, 1, 9, 12, 9, )(lw, 1000, $t5, 0, 0, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 10/12
+
+Clock Cycle 18:
+ Current CPU Blocking $t5
+(sw, 1000, 1, 10, 12, 9, )(lw, 1000, $t5, 0, 0, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 11/12
+
+Clock Cycle 19:
+ Current CPU Blocking $t5
+(sw, 1000, 1, 11, 12, 9, )(lw, 1000, $t5, 0, 0, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 12/12
+Finished Instruction sw 1000 1 on Line 9
+
+Clock Cycle 20:
+ Current CPU Blocking $t5
+(lw, 1000, $t5, 0, 0, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Started lw 1000 $t5 on Line 15
+Completed 1/2
+
+Clock Cycle 21:
+ Current CPU Blocking $t5
+(lw, 1000, $t5, 1, 2, 15, )(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 2/2
+$t5 = 1
+Finished Instruction lw 1000 $t5 on Line 15
+
+Clock Cycle 22:
+ Current CPU Blocking $t5
+(sw, 1004, 3, 0, 0, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Started sw 1004 3 on Line 12
+Completed 1/2
+addi $t5,$t5,10
+$t5 = 11
+
+Clock Cycle 23:
+ Current CPU Blocking 
+(sw, 1004, 3, 1, 2, 12, )(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )
+Completed 2/2
+Finished Instruction sw 1004 3 on Line 12
+DRAM Request(Read) Issued for lw 2500 $t6 on Line 17
+
+Clock Cycle 24:
+ Current CPU Blocking 
+(sw, 2500, 2, 0, 0, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )
+Started sw 2500 2 on Line 10
+Row 0 will be copied back to DRAM and Row 2 will be activated
+Completed 1/22
+DRAM Request(Read) Issued for lw 1004 $t7 on Line 18
+
+Clock Cycle 25:
+ Current CPU Blocking 
+(sw, 2500, 2, 1, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 2/22
+DRAM Request(Read) Issued for lw 2504 $t8 on Line 19
+
+Clock Cycle 26:
+ Current CPU Blocking 
+(sw, 2500, 2, 2, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 3/22
+
+Clock Cycle 27:
+ Current CPU Blocking 
+(sw, 2500, 2, 3, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 4/22
+
+Clock Cycle 28:
+ Current CPU Blocking 
+(sw, 2500, 2, 4, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 5/22
+
+Clock Cycle 29:
+ Current CPU Blocking 
+(sw, 2500, 2, 5, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 6/22
+
+Clock Cycle 30:
+ Current CPU Blocking 
+(sw, 2500, 2, 6, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 7/22
+
+Clock Cycle 31:
+ Current CPU Blocking 
+(sw, 2500, 2, 7, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 8/22
+
+Clock Cycle 32:
+ Current CPU Blocking 
+(sw, 2500, 2, 8, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 9/22
+
+Clock Cycle 33:
+ Current CPU Blocking 
+(sw, 2500, 2, 9, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 10/22
+Memory at 1000 = 1
+Memory at 1004 = 3
+
+Clock Cycle 34:
+ Current CPU Blocking 
+(sw, 2500, 2, 10, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 11/22
+
+Clock Cycle 35:
+ Current CPU Blocking 
+(sw, 2500, 2, 11, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 12/22
+
+Clock Cycle 36:
+ Current CPU Blocking 
+(sw, 2500, 2, 12, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 13/22
+
+Clock Cycle 37:
+ Current CPU Blocking 
+(sw, 2500, 2, 13, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 14/22
+
+Clock Cycle 38:
+ Current CPU Blocking 
+(sw, 2500, 2, 14, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 15/22
+
+Clock Cycle 39:
+ Current CPU Blocking 
+(sw, 2500, 2, 15, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 16/22
+
+Clock Cycle 40:
+ Current CPU Blocking 
+(sw, 2500, 2, 16, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 17/22
+
+Clock Cycle 41:
+ Current CPU Blocking 
+(sw, 2500, 2, 17, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 18/22
+
+Clock Cycle 42:
+ Current CPU Blocking 
+(sw, 2500, 2, 18, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 19/22
+
+Clock Cycle 43:
+ Current CPU Blocking 
+(sw, 2500, 2, 19, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 20/22
+
+Clock Cycle 44:
+ Current CPU Blocking 
+(sw, 2500, 2, 20, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 21/22
+
+Clock Cycle 45:
+ Current CPU Blocking 
+(sw, 2500, 2, 21, 22, 10, )(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 22/22
+Finished Instruction sw 2500 2 on Line 10
+
+Clock Cycle 46:
+ Current CPU Blocking 
+(sw, 2504, 0, 0, 0, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Started sw 2504 0 on Line 13
+Completed 1/2
+
+Clock Cycle 47:
+ Current CPU Blocking 
+(sw, 2504, 0, 1, 2, 13, )(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 2/2
+Finished Instruction sw 2504 0 on Line 13
+
+Clock Cycle 48:
+ Current CPU Blocking 
+(lw, 2500, $t6, 0, 0, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Started lw 2500 $t6 on Line 17
+Completed 1/2
+
+Clock Cycle 49:
+ Current CPU Blocking 
+(lw, 2500, $t6, 1, 2, 17, )(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 2/2
+$t6 = 2
+Finished Instruction lw 2500 $t6 on Line 17
+
+Clock Cycle 50:
+ Current CPU Blocking 
+(lw, 2504, $t8, 0, 0, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Started lw 2504 $t8 on Line 19
+Completed 1/2
+
+Clock Cycle 51:
+ Current CPU Blocking 
+(lw, 2504, $t8, 1, 2, 19, )(lw, 1004, $t7, 0, 0, 18, )
+Completed 2/2
+$t8 = 0
+Finished Instruction lw 2504 $t8 on Line 19
+
+Clock Cycle 52:
+ Current CPU Blocking 
+(lw, 1004, $t7, 0, 0, 18, )
+Started lw 1004 $t7 on Line 18
+Row 2 will be copied back to DRAM and Row 0 will be activated
+Completed 1/22
+
+Clock Cycle 53:
+ Current CPU Blocking 
+(lw, 1004, $t7, 1, 22, 18, )
+Completed 2/22
+
+Clock Cycle 54:
+ Current CPU Blocking 
+(lw, 1004, $t7, 2, 22, 18, )
+Completed 3/22
+
+Clock Cycle 55:
+ Current CPU Blocking 
+(lw, 1004, $t7, 3, 22, 18, )
+Completed 4/22
+
+Clock Cycle 56:
+ Current CPU Blocking 
+(lw, 1004, $t7, 4, 22, 18, )
+Completed 5/22
+
+Clock Cycle 57:
+ Current CPU Blocking 
+(lw, 1004, $t7, 5, 22, 18, )
+Completed 6/22
+
+Clock Cycle 58:
+ Current CPU Blocking 
+(lw, 1004, $t7, 6, 22, 18, )
+Completed 7/22
+
+Clock Cycle 59:
+ Current CPU Blocking 
+(lw, 1004, $t7, 7, 22, 18, )
+Completed 8/22
+
+Clock Cycle 60:
+ Current CPU Blocking 
+(lw, 1004, $t7, 8, 22, 18, )
+Completed 9/22
+
+Clock Cycle 61:
+ Current CPU Blocking 
+(lw, 1004, $t7, 9, 22, 18, )
+Completed 10/22
+Memory at 2500 = 2
+
+Clock Cycle 62:
+ Current CPU Blocking 
+(lw, 1004, $t7, 10, 22, 18, )
+Completed 11/22
+
+Clock Cycle 63:
+ Current CPU Blocking 
+(lw, 1004, $t7, 11, 22, 18, )
+Completed 12/22
+
+Clock Cycle 64:
+ Current CPU Blocking 
+(lw, 1004, $t7, 12, 22, 18, )
+Completed 13/22
+
+Clock Cycle 65:
+ Current CPU Blocking 
+(lw, 1004, $t7, 13, 22, 18, )
+Completed 14/22
+
+Clock Cycle 66:
+ Current CPU Blocking 
+(lw, 1004, $t7, 14, 22, 18, )
+Completed 15/22
+
+Clock Cycle 67:
+ Current CPU Blocking 
+(lw, 1004, $t7, 15, 22, 18, )
+Completed 16/22
+
+Clock Cycle 68:
+ Current CPU Blocking 
+(lw, 1004, $t7, 16, 22, 18, )
+Completed 17/22
+
+Clock Cycle 69:
+ Current CPU Blocking 
+(lw, 1004, $t7, 17, 22, 18, )
+Completed 18/22
+
+Clock Cycle 70:
+ Current CPU Blocking 
+(lw, 1004, $t7, 18, 22, 18, )
+Completed 19/22
+
+Clock Cycle 71:
+ Current CPU Blocking 
+(lw, 1004, $t7, 19, 22, 18, )
+Completed 20/22
+
+Clock Cycle 72:
+ Current CPU Blocking 
+(lw, 1004, $t7, 20, 22, 18, )
+Completed 21/22
+
+Clock Cycle 73:
+ Current CPU Blocking 
+(lw, 1004, $t7, 21, 22, 18, )
+Completed 22/22
+$t7 = 3
+Finished Instruction lw 1004 $t7 on Line 18
+Total Number of cycles taken = 73
+Total Number of Row Buffer Updates = 7
+
+DRAM memory structure :
+Memory at row 0 column 250 address 1000 = 1
+Memory at row 0 column 251 address 1004 = 3
+Memory at row 2 column 113 address 2500 = 2
+
+Integer Register Values :
+zero = 0
+s0 = 1000
+s1 = 2500
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 1
+t1 = 2
+t2 = 3
+t3 = 4
+t4 = 0
+t5 = 11
+t6 = 2
+t7 = 3
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0

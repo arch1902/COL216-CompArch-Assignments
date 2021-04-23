@@ -1,0 +1,283 @@
+
+Clock Cycle 1:
+addi $s1,$zero,1000
+$s1 = 1000
+
+Clock Cycle 2:
+addi $s2,$s2,1
+$s2 = 1
+
+Clock Cycle 3:
+DRAM Request(Write) Issued for sw 1000 1 on Line 5
+
+Clock Cycle 4:
+Started sw 1000 1 on Line 5
+Row 0 will be activated
+Completed 1/12
+addi $s1,$s1,4
+$s1 = 1004
+
+Clock Cycle 5:
+Completed 2/12
+addi $s2,$s2,1
+$s2 = 2
+
+Clock Cycle 6:
+Completed 3/12
+bne $s2,10,loop
+
+Clock Cycle 7:
+Completed 4/12
+DRAM Request(Write) Issued for sw 1004 2 on Line 5
+
+Clock Cycle 8:
+Completed 5/12
+addi $s1,$s1,4
+$s1 = 1008
+
+Clock Cycle 9:
+Completed 6/12
+addi $s2,$s2,1
+$s2 = 3
+
+Clock Cycle 10:
+Completed 7/12
+bne $s2,10,loop
+
+Clock Cycle 11:
+Completed 8/12
+DRAM Request(Write) Issued for sw 1008 3 on Line 5
+
+Clock Cycle 12:
+Completed 9/12
+addi $s1,$s1,4
+$s1 = 1012
+
+Clock Cycle 13:
+Completed 10/12
+addi $s2,$s2,1
+$s2 = 4
+
+Clock Cycle 14:
+Completed 11/12
+bne $s2,10,loop
+
+Clock Cycle 15:
+Completed 12/12
+Finished Instruction sw 1000 1 on Line 5
+DRAM Request(Write) Issued for sw 1012 4 on Line 5
+
+Clock Cycle 16:
+Started sw 1004 2 on Line 5
+Completed 1/2
+addi $s1,$s1,4
+$s1 = 1016
+
+Clock Cycle 17:
+Completed 2/2
+Finished Instruction sw 1004 2 on Line 5
+addi $s2,$s2,1
+$s2 = 5
+
+Clock Cycle 18:
+Started sw 1008 3 on Line 5
+Completed 1/2
+bne $s2,10,loop
+
+Clock Cycle 19:
+Completed 2/2
+Finished Instruction sw 1008 3 on Line 5
+DRAM Request(Write) Issued for sw 1016 5 on Line 5
+
+Clock Cycle 20:
+Started sw 1012 4 on Line 5
+Completed 1/2
+addi $s1,$s1,4
+$s1 = 1020
+
+Clock Cycle 21:
+Completed 2/2
+Finished Instruction sw 1012 4 on Line 5
+addi $s2,$s2,1
+$s2 = 6
+
+Clock Cycle 22:
+Started sw 1016 5 on Line 5
+Completed 1/2
+bne $s2,10,loop
+
+Clock Cycle 23:
+Completed 2/2
+Finished Instruction sw 1016 5 on Line 5
+DRAM Request(Write) Issued for sw 1020 6 on Line 5
+
+Clock Cycle 24:
+Started sw 1020 6 on Line 5
+Completed 1/2
+addi $s1,$s1,4
+$s1 = 1024
+
+Clock Cycle 25:
+Completed 2/2
+Finished Instruction sw 1020 6 on Line 5
+addi $s2,$s2,1
+$s2 = 7
+
+Clock Cycle 26:
+bne $s2,10,loop
+
+Clock Cycle 27:
+DRAM Request(Write) Issued for sw 1024 7 on Line 5
+
+Clock Cycle 28:
+Started sw 1024 7 on Line 5
+Row 0 will be copied back to DRAM and Row 1 will be activated
+Completed 1/22
+addi $s1,$s1,4
+$s1 = 1028
+
+Clock Cycle 29:
+Completed 2/22
+addi $s2,$s2,1
+$s2 = 8
+
+Clock Cycle 30:
+Completed 3/22
+bne $s2,10,loop
+
+Clock Cycle 31:
+Completed 4/22
+DRAM Request(Write) Issued for sw 1028 8 on Line 5
+
+Clock Cycle 32:
+Completed 5/22
+addi $s1,$s1,4
+$s1 = 1032
+
+Clock Cycle 33:
+Completed 6/22
+addi $s2,$s2,1
+$s2 = 9
+
+Clock Cycle 34:
+Completed 7/22
+bne $s2,10,loop
+
+Clock Cycle 35:
+Completed 8/22
+DRAM Request(Write) Issued for sw 1032 9 on Line 5
+
+Clock Cycle 36:
+Completed 9/22
+addi $s1,$s1,4
+$s1 = 1036
+
+Clock Cycle 37:
+Completed 10/22
+Memory at 1000 = 1
+Memory at 1004 = 2
+Memory at 1008 = 3
+Memory at 1012 = 4
+Memory at 1016 = 5
+Memory at 1020 = 6
+addi $s2,$s2,1
+$s2 = 10
+
+Clock Cycle 38:
+Completed 11/22
+bne $s2,10,loop
+
+Clock Cycle 39:
+Completed 12/22
+
+Clock Cycle 40:
+Completed 13/22
+
+Clock Cycle 41:
+Completed 14/22
+
+Clock Cycle 42:
+Completed 15/22
+
+Clock Cycle 43:
+Completed 16/22
+
+Clock Cycle 44:
+Completed 17/22
+
+Clock Cycle 45:
+Completed 18/22
+
+Clock Cycle 46:
+Completed 19/22
+
+Clock Cycle 47:
+Completed 20/22
+
+Clock Cycle 48:
+Completed 21/22
+
+Clock Cycle 49:
+Completed 22/22
+Finished Instruction sw 1024 7 on Line 5
+
+Clock Cycle 50:
+Started sw 1028 8 on Line 5
+Completed 1/2
+
+Clock Cycle 51:
+Completed 2/2
+Finished Instruction sw 1028 8 on Line 5
+
+Clock Cycle 52:
+Started sw 1032 9 on Line 5
+Completed 1/2
+
+Clock Cycle 53:
+Completed 2/2
+Finished Instruction sw 1032 9 on Line 5
+
+RELEVANT STATISTICS :->
+Total Number of cycles taken = 53
+Total Number of Row Buffer Updates = 11
+
+DRAM memory structure :
+Memory at row 0 column 250 address 1000 = 1
+Memory at row 0 column 251 address 1004 = 2
+Memory at row 0 column 252 address 1008 = 3
+Memory at row 0 column 253 address 1012 = 4
+Memory at row 0 column 254 address 1016 = 5
+Memory at row 0 column 255 address 1020 = 6
+
+Integer Register Values :
+zero = 0
+s0 = 0
+s1 = 1036
+s2 = 10
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0

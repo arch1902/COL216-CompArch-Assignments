@@ -1,0 +1,95 @@
+6
+Minor Output - 
+./minor.out t6 10 2
+Total Number of clock cycles = 4950
+Total Number of Row-buffer Updates = 317
+
+Assignment 4 Output - 
+./a4.out t6 10 2
+Total Number of cycles taken = 3575
+Total Number of Row Buffer Updates = 299
+
+Strong Assignment 4 Output - 
+./s.out t6 10 2
+Total Number of cycles taken = 3545
+Total Number of Row Buffer Updates = 299
+
+7
+Minor Output - 
+./minor.out t7 10 2
+Total Number of clock cycles = 10672
+Total Number of Row-buffer Updates = 677
+
+Assignment 4 Output - 
+./a4.out t7 10 2
+Total Number of cycles taken = 7380
+Total Number of Row Buffer Updates = 621
+
+Strong Assignment 4 Output - 
+./s.out t7 10 2
+Total Number of cycles taken = 7133
+Total Number of Row Buffer Updates = 614
+
+8
+Minor Output - 
+./minor.out t8 10 2
+Total Number of clock cycles = 2591
+Total Number of Row-buffer Updates = 163
+
+Assignment 4 Output - 
+./a4.out t8 10 2
+Total Number of cycles taken = 1924
+Total Number of Row Buffer Updates = 157
+
+Strong Assignment 4 Output - 
+./s.out t8 10 2
+Total Number of cycles taken = 1889
+Total Number of Row Buffer Updates = 156
+
+9
+Minor Output - 
+./minor.out t9 10 2
+Total Number of clock cycles = 12330
+Total Number of Row-buffer Updates = 852
+
+Assignment 4 Output - 
+./a4.out t9 10 2
+Total Number of cycles taken = 7831
+Total Number of Row Buffer Updates = 733
+
+Strong Assignment 4 Output - 
+./s.out t9 10 2
+Total Number of cycles taken = 7345
+Total Number of Row Buffer Updates = 710
+
+10
+Minor Output - 
+./minor.out t10 10 2
+Total Number of clock cycles = 25085
+Total Number of Row-buffer Updates = 1725
+
+Assignment 4 Output - 
+./a4.out t10 10 2
+Total Number of cycles taken = 15534
+Total Number of Row Buffer Updates = 1451
+
+Strong Assignment 4 Output - 
+./s.out t10 10 2
+Total Number of cycles taken = 14576
+Total Number of Row Buffer Updates = 1405
+
+11
+Minor Output - 
+./minor.out t11 10 2
+Total Number of clock cycles = 36673
+Total Number of Row-buffer Updates = 2494
+
+Assignment 4 Output - 
+./a4.out t11 10 2
+Total Number of cycles taken = 22401
+Total Number of Row Buffer Updates = 2093
+
+Strong Assignment 4 Output - 
+./s.out t11 10 2
+Total Number of cycles taken = 20789
+Total Number of Row Buffer Updates = 2013

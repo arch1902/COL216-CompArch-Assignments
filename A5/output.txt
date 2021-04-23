@@ -1,0 +1,77 @@
+
+Clock Cycle 1:
+File Number 1 addi $t0, $zero, 1
+File Number 1 $t0 = 1
+File Number 2 addi $t8, $t8, 1
+File Number 2 $t8 = 1
+File Number 3 addi $t1,$t1,2020
+File Number 3 $t1 = 2020
+
+Clock Cycle 2:
+File Number 1 add $t0, $t0, $t1
+File Number 1 $t0 = 1
+File Number 2 addi $t1, $t1, 2
+File Number 2 $t1 = 2
+
+Clock Cycle 3:
+File Number 2 addi $t2, $t2, 3
+File Number 2 $t2 = 3
+
+Clock Cycle 4:
+File Number 2 addi $t0, $t0, 10
+File Number 2 $t0 = 10
+
+Clock Cycle 5:
+File Number 2 addi $t3, $t3, 4
+File Number 2 $t3 = 4
+
+Clock Cycle 6:
+File Number 2 add $t0, $t1, $t2
+File Number 2 $t0 = 5
+
+Clock Cycle 7:
+
+Clock Cycle 8:
+
+Clock Cycle 9:
+
+Clock Cycle 10:
+
+RELEVANT STATISTICS :->
+Total Number of cycles taken = 10
+Total Number of Row Buffer Updates = 0
+
+DRAM memory structure :
+
+Integer Register Values :
+zero = 0
+s0 = 0
+s1 = 0
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0

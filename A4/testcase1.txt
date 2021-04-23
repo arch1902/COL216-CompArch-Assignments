@@ -13,7 +13,7 @@ main:
 	sw $t4, 4($s1)	
 	
 	lw $t5, 0($s0)
-
+	addi $t5,$t5,10
 	lw $t6, 0($s1)
 	lw $t7, 4($s0)
 	lw $t8, 4($s1)

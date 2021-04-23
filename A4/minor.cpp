@@ -508,15 +508,15 @@ int main(int argc, char *argv[]) {
     }
     file1.close();
 // -----------------------------------------------PARSING ENDS ---------------------------------------------------------
-    for (auto const& j : params){
-         int c = j.first;
-         vector<string> v = j.second;
-         cout<<c<<"\n";
-         for(auto j: v){
-             cout<<string(j)<<" ";
-         }
-         cout<<"\n";
-    }
+    // for (auto const& j : params){
+    //      int c = j.first;
+    //      vector<string> v = j.second;
+    //      cout<<c<<"\n";
+    //      for(auto j: v){
+    //          cout<<string(j)<<" ";
+    //      }
+    //      cout<<"\n";
+    // }
     // for(auto const& j : label){
     //     cout<<j.first<<"->"<<j.second<<"   ";
     // }

@@ -455,10 +455,52 @@ DATA MEMORY:
 2504-2507: 0
 -----------------------------------------
 
-Cycle 112 --> lw $t6, 0($s1)
+Cycle 112 --> addi $t5,$t5,10
+INTEGER REGISTERS :
+R0  [zero] = 0
+R1  [r0] = 0
+R2  [r1] = 0
+R3  [r2] = 0
+R4  [r3] = 0
+R5  [r4] = 0
+R6  [r5] = 0
+R7  [r6] = 0
+R8  [r7] = 0
+R9  [r8] = 0
+R10 [r9] = 0
+R11 [t0] = 1
+R12 [t1] = 2
+R13 [t2] = 3
+R14 [t3] = 4
+R15 [t4] = 0
+R16 [t5] = 11
+R17 [t6] = 0
+R18 [t7] = 0
+R19 [t8] = 0
+R20 [t9] = 0
+R21 [s0] = 1000
+R22 [s1] = 2500
+R23 [s2] = 0
+R24 [s3] = 0
+R25 [s4] = 0
+R26 [s5] = 0
+R27 [s6] = 0
+R28 [s7] = 0
+R29 [s8] = 0
+R30 [s9] = 0
+R31 [sp] = 0
+
+DATA MEMORY:
+1000-1003: 1
+1004-1007: 3
+2500-2503: 2
+2504-2507: 0
+-----------------------------------------
+
+Cycle 113 --> lw $t6, 0($s1)
 DRAM request issued : READ
 
-Cycle 113-134 --> lw $t6, 0($s1)
+Cycle 114-135 --> lw $t6, 0($s1)
 ROW 0 copied back to DRAM and ROW 2 activated
 Data at the column offset from the row buffer loaded to Register $t6
 INTEGER REGISTERS :
@@ -478,7 +520,7 @@ R12 [t1] = 2
 R13 [t2] = 3
 R14 [t3] = 4
 R15 [t4] = 0
-R16 [t5] = 1
+R16 [t5] = 11
 R17 [t6] = 2
 R18 [t7] = 0
 R19 [t8] = 0
@@ -502,10 +544,10 @@ DATA MEMORY:
 2504-2507: 0
 -----------------------------------------
 
-Cycle 135 --> lw $t7, 4($s0)
+Cycle 136 --> lw $t7, 4($s0)
 DRAM request issued : READ
 
-Cycle 136-157 --> lw $t7, 4($s0)
+Cycle 137-158 --> lw $t7, 4($s0)
 ROW 2 copied back to DRAM and ROW 0 activated
 Data at the column offset from the row buffer loaded to Register $t7
 INTEGER REGISTERS :
@@ -525,7 +567,7 @@ R12 [t1] = 2
 R13 [t2] = 3
 R14 [t3] = 4
 R15 [t4] = 0
-R16 [t5] = 1
+R16 [t5] = 11
 R17 [t6] = 2
 R18 [t7] = 3
 R19 [t8] = 0
@@ -549,10 +591,10 @@ DATA MEMORY:
 2504-2507: 0
 -----------------------------------------
 
-Cycle 158 --> lw $t8, 4($s1)
+Cycle 159 --> lw $t8, 4($s1)
 DRAM request issued : READ
 
-Cycle 159-180 --> lw $t8, 4($s1)
+Cycle 160-181 --> lw $t8, 4($s1)
 ROW 0 copied back to DRAM and ROW 2 activated
 Data at the column offset from the row buffer loaded to Register $t8
 INTEGER REGISTERS :
@@ -572,7 +614,7 @@ R12 [t1] = 2
 R13 [t2] = 3
 R14 [t3] = 4
 R15 [t4] = 0
-R16 [t5] = 1
+R16 [t5] = 11
 R17 [t6] = 2
 R18 [t7] = 3
 R19 [t8] = 0
@@ -596,7 +638,7 @@ DATA MEMORY:
 2504-2507: 0
 -----------------------------------------
 
-Total Number of clock cycles = 180
+Total Number of clock cycles = 181
 Total Number of Row-buffer Updates = 12
 Instruction Memory Used: 88 Bytes
 Data Memory Used: 16 Bytes
@@ -607,9 +649,9 @@ mul ->0
 beq ->0
 bne ->0
 slt ->0
-lw ->8
+lw ->7
 sw ->7
-addi ->6
+addi ->7
 j -> 0
 -----------------------------------------
 Data Memory at the end of Execution:

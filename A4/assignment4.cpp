@@ -430,6 +430,9 @@ int main(int argc, char *argv[]) {
         bool flag = false;
         string removed_register;
         //DRAM 
+        // for(auto j: Blocking_registers){
+        //     if(j.second!=0){out<<j.first<<" -> "<<j.second<<", ";}
+        // }
         if (!Dram_queue.empty()){
             vector<string> Curr_executed = Dram_queue[0];
             int address = stoi(Curr_executed[1]);
@@ -443,6 +446,7 @@ int main(int argc, char *argv[]) {
             //      cout<<k<<" ";
             // }
             // cout<<endl;
+            // out<<endl;
             while(true){
                 //out<<Dram_queue[0][3]<<endl;0
                 if (Dram_queue[0][3]=="0"){
@@ -517,7 +521,12 @@ int main(int argc, char *argv[]) {
         }
         //Normal Commands 
         if (checker(pc)){
+            if (flag){
+                Blocking_registers[removed_register] -=1;
+                flag = false;
+            }
             Instruction = params[pc][0];
+            //out<<Instruction<<endl;
             //cout<<Instruction<<endl;
             if (Instruction == "lw"){
                 string relevant_registor = params[pc][1];
@@ -577,9 +586,14 @@ int main(int argc, char *argv[]) {
             flag = false;
         }
     }
+    if(reg["$zero"] != 0){
+        cout<<"The value in Zero Registor is not mutable."<<endl;
+        exit(-1);
+    }
     cout<<"Total Number of cycles taken = "<<clock_cycle<<endl;
     cout<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
 
+    out<<"\n"<<"RELEVANT STATISTICS :->"<<endl;
     out<<"Total Number of cycles taken = "<<clock_cycle<<endl;
     out<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl;  
 
