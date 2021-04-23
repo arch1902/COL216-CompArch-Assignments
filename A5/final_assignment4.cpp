@@ -592,7 +592,7 @@ int main(int argc, char *argv[]) {
                 //     all_blocking_registers[i][removed_register] -=1;
                 //     flag = false;
                 // }
-                cout<<Instruction<<endl;
+                //cout<<Instruction<<endl;
                 if (Instruction == "lw"){
                     string relevant_registor = all_params[i][all_pc[i]][1];
                     int offset = stoi(all_params[i][all_pc[i]][2]);
