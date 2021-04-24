@@ -14,9 +14,9 @@ using namespace std;
 ofstream out;
 map<string,int> reg;
 vector<map<string,int>> all_regs;
-map<int,vector<string>> params;
+// map<int,vector<string>> params;
 vector<map<int,vector<string>>> all_params;
-map<string,int> label;
+// map<string,int> label;
 vector<map<string,int>> all_labels;
 map<int,int> data_memory;
 map<string,int> statistics;
@@ -24,8 +24,8 @@ vector<string> operations = {"add","sub","mul","beq","bne","slt","lw","sw","addi
 vector<string> registers = {"$zero","$at","$v0","$v1","$a0","$a1","$a2","$a3","$k0","$k1","$ra","$t0","$t1",
 "$t2","$t3","$t4","$t5","$t6","$t7","$t8","$t9","$s0","$s1","$s2","$s3","$s4","$s5","$s6","$s7","$gp",
 "$fp","$sp"};
-vector<string> instructions; //Vector containing all instructions 
-vector<vector<string>> all_instructions;
+// vector<string> instructions; 
+vector<vector<string>> all_instructions; //2D Vector containing all instructions 
 regex n("[-]?[0-9]+");  //for checking if a string is convertible to an Integer
 regex l("([A-Z|a-z])[A-Z|a-z|0-9|_]*"); // for Label
 int INSTRUCTION_MEMORY = pow(2,17); // Memory is word Addressable hence it has 2^19 Bytes
@@ -45,9 +45,11 @@ vector<vector<int>> Dram_Memory;
 vector<map<int,int>> all_lines_numbers;
 vector<int> Row_buffer;
 vector<vector<string>> Dram_queue;
-map<string,int>  Blocking_registers;
+// map<string,int>  Blocking_registers;
 vector<map<string,int>> all_blocking_registers;
 vector<int> num_array;
+
+int total_int_executed=0;
 
 // This code removes trailing and starting whitespace characters
 const std::string WHITESPACE = " \n\r\t\f\v";
@@ -77,38 +79,38 @@ void validator(vector<string> V, string s,int l, int file_number){
 }
 
 // Prints the registers in decimal format
-void print(){
-    out<<"zero = "<<reg["$zero"]<<endl;
-    out<<"s0 = "<<reg["$s0"]<<endl;
-    out<<"s1 = "<<reg["$s1"]<<endl;
-    out<<"s2 = "<<reg["$s2"]<<endl;
-    out<<"s3 = "<<reg["$s3"]<<endl;
-    out<<"s4 = "<<reg["$s4"]<<endl;
-    out<<"s5 = "<<reg["$s5"]<<endl;
-    out<<"s6 = "<<reg["$s6"]<<endl;
-    out<<"s7 = "<<reg["$s7"]<<endl;
-    out<<"t0 = "<<reg["$t0"]<<endl;
-    out<<"t1 = "<<reg["$t1"]<<endl;
-    out<<"t2 = "<<reg["$t2"]<<endl;
-    out<<"t3 = "<<reg["$t3"]<<endl;
-    out<<"t4 = "<<reg["$t4"]<<endl;
-    out<<"t5 = "<<reg["$t5"]<<endl;
-    out<<"t6 = "<<reg["$t6"]<<endl;
-    out<<"t7 = "<<reg["$t7"]<<endl;
-    out<<"t8 = "<<reg["$t8"]<<endl;
-    out<<"t9 = "<<reg["$t9"]<<endl;
-    out<<"v0 = "<<reg["$v0"]<<endl;
-    out<<"v1 = "<<reg["$v1"]<<endl;
-    out<<"a0 = "<<reg["$a0"]<<endl;
-    out<<"a1 = "<<reg["$a1"]<<endl;
-    out<<"a2 = "<<reg["$a2"]<<endl;
-    out<<"a3 = "<<reg["$a3"]<<endl;
-    out<<"k0 = "<<reg["$k1"]<<endl;
-    out<<"gp = "<<reg["$gp"]<<endl;
-    out<<"sp = "<<reg["$sp"]<<endl;
-    out<<"fp = "<<reg["$fp"]<<endl;
-    out<<"ra = "<<reg["$ra"]<<endl;
-    out<<"at = "<<reg["$at"]<<endl;
+void print(int i){
+    out<<"zero = "<<all_regs[i]["$zero"]<<endl;
+    out<<"s0 = "<<all_regs[i]["$s0"]<<endl;
+    out<<"s1 = "<<all_regs[i]["$s1"]<<endl;
+    out<<"s2 = "<<all_regs[i]["$s2"]<<endl;
+    out<<"s3 = "<<all_regs[i]["$s3"]<<endl;
+    out<<"s4 = "<<all_regs[i]["$s4"]<<endl;
+    out<<"s5 = "<<all_regs[i]["$s5"]<<endl;
+    out<<"s6 = "<<all_regs[i]["$s6"]<<endl;
+    out<<"s7 = "<<all_regs[i]["$s7"]<<endl;
+    out<<"t0 = "<<all_regs[i]["$t0"]<<endl;
+    out<<"t1 = "<<all_regs[i]["$t1"]<<endl;
+    out<<"t2 = "<<all_regs[i]["$t2"]<<endl;
+    out<<"t3 = "<<all_regs[i]["$t3"]<<endl;
+    out<<"t4 = "<<all_regs[i]["$t4"]<<endl;
+    out<<"t5 = "<<all_regs[i]["$t5"]<<endl;
+    out<<"t6 = "<<all_regs[i]["$t6"]<<endl;
+    out<<"t7 = "<<all_regs[i]["$t7"]<<endl;
+    out<<"t8 = "<<all_regs[i]["$t8"]<<endl;
+    out<<"t9 = "<<all_regs[i]["$t9"]<<endl;
+    out<<"v0 = "<<all_regs[i]["$v0"]<<endl;
+    out<<"v1 = "<<all_regs[i]["$v1"]<<endl;
+    out<<"a0 = "<<all_regs[i]["$a0"]<<endl;
+    out<<"a1 = "<<all_regs[i]["$a1"]<<endl;
+    out<<"a2 = "<<all_regs[i]["$a2"]<<endl;
+    out<<"a3 = "<<all_regs[i]["$a3"]<<endl;
+    out<<"k0 = "<<all_regs[i]["$k1"]<<endl;
+    out<<"gp = "<<all_regs[i]["$gp"]<<endl;
+    out<<"sp = "<<all_regs[i]["$sp"]<<endl;
+    out<<"fp = "<<all_regs[i]["$fp"]<<endl;
+    out<<"ra = "<<all_regs[i]["$ra"]<<endl;
+    out<<"at = "<<all_regs[i]["$at"]<<endl;
 }
 
 
@@ -233,26 +235,26 @@ void validator_lw(string s, int l,int m, string instruction, int file_number){
 void add(int i, int f){
     int y = (all_params[f][i][3][0]=='$') ? all_regs[f][all_params[f][i][3]] : stoi(all_params[f][i][3]);
     all_regs[f][all_params[f][i][1]]=all_regs[f][all_params[f][i][2]]+y;
-    out<<"File Number "<<f+1<<" "<<all_instructions[f][i]<<endl;
-    out<<"File Number "<<f+1<<" "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_instructions[f][i]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
 }
 void sub(int i, int f){
     int y = (all_params[f][i][3][0]=='$') ? all_regs[f][all_params[f][i][3]] : stoi(all_params[f][i][3]);
     all_regs[f][all_params[f][i][1]]=all_regs[f][all_params[f][i][2]]-y;
-    out<<"File Number "<<f+1<<" "<<all_instructions[f][i]<<endl;
-    out<<"File Number "<<f+1<<" "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_instructions[f][i]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
 }
 void mul(int i,int f){
     int y = (all_params[f][i][3][0]=='$') ? all_regs[f][all_params[f][i][3]] : stoi(all_params[f][i][3]);
     all_regs[f][all_params[f][i][1]]=all_regs[f][all_params[f][i][2]]*y;
-    out<<"File Number "<<f+1<<" "<<all_instructions[f][i]<<endl;
-    out<<"File Number "<<f+1<<" "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_instructions[f][i]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
 }
 void addi(int i,int f){
     //cout<<all_params[f][i][1]<<" "<<all_params[f][i][2]<<" "<<all_params[f][i][3]<<endl;
     all_regs[f][all_params[f][i][1]]=all_regs[f][all_params[f][i][2]]+stoi(all_params[f][i][3]);
-    out<<"File Number "<<f+1<<" "<<all_instructions[f][i]<<endl;
-    out<<"File Number "<<f+1<<" "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_instructions[f][i]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
 }
 void slt(int i,int f){
     int y = (all_params[f][i][3][0]=='$') ? all_regs[f][all_params[f][i][3]] : stoi(all_params[f][i][3]);
@@ -261,15 +263,15 @@ void slt(int i,int f){
     }else {
         all_regs[f][all_params[f][i][1]] = 0;
     }
-    out<<"File Number "<<f+1<<" "<<all_instructions[f][i]<<endl;
-    out<<"File Number "<<f+1<<" "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_instructions[f][i]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_params[f][i][1]<<" = "<<all_regs[f][all_params[f][i][1]]<<endl;
 }
 void beq(int i,int f){
     if (all_labels[f].find(all_params[f][i][3]) == all_labels[f].end()){
-        cout<<"File Number "<<f+1<<" "<< "Invalid Label on line "<<i+1<<endl;
+        cout<<"File Number "<<f+1<<" : "<< "Invalid Label on line "<<i+1<<endl;
         exit(-1);
     }
-    out<<"File Number "<<f+1<<" "<<all_instructions[f][i]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_instructions[f][i]<<endl;
     int y = (all_params[f][i][2][0]=='$') ? all_regs[f][all_params[f][i][2]] : stoi(all_params[f][i][2]);
     if (all_regs[f][all_params[f][i][1]] == y){
         all_pc[f] = all_labels[f][all_params[f][i][3]];
@@ -278,13 +280,13 @@ void beq(int i,int f){
     }
 }
 void bne(int i,int f){
-    if (label.find(params[i][3]) == label.end()){
+    if (all_labels[f].find(all_params[f][i][3]) == all_labels[f].end()){
         cout << "Invalid Label on line "<<i+1<<endl;
         exit(-1);
     }
-    out<<"File Number "<<f+1<<" "<<all_instructions[f][i]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_instructions[f][i]<<endl;
     int y = (all_params[f][i][2][0]=='$') ? all_regs[f][all_params[f][i][2]] : stoi(all_params[f][i][2]);
-    if (reg[params[i][1]] != y){
+    if (all_regs[f][all_params[f][i][1]] != y){
         all_pc[f] = all_labels[f][all_params[f][i][3]];
     }else{
         all_pc[f]++;
@@ -292,10 +294,10 @@ void bne(int i,int f){
 }
 void jump(int i, int f){
     if (all_labels[f].find(all_params[f][i][1]) == all_labels[f].end()){
-        cout<<"File Number "<<f+1<<" "<< "Invalid Label on line "<<i+1;
+        cout<<"File Number "<<f+1<<" "<< " : Invalid Label on line "<<i+1;
         exit(-1);
     }
-    out<<"File Number "<<f+1<<" "<<all_instructions[f][i]<<endl;
+    out<<"File Number "<<f+1<<" : "<<all_instructions[f][i]<<endl;
     all_pc[f] = all_labels[f][all_params[f][i][1]];
 }
 
@@ -448,7 +450,7 @@ int main(int argc, char *argv[]) {
             num++;
             // Throws an error if number of commands is more than Instruction storage limit.
             if (num>INSTRUCTION_MEMORY){
-                cout<<"File Number "<<j+1<<"Error! Instruction memory limit exceeded"<<endl;
+                cout<<"File Number "<<j+1<<" : Error! Instruction memory limit exceeded"<<endl;
                 exit(-1);
             }
             // instruction memory nums X 4 bytes
@@ -477,7 +479,7 @@ int main(int argc, char *argv[]) {
         if (clock_cycle>=M){break;}
         //if (pc<num && label.find(params[pc][0])!=label.end()){pc++;continue;}
         clock_cycle++;
-        out<<"\n"<<"Clock Cycle "<<clock_cycle<<":"<<endl;
+        out<<"\n"<<"Clock Cycle "<<clock_cycle<<" -> "<<endl;
         //out<<" Current CPU Blocking "<<curr_cpu_blocking_register<<endl;
         // for (auto const & string_vec : Dram_queue) {
         //     out<<"(";
@@ -494,122 +496,124 @@ int main(int argc, char *argv[]) {
         //     out<<" ) ";
         // }
         
-        // bool flag = false;
-        // string removed_register;
-        // //DRAM 
-        // if (!Dram_queue.empty()){
-        //     vector<string> Curr_executed = Dram_queue[0];
-        //     int address = stoi(Curr_executed[1]);
-        //     int row = address/1024;
-        //     int  col = address%1024;
-        //     if(address>INSTRUCTION_MEMORY || col%4 !=0){
-        //         cout<<"Program tried to access invalid memory address "<<address<<endl;
-        //         exit(-1);
-        //     }
-        //     // for(auto k: Dram_queue[0]){
-        //     //      out<<k<<" ";
-        //     // }
-        //     // out<<endl;
-        //     while(true){
-        //         //out<<Dram_queue[0][3]<<endl;0
-        //         if (Dram_queue[0][3]=="0"){
-        //             out<<"Started "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<" on Line "<<Dram_queue[0][5]<<endl;
-        //             int curr = 0;
-        //             if(Dram_queue[0][0]=="sw") row_buffer_updates++;
-        //             if(last_buffer_row!=row){
-        //                 curr += ROW_ACCESS_DELAY;
-        //                 row_buffer_updates++;
-        //                 if (last_buffer_row!=-1){
-        //                     if(dirty_bit){
-        //                     curr += ROW_ACCESS_DELAY;
-        //                     out<<"Row "<<last_buffer_row<<" will be copied back to DRAM and ";
-        //                     }else{
-        //                        out<<"Row "<<last_buffer_row<<" need NOT be copied back to DRAM and "; 
-        //                     }
-        //                 }
-        //                 out<<"Row "<<row<<" will be activated\n";
-        //                 dirty_bit = 0;
-        //             }
-        //             curr += COL_ACCESS_DELAY;
-        //             Dram_queue[0][4] = to_string(curr);
-        //             Dram_queue[0][3] = "1";
-        //             out<<"Completed "<<"1"<<"/"<<Dram_queue[0][4]<<endl;
-        //             break;
-        //         }
-        //         out<<"Completed "<<to_string(stoi(Dram_queue[0][3])+1)<<"/"<<Dram_queue[0][4]<<endl;
-        //         if (stoi(Dram_queue[0][3])==ROW_ACCESS_DELAY-1){
-        //             if(Dram_queue[0][4]==to_string(2*ROW_ACCESS_DELAY+COL_ACCESS_DELAY)){
-        //                 for (int j = 0;j<256;j++){
-        //                     if (Dram_Memory[last_buffer_row][j] != Row_buffer[j]){
-        //                         out<<"Memory at "<<last_buffer_row*1024+j*4<<" = "<<to_string(Row_buffer[j])<<endl;
-        //                     }
-        //                 }
-        //                 Dram_Memory[last_buffer_row] = Row_buffer;
-        //             }
-        //             if(stoi(Dram_queue[0][4])==ROW_ACCESS_DELAY+COL_ACCESS_DELAY){
-        //                 Row_buffer = Dram_Memory[row];
-        //                 last_buffer_row = row;
-        //             }
-        //             Dram_queue[0][3] = to_string(stoi(Curr_executed[3])+1);
-        //             break;
-        //         }
-        //         if (stoi(Dram_queue[0][3])==2*ROW_ACCESS_DELAY-1 && Dram_queue[0][4]==to_string(2*ROW_ACCESS_DELAY+COL_ACCESS_DELAY)){
-        //             Row_buffer = Dram_Memory[row];
-        //             last_buffer_row = row;
-        //             Dram_queue[0][3] = to_string(stoi(Curr_executed[3])+1);
-        //             break;
-        //         }
+        bool flag = false;
+        pair<int,string> removed_register;
+        //DRAM 
+        if (!Dram_queue.empty()){
+            vector<string> Curr_executed = Dram_queue[0];
+            int address = stoi(Curr_executed[1]);
+            int row = address/1024;
+            int  col = address%1024;
+            if(address>INSTRUCTION_MEMORY || col%4 !=0){
+                cout<<"Program tried to access invalid memory address "<<address<<endl;
+                exit(-1);
+            }
+            // for(auto k: Dram_queue[0]){
+            //      out<<k<<" ";
+            // }
+            // out<<endl;
+            while(true){
+                //out<<Dram_queue[0][3]<<endl;0
+                if (Dram_queue[0][3]=="0"){
+                    out<<"File Number "<<stoi(Dram_queue[0][6])+1<<" : Started "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<" on Line "<<Dram_queue[0][5]<<endl;
+                    int curr = 0;
+                    if(Dram_queue[0][0]=="sw") row_buffer_updates++;
+                    if(last_buffer_row!=row){
+                        curr += ROW_ACCESS_DELAY;
+                        row_buffer_updates++;
+                        if (last_buffer_row!=-1){
+                            if(dirty_bit){
+                            curr += ROW_ACCESS_DELAY;
+                            out<<"Row "<<last_buffer_row<<" will be copied back to DRAM and ";
+                            }else{
+                               out<<"Row "<<last_buffer_row<<" need NOT be copied back to DRAM and "; 
+                            }
+                        }
+                        out<<"Row "<<row<<" will be activated\n";
+                        dirty_bit = 0;
+                    }
+                    curr += COL_ACCESS_DELAY;
+                    Dram_queue[0][4] = to_string(curr);
+                    Dram_queue[0][3] = "1";
+                    out<<"File Number "<<stoi(Dram_queue[0][6])+1<<" : Completed "<<"1"<<"/"<<Dram_queue[0][4]<<endl;
+                    break;
+                }
+                out<<"File Number "<<stoi(Dram_queue[0][6])+1<<" : Completed "<<to_string(stoi(Dram_queue[0][3])+1)<<"/"<<Dram_queue[0][4]<<endl;
+                if (stoi(Dram_queue[0][3])==ROW_ACCESS_DELAY-1){
+                    if(Dram_queue[0][4]==to_string(2*ROW_ACCESS_DELAY+COL_ACCESS_DELAY)){
+                        for (int j = 0;j<256;j++){
+                            if (Dram_Memory[last_buffer_row][j] != Row_buffer[j]){
+                                out<<"Memory at "<<last_buffer_row*1024+j*4<<" = "<<to_string(Row_buffer[j])<<endl;
+                            }
+                        }
+                        Dram_Memory[last_buffer_row] = Row_buffer;
+                    }
+                    if(stoi(Dram_queue[0][4])==ROW_ACCESS_DELAY+COL_ACCESS_DELAY){
+                        Row_buffer = Dram_Memory[row];
+                        last_buffer_row = row;
+                    }
+                    Dram_queue[0][3] = to_string(stoi(Curr_executed[3])+1);
+                    break;
+                }
+                if (stoi(Dram_queue[0][3])==2*ROW_ACCESS_DELAY-1 && Dram_queue[0][4]==to_string(2*ROW_ACCESS_DELAY+COL_ACCESS_DELAY)){
+                    Row_buffer = Dram_Memory[row];
+                    last_buffer_row = row;
+                    Dram_queue[0][3] = to_string(stoi(Curr_executed[3])+1);
+                    break;
+                }
 
-        //         if(stoi(Dram_queue[0][3])==stoi(Dram_queue[0][4])-1){
-        //             if(Dram_queue[0][0]=="lw"){
-        //                 reg[Dram_queue[0][2]] = Row_buffer[col/4];
-        //                 flag  = true;
-        //                 removed_register = Dram_queue[0][2];
-        //                 out<<removed_register<<" = "<<Row_buffer[col/4]<<endl;
-        //                 //Blocking_registers[Dram_queue[0][2]] -=1;
-        //             }
-        //             if(Dram_queue[0][0] =="sw"){
-        //                 Row_buffer[col/4] = stoi(Dram_queue[0][2]);
-        //                 dirty_bit = 1;
-        //             }
-        //             out<<"Finished Instruction "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<" on Line "<<Dram_queue[0][5]<<endl;
-        //             Dram_queue.erase(Dram_queue.begin());
-        //             sort_queue();
-        //             //Dram_queue[0][3] = to_string(stoi(Dram_queue[0][3])+1);
-        //             break;
-        //         }
-        //         Dram_queue[0][3] = to_string(stoi(Dram_queue[0][3])+1);
-        //         break;
-        //     }
-        // }
+                if(stoi(Dram_queue[0][3])==stoi(Dram_queue[0][4])-1){
+                    if(Dram_queue[0][0]=="lw"){
+                        all_regs[stoi(Dram_queue[0][6])][Dram_queue[0][2]] = Row_buffer[col/4];
+                        flag  = true;
+                        removed_register = {stoi(Dram_queue[0][6]),Dram_queue[0][2]};
+                        out<<"File Number "<<stoi(Dram_queue[0][6])+1<<" : "<<removed_register.second<<" = "<<Row_buffer[col/4]<<endl;
+                        //Blocking_registers[Dram_queue[0][2]] -=1;
+                    }
+                    if(Dram_queue[0][0] =="sw"){
+                        Row_buffer[col/4] = stoi(Dram_queue[0][2]);
+                        dirty_bit = 1;
+                    }
+                    out<<"File Number "<<stoi(Dram_queue[0][6])+1<<" : Finished Instruction "<<Dram_queue[0][0]<<" "<<Dram_queue[0][1]<<" "<<Dram_queue[0][2]<<" on Line "<<Dram_queue[0][5]<<endl;
+                    Dram_queue.erase(Dram_queue.begin());
+                    sort_queue();
+                    //Dram_queue[0][3] = to_string(stoi(Dram_queue[0][3])+1);
+                    break;
+                }
+                Dram_queue[0][3] = to_string(stoi(Dram_queue[0][3])+1);
+                break;
+            }
+        }
 
         //Normal Commands 
         for(int i=0;i<N;i++){
             if (checker(all_pc[i],i)){
-                //out<<"Here"<<endl;
+                total_int_executed++;
+
                 string Instruction = all_params[i][all_pc[i]][0];
-                // if (flag){
-                //     all_blocking_registers[i][removed_register] -=1;
-                //     flag = false;
-                // }
-                //cout<<Instruction<<endl;
+
+                if (flag){
+                    all_blocking_registers[removed_register.first][removed_register.second] -=1;
+                    flag = false;
+                }
+
                 if (Instruction == "lw"){
                     string relevant_registor = all_params[i][all_pc[i]][1];
                     int offset = stoi(all_params[i][all_pc[i]][2]);
                     int address = offset+all_regs[i][all_params[i][all_pc[i]][3]];
-                    Dram_queue.push_back({"lw",to_string(address),relevant_registor,"0","0",to_string(all_lines_numbers[i][all_pc[i]])}); 
+                    Dram_queue.push_back({"lw",to_string(address),relevant_registor,"0","0",to_string(all_lines_numbers[i][all_pc[i]]),to_string(i)}); 
                     sort_queue();  
                     all_blocking_registers[i][relevant_registor] ++;
-                    out<< "DRAM Request(Read) Issued for "<<"lw "<<address<<" "<<relevant_registor<<" on Line "<<all_lines_numbers[i][all_pc[i]]<<endl;        
+                    out<<"File Number "<<i+1<< " : DRAM Request(Read) Issued for "<<"lw "<<address<<" "<<relevant_registor<<" on Line "<<all_lines_numbers[i][all_pc[i]]<<endl;        
                     all_pc[i]++;
                     continue;
                 }else if(Instruction == "sw"){
                     string relevant_registor = all_params[i][all_pc[i]][1];
                     int offset = stoi(all_params[i][all_pc[i]][2]);
                     int address = offset+all_regs[i][all_params[i][all_pc[i]][3]];
-                    Dram_queue.push_back({"sw",to_string(address),to_string(all_regs[i][relevant_registor]),"0","0",to_string(all_lines_numbers[i][all_pc[i]])});  
+                    Dram_queue.push_back({"sw",to_string(address),to_string(all_regs[i][relevant_registor]),"0","0",to_string(all_lines_numbers[i][all_pc[i]]),to_string(i)});  
                     sort_queue();
-                    out<< "DRAM Request(Write) Issued for "<<"sw "<<address<<" "<<all_regs[i][relevant_registor]<<" on Line "<<all_lines_numbers[i][all_pc[i]]<<endl;         
+                    out<<"File Number "<<i+1<< " : DRAM Request(Write) Issued for "<<"sw "<<address<<" "<<all_regs[i][relevant_registor]<<" on Line "<<all_lines_numbers[i][all_pc[i]]<<endl;         
                     all_pc[i]++;
                     continue;
                 }else if (Instruction == "add"){ 
@@ -642,38 +646,44 @@ int main(int argc, char *argv[]) {
                     jump(all_pc[i],i);
                     continue;
                 }else{
+                    total_int_executed--;
                     all_pc[i]++;
                     continue;
                 }
             }
-            // if (flag){
-            //     Blocking_registers[removed_register] -=1;
-            //     flag = false;
-            // }
-        }
-        // if(all_regs[i]["$zero"] != 0){
-        //     cout<<"The value in Zero Registor is not mutable."<<endl;
-        //     exit(-1);
-        // }
-    }
-    cout<<"Total Number of cycles taken = "<<clock_cycle<<endl;
-    cout<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
-
-    out<<"\n"<<"RELEVANT STATISTICS :->"<<endl;
-    out<<"Total Number of cycles taken = "<<clock_cycle<<endl;
-    out<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl;  
-
-
-    out<<"\n"<<"DRAM memory structure :"<<endl;
-    for(int j = 0;j<512;j++){
-        for(int i =0;i<256;i++){
-            if (Dram_Memory[j][i] != 0){
-                out<<"Memory at row "<<j<<" column "<<i<<" address "<<j*1024+i*4<<" = "<<Dram_Memory[j][i]<<endl;
+            if (flag){
+                all_blocking_registers[removed_register.first][removed_register.second] -=1;
+                flag = false;
+            }
+        
+            if(all_regs[i]["$zero"] != 0){
+                cout<<"The value in Zero Registor is not mutable."<<endl;
+                exit(-1);
             }
         }
     }
-    out<<"\n"<<"Integer Register Values :"<<endl;
-    print();
+    cout<<"Total Number of instructions executed in "<<M<<" Clock Cycles : "<<total_int_executed<<endl;
+    cout<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
+
+    out<<"\n"<<"RELEVANT STATISTICS :->"<<endl;
+    out<<"Total Number of instructions executed in "<<M<<" Clock Cycles : "<<total_int_executed<<endl;
+    out<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl;  
+
+
+    // out<<"\n"<<"DRAM memory structure :"<<endl;
+    // for(int j = 0;j<512;j++){
+    //     for(int i =0;i<256;i++){
+    //         if (Dram_Memory[j][i] != 0){
+    //             out<<"Memory at row "<<j<<" column "<<i<<" address "<<j*1024+i*4<<" = "<<Dram_Memory[j][i]<<endl;
+    //         }
+    //     }
+    // }
+    //out<<"\n"<<"Integer Register Values :"<<endl;
+    for(int i=0;i<N;i++){
+        out<<"\n"<<"Integer Register Values for File "<<i+1<<" -> "<<endl;
+        print(i);
+        out<<endl;
+    }
 	return 0;
 }
 //------------------------------------Execution Ends---------------------------------------------------------------------
