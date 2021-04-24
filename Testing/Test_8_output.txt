@@ -1,0 +1,316 @@
+Cycle 1 --> addi $s1 , $zero , 1
+zero = 0
+s0 = 0
+s1 = 1
+s2 = 0
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Cycle 2 --> addi $s2 , $zero , 8
+zero = 0
+s0 = 0
+s1 = 1
+s2 = 8
+s3 = 0
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Cycle 3 --> mul $s3 , $s1 , $s2
+zero = 0
+s0 = 0
+s1 = 1
+s2 = 8
+s3 = 8
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Cycle 4 --> addi $s3 , $s3 , -19
+zero = 0
+s0 = 0
+s1 = 1
+s2 = 8
+s3 = -11
+s4 = 0
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Cycle 5 --> slt $s4 ,  $s1,  $s2
+zero = 0
+s0 = 0
+s1 = 1
+s2 = 8
+s3 = -11
+s4 = 1
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Cycle 6 --> addi $s5 , $s1 , 4
+zero = 0
+s0 = 0
+s1 = 1
+s2 = 8
+s3 = -11
+s4 = 1
+s5 = 5
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Cycle 7 --> sw   $s5 , 0($t1)
+DRAM request issued : WRITE
+
+Cycle 8-19 --> sw   $s5 , 0($t1)
+ROW 0 activated
+Data from Register $s5 stored at the column offset in row buffer
+zero = 0
+s0 = 0
+s1 = 1
+s2 = 8
+s3 = -11
+s4 = 1
+s5 = 5
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Cycle 20 --> lw $s4 , 0($t2)
+DRAM request issued : READ
+
+Cycle 21 --> slt $s1 , $s5 , $s3
+zero = 0
+s0 = 0
+s1 = 0
+s2 = 8
+s3 = -11
+s4 = 1
+s5 = 5
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Cycle 21-22 --> lw $s4 , 0($t2)
+ROW 0 already present in ROW BUFFER
+Data at the column offset from the row buffer loaded to Register $s4
+zero = 0
+s0 = 0
+s1 = 0
+s2 = 8
+s3 = -11
+s4 = 5
+s5 = 5
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
+Total Number of clock cycles = 22
+Total Number of Row-buffer Updates = 2
+Instruction Memory Used: 36 Bytes
+Data Memory Used: 4 Bytes
+Number of times each instruction was executed :
+add ->0
+sub ->0
+mul ->1
+beq ->0
+bne ->0
+slt ->2
+lw ->2
+sw ->1
+addi ->4
+j -> 0
+-----------------------------------------
+Data Memory at the end of Execution:
+0-3: 5

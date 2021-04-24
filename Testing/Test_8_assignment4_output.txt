@@ -1,0 +1,115 @@
+
+Clock Cycle 1:
+addi $s1 , $zero , 1
+$s1 = 1
+
+Clock Cycle 2:
+addi $s2 , $zero , 8
+$s2 = 8
+
+Clock Cycle 3:
+mul $s3 , $s1 , $s2
+$s3 = 8
+
+Clock Cycle 4:
+addi $s3 , $s3 , -19
+$s3 = -11
+
+Clock Cycle 5:
+slt $s4 ,  $s1,  $s2
+$s4 = 1
+
+Clock Cycle 6:
+addi $s5 , $s1 , 4
+$s5 = 5
+
+Clock Cycle 7:
+DRAM Request(Write) Issued for sw 0 5 on Line 7
+
+Clock Cycle 8:
+Started sw 0 5 on Line 7
+Row 0 will be activated
+Completed 1/12
+DRAM Request(Read) Issued for lw 0 $s4 on Line 8
+
+Clock Cycle 9:
+Completed 2/12
+slt $s1 , $s5 , $s3
+$s1 = 0
+
+Clock Cycle 10:
+Completed 3/12
+
+Clock Cycle 11:
+Completed 4/12
+
+Clock Cycle 12:
+Completed 5/12
+
+Clock Cycle 13:
+Completed 6/12
+
+Clock Cycle 14:
+Completed 7/12
+
+Clock Cycle 15:
+Completed 8/12
+
+Clock Cycle 16:
+Completed 9/12
+
+Clock Cycle 17:
+Completed 10/12
+
+Clock Cycle 18:
+Completed 11/12
+
+Clock Cycle 19:
+Completed 12/12
+Finished Instruction sw 0 5 on Line 7
+
+Clock Cycle 20:
+Started lw 0 $s4 on Line 8
+Completed 1/2
+
+Clock Cycle 21:
+Completed 2/2
+$s4 = 5
+Finished Instruction lw 0 $s4 on Line 8
+Total Number of cycles taken = 21
+Total Number of Row Buffer Updates = 2
+
+DRAM memory structure :
+
+Integer Register Values :
+zero = 0
+s0 = 0
+s1 = 0
+s2 = 8
+s3 = -11
+s4 = 5
+s5 = 5
+s6 = 0
+s7 = 0
+t0 = 0
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0

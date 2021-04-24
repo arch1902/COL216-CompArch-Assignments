@@ -1,0 +1,8 @@
+
+Clock Cycle 1:
+addi $s2,$zero,10
+$s2 = 10
+
+Clock Cycle 2:
+add $zero,$zero,$s2
+$zero = 10

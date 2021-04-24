@@ -1,0 +1,4 @@
+hello:
+    add $s1,$s2,3
+exit:
+hello:

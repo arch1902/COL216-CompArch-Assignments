@@ -1,0 +1,3 @@
+In:
+bne $s2,$s2,dne
+exit:
