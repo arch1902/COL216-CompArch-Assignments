@@ -71,8 +71,6 @@ int assign_counter = 0;
 int total_assign_time = 0;
 map<int,string> curr_blocking_register;
 
-
-
 // This code removes trailing and starting whitespace characters
 const std::string WHITESPACE = " \n\r\t\f\v";
 std::string ltrim(const std::string& s)
@@ -134,7 +132,6 @@ void print(int i){
     out<<"ra = "<<all_regs[i]["$ra"]<<endl;
     out<<"at = "<<all_regs[i]["$at"]<<endl;
 }
-
 
 // Validator for the operands of instructions "add","sub","mul","addi","slt"
 //Operator $reg1,reg2,reg3/Int
@@ -252,7 +249,6 @@ void validator_lw(string s, int l,int m, string instruction, int file_number){
             exit(-1);
         }
 }
-
 
 void add(int i, int f){
     int y = (all_params[f][i][3][0]=='$') ? all_regs[f][all_params[f][i][3]] : stoi(all_params[f][i][3]);
@@ -377,7 +373,9 @@ int main(int argc, char *argv[]) {
     individual_queue_size = TOTAL_QUEUE_SIZE/N;
     rows_for_a_core = (1024/N);
     CORE_MEMORY = 1024*rows_for_a_core;
-    cout<<"Debug"<<endl;
+    assign_computed=false;
+    
+
     vector<string> input_files;
     fstream files[N];
     int j = 0;
@@ -479,14 +477,36 @@ int main(int argc, char *argv[]) {
     // cout<<endl;
     // Program Counter that iterates over the instruction set and points to the instruction being executed
     while (true){
+        
+
         if (clock_cycle>=M){break;}
         //if (pc<num && label.find(params[pc][0])!=label.end()){pc++;continue;}
         clock_cycle++;
         out<<"\n"<<"Clock Cycle "<<clock_cycle<<" -> "<<endl;
 
+        cout<<clock_cycle<<" "<<flag<<endl;
+        cout<<assign_computed<<" "<<total_assign_time<<" "<<assign_counter<<endl;
+        cout<<"---------------------------------\n";
+        for (auto const& j : Dram_queue){
+            int c = j.first;
+            vector<vector<string>> v = j.second;
+            cout<<c<<"\n";
+            for(auto j: v){
+                for(auto k:j){
+                    cout<<k<<" ";
+                }
+                cout<<"\n";
+            }
+            cout<<"\n";
+        }
+        cout<<"---------------------------------\n";
+
         //MRM
+
         while(true){
+            cout<<"Dram Size "<<Dram_queue.size()<<endl;
             if (Is_dram_free && !is_Dram_empty()){
+                cout<<"i was here\n";
                 if (!assign_computed){
                     int clock = 0;
                     if (executing_instruction.empty()){
@@ -540,15 +560,18 @@ int main(int argc, char *argv[]) {
                     total_assign_time = clock;
                     assign_counter = 1;
                 }else{
+                    cout<<"hello\n";
                     if (assign_counter!=total_assign_time){
+                        cout<<"hello there\n";
                         assign_counter ++;
                         break;
                     }else{
+                        cout<<executing_instruction[1]<<" "<<executing_instruction[6]<<" "<<cache[7][0]<<" "<<cache[7][1]<<endl;
                         int row_of_executing_ins = (stoi(executing_instruction[1]) +CORE_MEMORY*stoi(executing_instruction[6]))/1024;
                         if (Dram_queue[row_of_executing_ins][0] != executing_instruction){cout<<"Error 10"<<endl;}
                         Dram_queue[row_of_executing_ins].erase(Dram_queue[row_of_executing_ins].begin());
                         if(Dram_queue[row_of_executing_ins].size() == 0){Dram_queue.erase(row_of_executing_ins);}
-                        if (stoi(cache[7][0]) == row_of_executing_ins){
+                        if (stoi(cache[7][0]) == row_of_executing_ins && cache[7].size()>1){
                             if (cache[7].size()>1 && cache[7][1] == "0"){
                                 cache[7] = {"0"};
                                 cache[8] = {"0"};
@@ -556,7 +579,7 @@ int main(int argc, char *argv[]) {
                                 cache[7][1] = to_string(stoi(cache[7][1])-1);
                             }
                         }
-                        if (stoi(cache[5][0]) == row_of_executing_ins){
+                        if (stoi(cache[5][0]) == row_of_executing_ins && cache[5].size()>1){
                             if (cache[5].size()>1 && cache[5][1] == "0"){
                                 cache[5] = {"0"};
                                 cache[6] = {"0"};
@@ -569,20 +592,28 @@ int main(int argc, char *argv[]) {
                         assign_counter = 0;
                     }
                 }
-
+                break;
             }else if(request_issued){
                 //sw 2 1000, lw r1 1000 
                 //sw 3 1000, sw 1 1000
                 //lw r1 1000, lw r1 2000
+                cout<<"here "<<cache[0][0]<<" " <<cache[1][0]<<endl;
                 if (cache[0][0]=="0"){
                     int clock_count = 0;
+                    for(auto j:issued_instruction){
+                        cout<<j<<" ";
+                    }
+                    cout<<endl;
                     int r = (stoi(issued_instruction[1])+CORE_MEMORY*stoi(issued_instruction[6]))/1024;
                     int a = stoi(issued_instruction[1]); 
                     int s = Dram_queue[r].size();
                     int c = stoi(issued_instruction[6]);
                     cache[3] =issued_instruction;
+                    
                     if (issued_instruction[0] == "sw"){
+                        cout<<"ggg\n";
                         int j = Dram_queue[r].size()-1;
+
                         while(j>=0){
                             if (stoi(Dram_queue[r][j][1]) == a){
                                 if (Dram_queue[r][j][0] == "sw"){
@@ -631,6 +662,11 @@ int main(int argc, char *argv[]) {
                         }                        
                     }
                 cache[0][0] = {to_string(clock_count)};
+                if(cache[2][0]=="0" && cache[5][0]=="0" && cache[7][0]=="0"){
+                    cache[0][0]="1";
+                }  
+                cout<<clock_count<<endl;
+
                 cache[1] = {"1"};
                 }else if(stoi(cache[1][0]) == stoi(cache[0][0])){
                     int r = (stoi(cache[3][1])+CORE_MEMORY*stoi(cache[3][6]))/1024;
@@ -661,16 +697,16 @@ int main(int argc, char *argv[]) {
                 }else{
                     cache[1] = {to_string((stoi(cache[1][0])+1))};
                 }
+                break;
 
             }else{
                 break;
             }
         }
-        cout<<"Debug2"<<endl;
-        cout<<Is_dram_free<<endl;
+        cout<<"reached DRAM"<<endl;
         //DRAM
         if(!Is_dram_free && !(executing_instruction.size()>0 && (stoi(executing_instruction[6]) == mrm_writing_to_core) && mrm_writing)){
-            cout<<"INNN"<<endl;
+
             vector<string> Curr_executed = executing_instruction;
             int address = stoi(Curr_executed[1]);
             int row = (address+CORE_MEMORY*stoi(Curr_executed[6]))/1024;
@@ -748,11 +784,11 @@ int main(int argc, char *argv[]) {
                 executing_instruction[3] = to_string(stoi(executing_instruction[3])+1);
                 break;
             }
-        }      
-        cout<<"Debug3"<<endl;       
+        }           
         //Normal Commands 
         for(int i=0;i<N;i++){
-            if (i == stopcore && flag && !((i == mrm_writing_to_core) && mrm_writing)){
+            cout<<i<<" "<<stopcore<<" "<<flag<<" "<<mrm_writing<<" "<<mrm_writing_to_core<<endl;
+            if (i != stopcore && !flag && !((i == mrm_writing_to_core) && mrm_writing)){
                 if (checker(all_pc[i],i)){
                     cout<<all_instructions[i][all_pc[i]]<<endl;
                     total_int_executed++;
@@ -824,7 +860,7 @@ int main(int argc, char *argv[]) {
                 cout<<"The value in Zero Registor is not mutable."<<endl;
                 exit(-1);
             }
-        }
+        }   
     }
     cout<<"Total Number of instructions executed in "<<M<<" Clock Cycles : "<<total_int_executed<<endl;
     cout<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
