@@ -1,0 +1,372 @@
+
+Clock Cycle 1:
+addi $s0, $zero, 1000
+$s0 = 1000
+
+Clock Cycle 2:
+addi $s5, $s5, 10000
+$s5 = 10000
+
+Clock Cycle 3:
+addi $s1, $zero, 0
+$s1 = 0
+
+Clock Cycle 4:
+addi $s2, $zero, 2
+$s2 = 2
+
+Clock Cycle 5:
+addi $t1, $zero, 0
+$t1 = 0
+
+Clock Cycle 6:
+addi $t1, $t1, 1
+$t1 = 1
+
+Clock Cycle 7:
+DRAM Request(Write) Issued for sw 1000 1 on Line 9
+
+Clock Cycle 8:
+Started sw 1000 1 on Line 9
+Row 0 will be activated
+Completed 1/12
+addi $s0, $s0, 4
+$s0 = 1004
+
+Clock Cycle 9:
+Completed 2/12
+addi $s1, $s1, 1
+$s1 = 1
+
+Clock Cycle 10:
+Completed 3/12
+DRAM Request(Write) Issued for sw 10000 0 on Line 12
+
+Clock Cycle 11:
+Completed 4/12
+slt $s3, $s1, $s2
+$s3 = 1
+
+Clock Cycle 12:
+Completed 5/12
+bne $s3, $zero, initloop
+
+Clock Cycle 13:
+Completed 6/12
+addi $t1, $t1, 1
+$t1 = 2
+
+Clock Cycle 14:
+Completed 7/12
+DRAM Request(Write) Issued for sw 1004 2 on Line 9
+
+Clock Cycle 15:
+Completed 8/12
+addi $s0, $s0, 4
+$s0 = 1008
+
+Clock Cycle 16:
+Completed 9/12
+addi $s1, $s1, 1
+$s1 = 2
+
+Clock Cycle 17:
+Completed 10/12
+DRAM Request(Write) Issued for sw 10000 0 on Line 12
+
+Clock Cycle 18:
+Completed 11/12
+slt $s3, $s1, $s2
+$s3 = 0
+
+Clock Cycle 19:
+Completed 12/12
+Finished Instruction sw 1000 1 on Line 9
+bne $s3, $zero, initloop
+
+Clock Cycle 20:
+Started sw 1004 2 on Line 9
+Completed 1/2
+addi $s0, $zero, 1000
+$s0 = 1000
+
+Clock Cycle 21:
+Completed 2/2
+Finished Instruction sw 1004 2 on Line 9
+addi $s1, $zero, 0
+$s1 = 0
+
+Clock Cycle 22:
+Started sw 10000 0 on Line 12
+Row 0 will be copied back to DRAM and Row 9 will be activated
+Completed 1/22
+addi $s3, $zero, 0
+$s3 = 0
+
+Clock Cycle 23:
+Completed 2/22
+addi $s2, $zero, 2
+$s2 = 2
+
+Clock Cycle 24:
+Completed 3/22
+DRAM Request(Read) Issued for lw 1000 $t0 on Line 20
+
+Clock Cycle 25:
+Completed 4/22
+addi $s0, $s0, 4
+$s0 = 1004
+
+Clock Cycle 26:
+Completed 5/22
+DRAM Request(Read) Issued for lw 1004 $t1 on Line 22
+
+Clock Cycle 27:
+Completed 6/22
+
+Clock Cycle 28:
+Completed 7/22
+
+Clock Cycle 29:
+Completed 8/22
+
+Clock Cycle 30:
+Completed 9/22
+
+Clock Cycle 31:
+Completed 10/22
+Memory at 1000 = 1
+Memory at 1004 = 2
+
+Clock Cycle 32:
+Completed 11/22
+
+Clock Cycle 33:
+Completed 12/22
+
+Clock Cycle 34:
+Completed 13/22
+
+Clock Cycle 35:
+Completed 14/22
+
+Clock Cycle 36:
+Completed 15/22
+
+Clock Cycle 37:
+Completed 16/22
+
+Clock Cycle 38:
+Completed 17/22
+
+Clock Cycle 39:
+Completed 18/22
+
+Clock Cycle 40:
+Completed 19/22
+
+Clock Cycle 41:
+Completed 20/22
+
+Clock Cycle 42:
+Completed 21/22
+
+Clock Cycle 43:
+Completed 22/22
+Finished Instruction sw 10000 0 on Line 12
+
+Clock Cycle 44:
+Started sw 10000 0 on Line 12
+Completed 1/2
+
+Clock Cycle 45:
+Completed 2/2
+Finished Instruction sw 10000 0 on Line 12
+
+Clock Cycle 46:
+Started lw 1000 $t0 on Line 20
+Row 9 will be copied back to DRAM and Row 0 will be activated
+Completed 1/22
+
+Clock Cycle 47:
+Completed 2/22
+
+Clock Cycle 48:
+Completed 3/22
+
+Clock Cycle 49:
+Completed 4/22
+
+Clock Cycle 50:
+Completed 5/22
+
+Clock Cycle 51:
+Completed 6/22
+
+Clock Cycle 52:
+Completed 7/22
+
+Clock Cycle 53:
+Completed 8/22
+
+Clock Cycle 54:
+Completed 9/22
+
+Clock Cycle 55:
+Completed 10/22
+
+Clock Cycle 56:
+Completed 11/22
+
+Clock Cycle 57:
+Completed 12/22
+
+Clock Cycle 58:
+Completed 13/22
+
+Clock Cycle 59:
+Completed 14/22
+
+Clock Cycle 60:
+Completed 15/22
+
+Clock Cycle 61:
+Completed 16/22
+
+Clock Cycle 62:
+Completed 17/22
+
+Clock Cycle 63:
+Completed 18/22
+
+Clock Cycle 64:
+Completed 19/22
+
+Clock Cycle 65:
+Completed 20/22
+
+Clock Cycle 66:
+Completed 21/22
+
+Clock Cycle 67:
+Completed 22/22
+$t0 = 1
+Finished Instruction lw 1000 $t0 on Line 20
+
+Clock Cycle 68:
+Started lw 1004 $t1 on Line 22
+Completed 1/2
+
+Clock Cycle 69:
+Completed 2/2
+$t1 = 2
+Finished Instruction lw 1004 $t1 on Line 22
+
+Clock Cycle 70:
+add $t2, $t0, $t1
+$t2 = 3
+
+Clock Cycle 71:
+DRAM Request(Write) Issued for sw 1004 3 on Line 24
+
+Clock Cycle 72:
+Started sw 1004 3 on Line 24
+Completed 1/2
+addi $s1, $s1, 1
+$s1 = 1
+
+Clock Cycle 73:
+Completed 2/2
+Finished Instruction sw 1004 3 on Line 24
+slt $s3, $s1, $s2
+$s3 = 1
+
+Clock Cycle 74:
+bne $s3, $zero, sumloop
+
+Clock Cycle 75:
+DRAM Request(Read) Issued for lw 1004 $t0 on Line 20
+
+Clock Cycle 76:
+Started lw 1004 $t0 on Line 20
+Completed 1/2
+addi $s0, $s0, 4
+$s0 = 1008
+
+Clock Cycle 77:
+Completed 2/2
+$t0 = 3
+Finished Instruction lw 1004 $t0 on Line 20
+DRAM Request(Read) Issued for lw 1008 $t1 on Line 22
+
+Clock Cycle 78:
+Started lw 1008 $t1 on Line 22
+Completed 1/2
+
+Clock Cycle 79:
+Completed 2/2
+$t1 = 0
+Finished Instruction lw 1008 $t1 on Line 22
+
+Clock Cycle 80:
+add $t2, $t0, $t1
+$t2 = 3
+
+Clock Cycle 81:
+DRAM Request(Write) Issued for sw 1008 3 on Line 24
+
+Clock Cycle 82:
+Started sw 1008 3 on Line 24
+Completed 1/2
+addi $s1, $s1, 1
+$s1 = 2
+
+Clock Cycle 83:
+Completed 2/2
+Finished Instruction sw 1008 3 on Line 24
+slt $s3, $s1, $s2
+$s3 = 0
+
+Clock Cycle 84:
+bne $s3, $zero, sumloop
+
+RELEVANT STATISTICS :->
+Total Number of cycles taken = 84
+Total Number of Row Buffer Updates = 9
+
+DRAM memory structure :
+Memory at row 0 column 250 address 1000 = 1
+Memory at row 0 column 251 address 1004 = 2
+
+Integer Register Values :
+zero = 0
+s0 = 1008
+s1 = 2
+s2 = 2
+s3 = 0
+s4 = 0
+s5 = 10000
+s6 = 0
+s7 = 0
+t0 = 3
+t1 = 0
+t2 = 3
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0

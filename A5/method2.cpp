@@ -339,6 +339,7 @@ bool checker(int i,int file_number){
         int address = offset+all_regs[file_number][all_params[file_number][i][3]];
         int r = (address + CORE_MEMORY*file_number)/1024;
         if (Dram_queue.find(r) == Dram_queue.end()){
+
             if(Dram_queue.size()>=16){
                 return false;
             }
@@ -389,7 +390,7 @@ int main(int argc, char *argv[]) {
     COL_ACCESS_DELAY = atoi(argv[j+4]);
     //reg["$zero"] = 0;
     for(int i = 0;i<256;i++){Row_buffer.push_back(0);}
-    for(int i = 0;i<512;i++){Dram_Memory.push_back(Row_buffer);}
+    for(int i = 0;i<1024;i++){Dram_Memory.push_back(Row_buffer);}
     out.open("output.txt");
     for (int i = 0;i<N;i++){
         int num=0;
@@ -485,22 +486,6 @@ int main(int argc, char *argv[]) {
         out<<"\n"<<"Clock Cycle "<<clock_cycle<<" -> "<<endl;
 
         cout<<clock_cycle<<" "<<flag<<endl;
-        cout<<assign_computed<<" "<<total_assign_time<<" "<<assign_counter<<endl;
-        cout<<"---------------------------------\n";
-        for (auto const& j : Dram_queue){
-            int c = j.first;
-            vector<vector<string>> v = j.second;
-            cout<<c<<"\n";
-            for(auto j: v){
-                for(auto k:j){
-                    cout<<k<<" ";
-                }
-                cout<<"\n";
-            }
-            cout<<"\n";
-        }
-        cout<<"---------------------------------\n";
-
         //MRM
 
         while(true){
@@ -513,7 +498,7 @@ int main(int argc, char *argv[]) {
                         for (auto i :Dram_queue){
                             if(i.second.size()>0){
                                 executing_instruction = i.second[0];
-                                clock = 3;
+                                clock = 1;
                                 break;
                                 }
                             }
@@ -524,10 +509,11 @@ int main(int argc, char *argv[]) {
                             executing_instruction = Dram_queue[r][0];
                             clock = 2;
                         }else{
+                            Dram_queue.erase(r);
+                            bool flag2 = false;
                             for (auto j : curr_blocking_register){
                                 int core = j.first;
                                 string curr_reg = j.second;
-                                int flag = false;
                                 for (auto z : Dram_queue){
                                     vector<vector<string>> temp = z.second;
                                     if (temp.size() == 0){continue;}
@@ -537,15 +523,15 @@ int main(int argc, char *argv[]) {
                                     for (auto k : temp){
                                         if (k[2] == curr_reg){
                                             executing_instruction = Dram_queue[row3][0];
-                                            flag = true;
+                                            flag2 = true;
                                             break;
                                         }
                                     }
-                                    if (flag){break;}
+                                    if (flag2){break;}
                                 }
-                                if (flag){break;}
+                                if (flag2){break;}
                             }
-                            if (executing_instruction.empty()){
+                            if (!flag2){
                                 for (auto i :Dram_queue){
                                     if(i.second.size()>0){
                                         executing_instruction = i.second[0];
@@ -566,11 +552,16 @@ int main(int argc, char *argv[]) {
                         assign_counter ++;
                         break;
                     }else{
-                        cout<<executing_instruction[1]<<" "<<executing_instruction[6]<<" "<<cache[7][0]<<" "<<cache[7][1]<<endl;
+                        cout<<"reached here"<<endl;
+                        for(auto p : executing_instruction){
+                            cout<<p<<" ";
+                        }
+                        cout<<endl;
+                        //cout<<executing_instruction[1]<<" "<<executing_instruction[6]<<" "<<endl;
                         int row_of_executing_ins = (stoi(executing_instruction[1]) +CORE_MEMORY*stoi(executing_instruction[6]))/1024;
                         if (Dram_queue[row_of_executing_ins][0] != executing_instruction){cout<<"Error 10"<<endl;}
                         Dram_queue[row_of_executing_ins].erase(Dram_queue[row_of_executing_ins].begin());
-                        if(Dram_queue[row_of_executing_ins].size() == 0){Dram_queue.erase(row_of_executing_ins);}
+                        if(Dram_queue[row_of_executing_ins].size() == 0){cout<<"oooooooo"<<endl;Dram_queue.erase(row_of_executing_ins);}
                         if (stoi(cache[7][0]) == row_of_executing_ins && cache[7].size()>1){
                             if (cache[7].size()>1 && cache[7][1] == "0"){
                                 cache[7] = {"0"};
@@ -600,18 +591,14 @@ int main(int argc, char *argv[]) {
                 cout<<"here "<<cache[0][0]<<" " <<cache[1][0]<<endl;
                 if (cache[0][0]=="0"){
                     int clock_count = 0;
-                    for(auto j:issued_instruction){
-                        cout<<j<<" ";
-                    }
-                    cout<<endl;
                     int r = (stoi(issued_instruction[1])+CORE_MEMORY*stoi(issued_instruction[6]))/1024;
                     int a = stoi(issued_instruction[1]); 
                     int s = Dram_queue[r].size();
                     int c = stoi(issued_instruction[6]);
                     cache[3] =issued_instruction;
-                    
+                    cout<<"black hole"<<endl;
                     if (issued_instruction[0] == "sw"){
-                        cout<<"ggg\n";
+                        cout<<"black hole1"<<endl;
                         int j = Dram_queue[r].size()-1;
 
                         while(j>=0){
@@ -629,6 +616,7 @@ int main(int argc, char *argv[]) {
                             j-= 1;
                         }
                     }else{
+                        cout<<"black hole2"<<endl;
                         string redundant_register = issued_instruction[2];
                         int j = Dram_queue[r].size()-1; 
                         while(j>=0){
@@ -647,6 +635,7 @@ int main(int argc, char *argv[]) {
                         for (auto i : Dram_queue){
                             int curr_row = i.first;
                             vector<vector<string>> row_array = i.second;
+                            if (row_array.size() == 0){continue;}
                             if(stoi(row_array[0][6])!= c){continue;}
                             int j = row_array.size()-1;
                             int s2 = row_array.size()-1;
@@ -654,44 +643,53 @@ int main(int argc, char *argv[]) {
                                 if (row_array[j][2] == redundant_register){
                                    //lw-lw redundancy 
                                     clock_count+=min(j,s2-j);
-                                    cache[7] = {to_string(r),to_string(j)};
+                                    cache[7] = {to_string(curr_row),to_string(j)};
                                     cache[8] = row_array[j];
                                 }
                                 j-=1;
                             }
                         }                        
                     }
-                cache[0][0] = {to_string(clock_count)};
-                if(cache[2][0]=="0" && cache[5][0]=="0" && cache[7][0]=="0"){
-                    cache[0][0]="1";
-                }  
-                cout<<clock_count<<endl;
+                    if (clock_count == 0 ){clock_count = 1;}
+                    cache[0][0] = {to_string(clock_count)};
+                    if(cache[2][0]=="0" && cache[5][0]=="0" && cache[7][0]=="0"){
+                        cache[0][0]="1";
+                    }  
+                    
+                    cout<<"xxxxx "<<clock_count<<endl;
 
-                cache[1] = {"1"};
+                    cache[1] = {"1"};
                 }else if(stoi(cache[1][0]) == stoi(cache[0][0])){
+                    cout<<"black hole4"<<endl;
                     int r = (stoi(cache[3][1])+CORE_MEMORY*stoi(cache[3][6]))/1024;
                     if (cache[2][0] == "0"){
-                        if (Dram_queue[r].size() == 0){
-                            Dram_queue[r] = {cache[3]};
-                        }else{
-                            Dram_queue[r].push_back(cache[3]);
-                        }
+                        // if (Dram_queue[r].size() == 0){
+                        //     Dram_queue[r] = {cache[3]};
+                        // }else{
+                        vector<string> temporary = cache[3];
+                        Dram_queue[r].push_back(temporary);
+                        // }
                     }else{
                         all_regs[stoi(cache[3][6])][cache[3][2]] = stoi(cache[4][0]);
                         out<<"CORE "<< cache[3][6] << ": "<< cache[3][2] <<" = "<< cache[4][0]<<endl;
+                        all_blocking_registers[stoi(cache[3][6])][cache[3][2]] -=1;
                         mrm_writing = true;
                         mrm_writing_to_core = stoi(cache[3][6]);
                     }
+                    cout<<"black hole5"<<endl;
                     // removing sw-sw or lw-lw redundancy if present
                     vector<string> s = {"0"};
                     if (cache[5] != s){
                         cout << (Dram_queue[stoi(cache[5][0])][stoi(cache[5][1])] == cache[6])<<endl;
                         Dram_queue[stoi(cache[5][0])].erase(Dram_queue[stoi(cache[5][0])].begin()+stoi(cache[5][1]));
                     }
+                    cout<<"black hole6"<<endl;
                     if (cache[7] != s){
                         cout << (Dram_queue[stoi(cache[7][0])][stoi(cache[7][1])] == cache[8])<<endl;
                         Dram_queue[stoi(cache[7][0])].erase(Dram_queue[stoi(cache[7][0])].begin()+stoi(cache[7][1]));
+                        all_blocking_registers[stoi(cache[8][6])][cache[8][2]] -=1;
                     }
+                    cout<<"black hole7"<<endl;
                     cache = Initial_cache;
                     request_issued = false;
                 }else{
@@ -743,12 +741,16 @@ int main(int argc, char *argv[]) {
                 out<<"File Number "<<stoi(executing_instruction[6])+1<<" : Completed "<<to_string(stoi(executing_instruction[3])+1)<<"/"<<executing_instruction[4]<<endl;
                 if (stoi(executing_instruction[3])==ROW_ACCESS_DELAY-1){
                     if(executing_instruction[4]==to_string(2*ROW_ACCESS_DELAY+COL_ACCESS_DELAY)){
+                        cout<<"in1"<<endl;
+                        cout<<last_buffer_row<<endl;
                         for (int j = 0;j<256;j++){
                             if (Dram_Memory[last_buffer_row][j] != Row_buffer[j]){
                                 out<<"Memory at "<<last_buffer_row*1024+j*4<<" = "<<to_string(Row_buffer[j])<<endl;
                             }
                         }
+                        cout<<"in2"<<endl;
                         Dram_Memory[last_buffer_row] = Row_buffer;
+                        cout<<"in3"<<endl;
                     }
                     if(stoi(executing_instruction[4])==ROW_ACCESS_DELAY+COL_ACCESS_DELAY){
                         Row_buffer = Dram_Memory[row];
@@ -785,6 +787,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
         }           
+        cout<<"Out of DRAM now"<<endl;
         //Normal Commands 
         for(int i=0;i<N;i++){
             cout<<i<<" "<<stopcore<<" "<<flag<<" "<<mrm_writing<<" "<<mrm_writing_to_core<<endl;
@@ -860,14 +863,59 @@ int main(int argc, char *argv[]) {
                 cout<<"The value in Zero Registor is not mutable."<<endl;
                 exit(-1);
             }
-        }   
+        } 
+        out<<"---------------------------------\n";
+        for (auto const& j : Dram_queue){
+            int c = j.first;
+            vector<vector<string>> v = j.second;
+            out<<c<<"\n";
+            for(auto j: v){
+                for(auto k:j){
+                    out<<k<<" ";
+                }
+                out<<"\n";
+            }
+            out<<"\n";
+        }
+        out<<"MRM to DRAM"<<endl;
+        out<<assign_computed<<" "<<total_assign_time<<" "<<assign_counter<<endl;
+        out<<"CPU to MRM"<<endl;
+        out<<cache[0][0]<<" "<<cache[1][0]<<" "<<endl; 
+        out<<"Issued Instruction"<<endl;
+        for(auto j:issued_instruction){
+            out<<j<<" ";
+        }
+        out<<endl;
+        out<<"Executing Instruction"<<endl;
+        for(auto j:executing_instruction){
+            out<<j<<" ";
+        }
+        out<<endl;       
+        out <<"All Blocking Registers"<<endl;
+        for (int i = 0;i<N;i++){
+            for (auto j : all_blocking_registers[i]){
+                if(j.second!= 0){out<<j.first<<"->"<<j.second<<", ";}
+            }
+            out<<endl;
+        }
+        out <<"Cache"<<endl;
+        for (int i = 0;i<9;i++){
+            for (auto j : cache[i]){
+                out<< j <<" ";
+            }
+            out<<endl;
+        }
+        out<<"---------------------------------\n";
+
     }
     cout<<"Total Number of instructions executed in "<<M<<" Clock Cycles : "<<total_int_executed<<endl;
     cout<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
 
     out<<"\n"<<"RELEVANT STATISTICS :->"<<endl;
     out<<"Total Number of instructions executed in "<<M<<" Clock Cycles : "<<total_int_executed<<endl;
-    out<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl;  
+    out<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
+
+
 
 
     // out<<"\n"<<"DRAM memory structure :"<<endl;

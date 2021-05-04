@@ -392,7 +392,7 @@ int main(int argc, char *argv[]) {
     //reg["$zero"] = 0;
     for(int i = 0;i<256;i++){Row_buffer.push_back(0);}
     for(int i = 0;i<512;i++){Dram_Memory.push_back(Row_buffer);}
-    out.open("output.txt");
+    out.open("output_without_delay.txt");
     for (int i = 0;i<N;i++){
         int num=0;
         int num2 = 0;
