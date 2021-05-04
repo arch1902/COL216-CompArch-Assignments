@@ -107,3 +107,86 @@
                     }
                 }
             }
+
+
+
+
+
+
+            if (Is_dram_free){
+                //passing on    
+                if (passing_on_counter == 0){
+                    passing_on_counter += 1;    
+                }else {
+                    int r = (stoi(Dram_queue[executing_core][0][1])+CORE_MEMORY*stoi(Dram_queue[executing_core][0][6]))/1024;
+                    if (Dram_queue[executing_core].size()>0 && r == last_buffer_row){
+                            Is_dram_free = false;
+                    }else{
+                        for (int i = 0;i<N;i++){
+                            if (Dram_queue[i].size()>0){
+                                if(i==executing_core){
+                                    Is_dram_free = false;
+                                }else{
+                                    executing_core = i;
+                                    Is_dram_free = false;
+                                    to_be_sorted = true;
+                                }
+                            } 
+                        }
+                    }
+                    passing_on_counter = 0;
+                }
+            }else if (to_be_sorted){
+                //sorting
+                int r = (stoi(Dram_queue[executing_core][0][1])+CORE_MEMORY*stoi(Dram_queue[executing_core][0][6]))/1024;
+                int clock_count = 0;
+                int off = 1;
+                for(int i = 1;i<Dram_queue.size();i++){
+                    vector<string> curr = Dram_queue[executing_core][i];
+                    int r_current = (stoi(curr[1])+CORE_MEMORY*stoi(curr[6]))/1024;
+                    if(r==r_current){
+                        Dram_queue[executing_core].erase(Dram_queue[executing_core].begin()+i);
+                        Dram_queue[executing_core].insert(off+Dram_queue[executing_core].begin(),curr);
+                        clock_count += abs(i-off);
+                        off++;
+                    }  
+                }
+                if (sorting_counter < clock_cycle){
+                    sorting_counter += 1;
+                }else{
+                    to_be_sorted = false;
+                    sorting_counter = 0;
+                }
+            }else if(request_issued){
+                int clock_cycle = 0;
+                if (pushed_from_core == executing_core){
+                    vector<string> first = Dram_queue[executing_core][0];
+                    int r_first = (stoi(first[1])+CORE_MEMORY*stoi(first[6]))/1024;
+                    vector<string> curr = Dram_queue[executing_core].back();
+                    int r_curr = (stoi(curr[1])+CORE_MEMORY*stoi(curr[6]))/1024;
+                    if (r_curr != r_first){
+                        clock_cycle = 1;
+                    }else{
+                        int off = 1;
+                        for(int i = 1;i<Dram_queue[executing_core].size();i++){
+                            curr = Dram_queue[executing_core].back();
+                            r_curr = (stoi(curr[1])+CORE_MEMORY*stoi(curr[6]))/1024;
+                            if (r_curr!= r_first){
+                                Dram_queue[executing_core].erase(Dram_queue[executing_core].end());
+                                Dram_queue[executing_core].insert(i+Dram_queue[executing_core].begin(),curr);
+                                int temp = Dram_queue[executing_core].size();
+                                clock_cycle = min(i,temp);
+                                break;
+                            }
+                        }
+                    }             
+                }else{
+                    clock_cycle = 1;
+                }
+                if (issuing_counter < clock_cycle){
+                    issuing_counter += 1;
+                }else{
+                    request_issued = false;
+                    issuing_counter = 0;
+                }
+            }
