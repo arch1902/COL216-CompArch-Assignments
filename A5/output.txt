@@ -1,4313 +1,561 @@
 
 Clock Cycle 1 -> 
-File Number 1 : addi $t0, $zero, 1
-File Number 1 : $t0 = 1
-File Number 2 : addi $t8, $t8, 1
-File Number 2 : $t8 = 1
----------------------------------
-MRM to DRAM
-0 0 0
-CPU to MRM
-0 0 
-Issued Instruction
-
-Executing Instruction
-
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $zero, 0
+File Number 1 : $s0 = 0
 
 Clock Cycle 2 -> 
-File Number 1 : add $t0, $t0, $t1
-File Number 1 : $t0 = 1
-File Number 2 : addi $t1, $t1, 2
-File Number 2 : $t1 = 2
-File Number 3 : addi $s0, $zero, 1000
-File Number 3 : $s0 = 1000
----------------------------------
-MRM to DRAM
-0 0 0
-CPU to MRM
-0 0 
-Issued Instruction
-
-Executing Instruction
-
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : DRAM Request(Read) Issued for lw $t0, 1000($s0) on Line 3
 
 Clock Cycle 3 -> 
-File Number 1 : addi $t0, $t0, 10
-File Number 1 : $t0 = 11
-File Number 2 : addi $t2, $t2, 3
-File Number 2 : $t2 = 3
-File Number 3 : addi $s5, $s5, 10000
-File Number 3 : $s5 = 10000
----------------------------------
-MRM to DRAM
-0 0 0
-CPU to MRM
-0 0 
-Issued Instruction
-
-Executing Instruction
-
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+MRM received a request to queue Instruction : lw $t0, 1000($s0) of Core : 1
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 8
 
 Clock Cycle 4 -> 
-File Number 1 : DRAM Request(Write) Issued for sw 1000 11 on Line 4
-File Number 3 : addi $s1, $zero, 0
-File Number 3 : $s1 = 0
----------------------------------
-MRM to DRAM
-0 0 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1000 11 0 0 4 0 
-Executing Instruction
-
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+Completed addition of Instruction lw $t0, 1000($s0) of Core 1
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 0
+File Number 1 : $s0 = 8
 
 Clock Cycle 5 -> 
-File Number 1 : addi $t3, $t3, 4
-File Number 1 : $t3 = 4
-File Number 3 : addi $s2, $zero, 2
-File Number 3 : $s2 = 2
----------------------------------
-0
-
-MRM to DRAM
-0 0 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1000 11 0 0 4 0 
-Executing Instruction
-
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 1000 11 0 0 4 0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRM found Empty, MRM started working on assigning an Instruction to DRAM
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 16
 
 Clock Cycle 6 -> 
-File Number 1 : DRAM Request(Read) Issued for lw 1000 $t4 on Line 6
-File Number 3 : addi $t1, $zero, 0
-File Number 3 : $t1 = 0
----------------------------------
-0
-sw 1000 11 0 0 4 0 
-
-MRM to DRAM
-0 0 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1000 $t4 0 0 6 0 0 0 
-Executing Instruction
-
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 7 -> 
-File Number 1 : add $t5, $t1, $t2
-File Number 1 : $t5 = 0
----------------------------------
-0
-sw 1000 11 0 0 4 0 
-
-MRM to DRAM
-1 1 1
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1000 $t4 0 0 6 0 0 0 
-Executing Instruction
-sw 1000 11 0 0 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 8 -> 
-File Number 1 : Started sw 1000 11 on Line 4
+MRM :
+Finished assignment to Dram 
+Assigned Instruction lw $t0, 1000($s0) of Core 1 to Dram
+DRAM: 
+File Number 1 : Started lw 1000 $t0 on Line 3
 Row 0 will be activated
 File Number 1 : Completed 1/12
-File Number 3 : addi $t1, $t1, 1
-File Number 3 : $t1 = 1
----------------------------------
-MRM to DRAM
-0 1 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1000 $t4 0 0 6 0 0 0 
-Executing Instruction
-sw 1000 11 1 12 4 0 
-All Blocking Registers
-$t4->1, 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 24
 
+Clock Cycle 7 -> 
+MRM :
+DRAM: 
+File Number 1 : Completed 2/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 32
 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+Clock Cycle 8 -> 
+MRM :
+DRAM: 
+File Number 1 : Completed 3/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 40
 
 Clock Cycle 9 -> 
-File Number 1 : Completed 2/12
----------------------------------
-0
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-1 1 
-Issued Instruction
-lw 1000 $t4 0 0 6 0 0 0 
-Executing Instruction
-sw 1000 11 2 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-1 
-1 
-0 
-lw 1000 $t4 0 0 6 0 0 0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 4/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 48
 
 Clock Cycle 10 -> 
-File Number 1 : Completed 3/12
-File Number 2 : DRAM Request(Write) Issued for sw 100 3 on Line 4
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 100 3 0 0 4 1 
-Executing Instruction
-sw 1000 11 3 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 5/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 56
 
 Clock Cycle 11 -> 
-File Number 1 : Completed 4/12
-File Number 2 : addi $t0, $t0, 10
-File Number 2 : $t0 = 10
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 100 3 0 0 4 1 
-Executing Instruction
-sw 1000 11 4 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-1 
-1 
-0 
-sw 100 3 0 0 4 1 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 6/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 64
 
 Clock Cycle 12 -> 
-File Number 1 : Completed 5/12
-File Number 2 : addi $t3, $t3, 4
-File Number 2 : $t3 = 4
-File Number 3 : DRAM Request(Write) Issued for sw 1000 1 on Line 9
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1000 1 0 0 9 2 
-Executing Instruction
-sw 1000 11 5 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 7/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 72
 
 Clock Cycle 13 -> 
-File Number 1 : Completed 6/12
-File Number 3 : addi $s0, $s0, 4
-File Number 3 : $s0 = 1004
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1000 1 0 0 9 2 
-Executing Instruction
-sw 1000 11 6 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-1 
-1 
-0 
-sw 1000 1 0 0 9 2 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 8/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 80
 
 Clock Cycle 14 -> 
-File Number 1 : Completed 7/12
-File Number 2 : DRAM Request(Read) Issued for lw 100 $t4 on Line 7
-File Number 3 : addi $s1, $s1, 1
-File Number 3 : $s1 = 1
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 100 $t4 0 0 7 1 0 0 
-Executing Instruction
-sw 1000 11 7 12 4 0 
-All Blocking Registers
-$t4->1, 
-$t4->1, 
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 9/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 88
 
 Clock Cycle 15 -> 
-File Number 1 : Completed 8/12
-File Number 2 : add $t0, $t1, $t2
-File Number 2 : $t0 = 5
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-1 1 
-Issued Instruction
-lw 100 $t4 0 0 7 1 0 0 
-Executing Instruction
-sw 1000 11 8 12 4 0 
-All Blocking Registers
-$t4->1, 
-$t4->1, 
-
-Cache
-1 
-1 
-1 
-lw 100 $t4 0 0 7 1 0 0 
-3 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 10/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 0
+File Number 1 : $s0 = 88
 
 Clock Cycle 16 -> 
-CORE 1: $t4 = 3
-File Number 1 : Completed 9/12
-File Number 3 : DRAM Request(Write) Issued for sw 10000 0 on Line 12
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 1000 11 9 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 11/12
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 96
 
 Clock Cycle 17 -> 
-File Number 1 : Completed 10/12
-File Number 3 : slt $s3, $s1, $s2
-File Number 3 : $s3 = 1
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 1000 11 10 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-1 
-1 
-0 
-sw 10000 0 0 0 12 2 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 12/12
+File Number 1 : $t0 = 0
+File Number 1 : Finished Instruction lw 1000 $t0 on Line 3
+Core Execution :
 
 Clock Cycle 18 -> 
-File Number 1 : Completed 11/12
-File Number 3 : bne $s3, $zero, initloop
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 1000 11 11 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 104
 
 Clock Cycle 19 -> 
-File Number 1 : Completed 12/12
-File Number 1 : Finished Instruction sw 1000 11 on Line 4
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 1 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 1000 11 11 12 4 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 112
 
 Clock Cycle 20 -> 
-File Number 3 : addi $t1, $t1, 1
-File Number 3 : $t1 = 2
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 2 1
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-lw 1000 $t4 0 0 6 0 0 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 120
 
 Clock Cycle 21 -> 
-File Number 3 : DRAM Request(Write) Issued for sw 1004 2 on Line 9
----------------------------------
-0
-lw 1000 $t4 0 0 6 0 0 0 
-
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 2 2
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1004 2 0 0 9 2 
-Executing Instruction
-lw 1000 $t4 0 0 6 0 0 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 128
 
 Clock Cycle 22 -> 
-File Number 1 : Started lw 1000 $t4 on Line 6
-File Number 1 : Completed 1/2
-File Number 3 : addi $s0, $s0, 4
-File Number 3 : $s0 = 1008
----------------------------------
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 2 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1004 2 0 0 9 2 
-Executing Instruction
-lw 1000 $t4 1 2 6 0 0 0 
-All Blocking Registers
-$t4->1, 
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 136
 
 Clock Cycle 23 -> 
-File Number 1 : Completed 2/2
-File Number 1 : $t4 = 11
-File Number 1 : Finished Instruction lw 1000 $t4 on Line 6
-File Number 3 : addi $s1, $s1, 1
-File Number 3 : $s1 = 2
----------------------------------
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 2 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1004 2 0 0 9 2 
-Executing Instruction
-lw 1000 $t4 1 2 6 0 0 0 
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 1004 2 0 0 9 2 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 144
 
 Clock Cycle 24 -> 
----------------------------------
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 1
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1004 2 0 0 9 2 
-Executing Instruction
-sw 100 3 0 0 4 1 
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 1004 2 0 0 9 2 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 152
 
 Clock Cycle 25 -> 
----------------------------------
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 2
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1004 2 0 0 9 2 
-Executing Instruction
-sw 100 3 0 0 4 1 
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 1004 2 0 0 9 2 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 160
 
 Clock Cycle 26 -> 
----------------------------------
-341
-sw 100 3 0 0 4 1 
-
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 3
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1004 2 0 0 9 2 
-Executing Instruction
-sw 100 3 0 0 4 1 
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 1004 2 0 0 9 2 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 168
 
 Clock Cycle 27 -> 
-File Number 2 : Started sw 100 3 on Line 4
-Row 0 will be copied back to DRAM and Row 341 will be activated
-File Number 2 : Completed 1/22
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1004 2 0 0 9 2 
-Executing Instruction
-sw 100 3 1 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 1004 2 0 0 9 2 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $t0, $s0, 0
+File Number 1 : $t0 = 168
 
 Clock Cycle 28 -> 
-File Number 2 : Completed 2/22
-File Number 3 : DRAM Request(Write) Issued for sw 10000 0 on Line 12
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 100 3 2 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 176
 
 Clock Cycle 29 -> 
-File Number 2 : Completed 3/22
-File Number 3 : slt $s3, $s1, $s2
-File Number 3 : $s3 = 0
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 100 3 3 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 10000 0 0 0 12 2 
-0 
-691 0 
-sw 10000 0 0 0 12 2 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 184
 
 Clock Cycle 30 -> 
-File Number 2 : Completed 4/22
-File Number 3 : bne $s3, $zero, initloop
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 100 3 4 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 192
 
 Clock Cycle 31 -> 
-File Number 2 : Completed 5/22
-File Number 3 : addi $s0, $zero, 1000
-File Number 3 : $s0 = 1000
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 100 3 5 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 200
 
 Clock Cycle 32 -> 
-File Number 2 : Completed 6/22
-File Number 3 : addi $s1, $zero, 0
-File Number 3 : $s1 = 0
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 100 3 6 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 208
 
 Clock Cycle 33 -> 
-File Number 2 : Completed 7/22
-File Number 3 : addi $s3, $zero, 0
-File Number 3 : $s3 = 0
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 100 3 7 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 216
 
 Clock Cycle 34 -> 
-File Number 2 : Completed 8/22
-File Number 3 : addi $s2, $zero, 2
-File Number 3 : $s2 = 2
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 100 3 8 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 224
 
 Clock Cycle 35 -> 
-File Number 2 : Completed 9/22
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 10000 0 0 0 12 2 
-Executing Instruction
-sw 100 3 9 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 232
 
 Clock Cycle 36 -> 
-File Number 2 : Completed 10/22
-Memory at 1000 = 11
-File Number 3 : DRAM Request(Read) Issued for lw 1000 $t0 on Line 20
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1000 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 100 3 10 22 4 1 
-All Blocking Registers
-
-
-$t0->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 240
 
 Clock Cycle 37 -> 
-File Number 2 : Completed 11/22
-File Number 3 : addi $s0, $s0, 4
-File Number 3 : $s0 = 1004
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-1 1 
-Issued Instruction
-lw 1000 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 100 3 11 22 4 1 
-All Blocking Registers
-
-
-$t0->1, 
-Cache
-1 
-1 
-1 
-lw 1000 $t0 0 0 20 2 0 0 
-1 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 248
 
 Clock Cycle 38 -> 
-CORE 2: $t0 = 1
-File Number 2 : Completed 12/22
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1000 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 100 3 12 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 0
+File Number 1 : $s0 = 248
 
 Clock Cycle 39 -> 
-File Number 2 : Completed 13/22
-File Number 3 : DRAM Request(Read) Issued for lw 1004 $t1 on Line 22
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1004 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 100 3 13 22 4 1 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 256
 
 Clock Cycle 40 -> 
-File Number 2 : Completed 14/22
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-2 1 
-Issued Instruction
-lw 1004 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 100 3 14 22 4 1 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-2 
-1 
-1 
-lw 1004 $t1 0 0 22 2 0 0 
-2 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 264
 
 Clock Cycle 41 -> 
-File Number 2 : Completed 15/22
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-2 2 
-Issued Instruction
-lw 1004 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 100 3 15 22 4 1 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-2 
-2 
-1 
-lw 1004 $t1 0 0 22 2 0 0 
-2 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 272
 
 Clock Cycle 42 -> 
-CORE 2: $t1 = 2
-File Number 2 : Completed 16/22
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1004 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 100 3 16 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 280
 
 Clock Cycle 43 -> 
-File Number 2 : Completed 17/22
-File Number 3 : add $t2, $t0, $t1
-File Number 3 : $t2 = 3
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1004 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 100 3 17 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 288
 
 Clock Cycle 44 -> 
-File Number 2 : Completed 18/22
-File Number 3 : DRAM Request(Write) Issued for sw 1004 3 on Line 24
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1004 3 0 0 24 2 
-Executing Instruction
-sw 100 3 18 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 296
 
 Clock Cycle 45 -> 
-File Number 2 : Completed 19/22
-File Number 3 : addi $s1, $s1, 1
-File Number 3 : $s1 = 1
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 2 0 0 9 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1004 3 0 0 24 2 
-Executing Instruction
-sw 100 3 19 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 1004 3 0 0 24 2 
-0 
-682 1 
-sw 1004 2 0 0 9 2 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 304
 
 Clock Cycle 46 -> 
-File Number 2 : Completed 20/22
-File Number 3 : slt $s3, $s1, $s2
-File Number 3 : $s3 = 1
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1004 3 0 0 24 2 
-Executing Instruction
-sw 100 3 20 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 312
 
 Clock Cycle 47 -> 
-File Number 2 : Completed 21/22
-File Number 3 : bne $s3, $zero, sumloop
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1004 3 0 0 24 2 
-Executing Instruction
-sw 100 3 21 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : addi $s0, $s0, 8
+File Number 1 : $s0 = 320
 
 Clock Cycle 48 -> 
-File Number 2 : Completed 22/22
-File Number 2 : Finished Instruction sw 100 3 on Line 4
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1004 3 0 0 24 2 
-Executing Instruction
-sw 100 3 21 22 4 1 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+Core Execution :
+File Number 1 : DRAM Request(Read) Issued for lw $t6, 1000($s0) on Line 48
 
 Clock Cycle 49 -> 
-File Number 3 : DRAM Request(Read) Issued for lw 1004 $t0 on Line 20
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 1
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1004 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 1000 1 0 0 9 2 
-All Blocking Registers
-
-
-$t0->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+MRM received a request to queue Instruction : lw $t6, 1000($s0) of Core : 1
+DRAM: 
+Core Execution :
+File Number 1 : addi $s1, $s1, 0
+File Number 1 : $s1 = 0
 
 Clock Cycle 50 -> 
-File Number 3 : addi $s0, $s0, 4
-File Number 3 : $s0 = 1008
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 2
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1004 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 1000 1 0 0 9 2 
-All Blocking Registers
-
-
-$t0->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+Completed addition of Instruction lw $t6, 1000($s0) of Core 1
+DRAM: 
+Core Execution :
+File Number 1 : DRAM Request(Read) Issued for lw $t7, 3004($s1) on Line 51
 
 Clock Cycle 51 -> 
----------------------------------
-682
-sw 1000 1 0 0 9 2 
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 3
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1004 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 1000 1 0 0 9 2 
-All Blocking Registers
-
-
-$t0->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRM found Empty, MRM started working on assigning an Instruction to DRAM
+DRAM: 
+Core Execution :
 
 Clock Cycle 52 -> 
-File Number 3 : Started sw 1000 1 on Line 9
-Row 341 will be copied back to DRAM and Row 682 will be activated
-File Number 3 : Completed 1/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1004 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 1000 1 1 22 9 2 
-All Blocking Registers
-
-
-$t0->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+1/2 completed for the process of assigning an Instruction to Dram
+DRAM: 
+Core Execution :
 
 Clock Cycle 53 -> 
-File Number 3 : Completed 2/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-1 1 
-Issued Instruction
-lw 1004 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 1000 1 2 22 9 2 
-All Blocking Registers
-
-
-$t0->1, 
-Cache
-1 
-1 
-1 
-lw 1004 $t0 0 0 20 2 0 0 
-3 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+Finished assignment to Dram 
+Assigned Instruction lw $t6, 1000($s0) of Core 1 to Dram
+DRAM: 
+File Number 1 : Started lw 1320 $t6 on Line 48
+Row 0 need NOT be copied back to DRAM and Row 1 will be activated
+File Number 1 : Completed 1/12
+Core Execution :
 
 Clock Cycle 54 -> 
-CORE 2: $t0 = 3
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1004 $t0 0 0 20 2 0 0 
-Executing Instruction
-sw 1000 1 2 22 9 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+MRM received a request to queue Instruction : lw $t7, 3004($s1) of Core : 1
+DRAM: 
+File Number 1 : Completed 2/12
+Core Execution :
 
 Clock Cycle 55 -> 
-File Number 3 : Completed 3/22
-File Number 3 : DRAM Request(Read) Issued for lw 1008 $t1 on Line 22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 3 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+Completed addition of Instruction lw $t7, 3004($s1) of Core 1
+DRAM: 
+File Number 1 : Completed 3/12
+Core Execution :
 
 Clock Cycle 56 -> 
-File Number 3 : Completed 4/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-1 1 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 4 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-1 
-1 
-0 
-lw 1008 $t1 0 0 22 2 0 0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 4/12
+Core Execution :
 
 Clock Cycle 57 -> 
-File Number 3 : Completed 5/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 5 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 5/12
+Core Execution :
 
 Clock Cycle 58 -> 
-File Number 3 : Completed 6/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 6 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 6/12
+Core Execution :
 
 Clock Cycle 59 -> 
-File Number 3 : Completed 7/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 7 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 7/12
+Core Execution :
 
 Clock Cycle 60 -> 
-File Number 3 : Completed 8/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 8 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 8/12
+Core Execution :
 
 Clock Cycle 61 -> 
-File Number 3 : Completed 9/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 9 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 9/12
+Core Execution :
 
 Clock Cycle 62 -> 
-File Number 3 : Completed 10/22
-Memory at 349284 = 3
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 10 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 10/12
+Core Execution :
 
 Clock Cycle 63 -> 
-File Number 3 : Completed 11/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 11 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 11/12
+Core Execution :
 
 Clock Cycle 64 -> 
-File Number 3 : Completed 12/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 12 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 12/12
+File Number 1 : $t6 = 0
+File Number 1 : Finished Instruction lw 1320 $t6 on Line 48
+Core Execution :
 
 Clock Cycle 65 -> 
-File Number 3 : Completed 13/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 13 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRM found Empty, MRM started working on assigning an Instruction to DRAM
+DRAM: 
+Core Execution :
 
 Clock Cycle 66 -> 
-File Number 3 : Completed 14/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 14 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+1/2 completed for the process of assigning an Instruction to Dram
+DRAM: 
+Core Execution :
 
 Clock Cycle 67 -> 
-File Number 3 : Completed 15/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 15 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+Finished assignment to Dram 
+Assigned Instruction lw $t7, 3004($s1) of Core 1 to Dram
+DRAM: 
+File Number 1 : Started lw 3004 $t7 on Line 51
+Row 1 need NOT be copied back to DRAM and Row 2 will be activated
+File Number 1 : Completed 1/12
+Core Execution :
 
 Clock Cycle 68 -> 
-File Number 3 : Completed 16/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 16 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 2/12
+Core Execution :
 
 Clock Cycle 69 -> 
-File Number 3 : Completed 17/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 17 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 3/12
+Core Execution :
 
 Clock Cycle 70 -> 
-File Number 3 : Completed 18/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 18 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 4/12
+Core Execution :
 
 Clock Cycle 71 -> 
-File Number 3 : Completed 19/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 19 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 5/12
+Core Execution :
 
 Clock Cycle 72 -> 
-File Number 3 : Completed 20/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 20 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 6/12
+Core Execution :
 
 Clock Cycle 73 -> 
-File Number 3 : Completed 21/22
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 21 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 7/12
+Core Execution :
 
 Clock Cycle 74 -> 
-File Number 3 : Completed 22/22
-File Number 3 : Finished Instruction sw 1000 1 on Line 9
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1000 1 21 22 9 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 8/12
+Core Execution :
 
 Clock Cycle 75 -> 
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 2 1
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1004 3 0 0 24 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 9/12
+Core Execution :
 
 Clock Cycle 76 -> 
----------------------------------
-682
-sw 1004 3 0 0 24 2 
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 2 2
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1004 3 0 0 24 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 10/12
+Core Execution :
 
 Clock Cycle 77 -> 
-File Number 3 : Started sw 1004 3 on Line 24
-File Number 3 : Completed 1/2
----------------------------------
-682
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 2 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1004 3 1 2 24 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 11/12
+Core Execution :
 
 Clock Cycle 78 -> 
-File Number 3 : Completed 2/2
-File Number 3 : Finished Instruction sw 1004 3 on Line 24
----------------------------------
-682
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 2 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-sw 1004 3 1 2 24 2 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 79 -> 
----------------------------------
-682
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 2 1
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 80 -> 
----------------------------------
-682
-lw 1008 $t1 0 0 22 2 0 0 
-
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 2 2
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 81 -> 
-File Number 3 : Started lw 1008 $t1 on Line 22
-File Number 3 : Completed 1/2
----------------------------------
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 2 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-lw 1008 $t1 1 2 22 2 0 0 
-All Blocking Registers
-
-
-$t1->1, 
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 82 -> 
-File Number 3 : Completed 2/2
-File Number 3 : $t1 = 0
-File Number 3 : Finished Instruction lw 1008 $t1 on Line 22
-File Number 3 : add $t2, $t0, $t1
-File Number 3 : $t2 = 3
----------------------------------
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-0 2 0
-CPU to MRM
-0 0 
-Issued Instruction
-lw 1008 $t1 0 0 22 2 0 0 
-Executing Instruction
-lw 1008 $t1 1 2 22 2 0 0 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 83 -> 
-File Number 3 : DRAM Request(Write) Issued for sw 1008 3 on Line 24
----------------------------------
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 1
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 0 0 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 84 -> 
-File Number 3 : addi $s1, $s1, 1
-File Number 3 : $s1 = 2
----------------------------------
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 2
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 0 0 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 85 -> 
-File Number 3 : slt $s3, $s1, $s2
-File Number 3 : $s3 = 0
----------------------------------
-691
-sw 10000 0 0 0 12 2 
-
-MRM to DRAM
-1 3 3
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 0 0 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 86 -> 
-File Number 3 : Started sw 10000 0 on Line 12
-Row 682 will be copied back to DRAM and Row 691 will be activated
-File Number 3 : Completed 1/22
-File Number 3 : bne $s3, $zero, sumloop
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 1 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 87 -> 
-File Number 3 : Completed 2/22
----------------------------------
-682
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-1 1 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 2 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-1 
-1 
-0 
-sw 1008 3 0 0 24 2 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 88 -> 
-File Number 3 : Completed 3/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 3 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 89 -> 
-File Number 3 : Completed 4/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 4 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 90 -> 
-File Number 3 : Completed 5/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 5 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 91 -> 
-File Number 3 : Completed 6/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 6 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 92 -> 
-File Number 3 : Completed 7/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 7 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 93 -> 
-File Number 3 : Completed 8/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 8 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 94 -> 
-File Number 3 : Completed 9/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 9 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 95 -> 
-File Number 3 : Completed 10/22
-Memory at 699368 = 1
-Memory at 699372 = 3
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 10 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 96 -> 
-File Number 3 : Completed 11/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 11 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 97 -> 
-File Number 3 : Completed 12/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 12 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 98 -> 
-File Number 3 : Completed 13/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 13 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 99 -> 
-File Number 3 : Completed 14/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 14 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 100 -> 
-File Number 3 : Completed 15/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 15 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 101 -> 
-File Number 3 : Completed 16/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 16 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 102 -> 
-File Number 3 : Completed 17/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 17 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 103 -> 
-File Number 3 : Completed 18/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 18 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 104 -> 
-File Number 3 : Completed 19/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 19 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 105 -> 
-File Number 3 : Completed 20/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 20 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 106 -> 
-File Number 3 : Completed 21/22
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 21 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 107 -> 
-File Number 3 : Completed 22/22
-File Number 3 : Finished Instruction sw 10000 0 on Line 12
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 10000 0 21 22 12 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 108 -> 
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-1 3 1
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 0 0 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 109 -> 
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-1 3 2
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 0 0 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 110 -> 
----------------------------------
-682
-sw 1008 3 0 0 24 2 
-
-MRM to DRAM
-1 3 3
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 0 0 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 111 -> 
-File Number 3 : Started sw 1008 3 on Line 24
-Row 691 will be copied back to DRAM and Row 682 will be activated
-File Number 3 : Completed 1/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 1 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 112 -> 
-File Number 3 : Completed 2/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 2 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 113 -> 
-File Number 3 : Completed 3/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 3 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 114 -> 
-File Number 3 : Completed 4/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 4 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 115 -> 
-File Number 3 : Completed 5/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 5 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 116 -> 
-File Number 3 : Completed 6/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 6 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 117 -> 
-File Number 3 : Completed 7/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 7 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 118 -> 
-File Number 3 : Completed 8/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 8 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 119 -> 
-File Number 3 : Completed 9/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 9 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 120 -> 
-File Number 3 : Completed 10/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 10 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 121 -> 
-File Number 3 : Completed 11/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 11 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 122 -> 
-File Number 3 : Completed 12/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 12 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 123 -> 
-File Number 3 : Completed 13/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 13 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 124 -> 
-File Number 3 : Completed 14/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 14 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 125 -> 
-File Number 3 : Completed 15/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 15 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 126 -> 
-File Number 3 : Completed 16/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 16 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 127 -> 
-File Number 3 : Completed 17/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 17 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 128 -> 
-File Number 3 : Completed 18/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 18 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 129 -> 
-File Number 3 : Completed 19/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 19 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 130 -> 
-File Number 3 : Completed 20/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 20 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 131 -> 
-File Number 3 : Completed 21/22
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 21 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 132 -> 
-File Number 3 : Completed 22/22
-File Number 3 : Finished Instruction sw 1008 3 on Line 24
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 21 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
-
-Clock Cycle 133 -> 
----------------------------------
-MRM to DRAM
-0 3 0
-CPU to MRM
-0 0 
-Issued Instruction
-sw 1008 3 0 0 24 2 
-Executing Instruction
-sw 1008 3 21 22 24 2 
-All Blocking Registers
-
-
-
-Cache
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
----------------------------------
+MRM :
+DRAM: 
+File Number 1 : Completed 12/12
+File Number 1 : $t7 = 0
+File Number 1 : Finished Instruction lw 3004 $t7 on Line 51
+Core Execution :
 
 RELEVANT STATISTICS :->
-Total Number of instructions executed in 133 Clock Cycles : 48
-Total Number of Row Buffer Updates = 11
+Total Number of instructions executed in 78 Clock Cycles : 49
+Total Number of Row Buffer Updates = 3
 
 Integer Register Values for File 1 -> 
 zero = 0
-s0 = 0
+s0 = 320
 s1 = 0
 s2 = 0
 s3 = 0
@@ -4315,77 +563,9 @@ s4 = 0
 s5 = 0
 s6 = 0
 s7 = 0
-t0 = 11
+t0 = 168
 t1 = 0
 t2 = 0
-t3 = 4
-t4 = 11
-t5 = 0
-t6 = 0
-t7 = 0
-t8 = 0
-t9 = 0
-v0 = 0
-v1 = 0
-a0 = 0
-a1 = 0
-a2 = 0
-a3 = 0
-k0 = 0
-gp = 0
-sp = 0
-fp = 0
-ra = 0
-at = 0
-
-
-Integer Register Values for File 2 -> 
-zero = 0
-s0 = 0
-s1 = 0
-s2 = 0
-s3 = 0
-s4 = 0
-s5 = 0
-s6 = 0
-s7 = 0
-t0 = 5
-t1 = 2
-t2 = 3
-t3 = 4
-t4 = 3
-t5 = 0
-t6 = 0
-t7 = 0
-t8 = 1
-t9 = 0
-v0 = 0
-v1 = 0
-a0 = 0
-a1 = 0
-a2 = 0
-a3 = 0
-k0 = 0
-gp = 0
-sp = 0
-fp = 0
-ra = 0
-at = 0
-
-
-Integer Register Values for File 3 -> 
-zero = 0
-s0 = 1008
-s1 = 2
-s2 = 2
-s3 = 0
-s4 = 0
-s5 = 10000
-s6 = 0
-s7 = 0
-t0 = 3
-t1 = 0
-t2 = 3
 t3 = 0
 t4 = 0
 t5 = 0

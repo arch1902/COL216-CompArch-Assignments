@@ -56,7 +56,6 @@ int TOTAL_QUEUE_SIZE = 64;
 int individual_queue_size;
 bool Is_dram_free = true;
 bool flag = false;
-int MRM_Time = 0;
 int stopcore = -1;
 bool issued_request_computed = false;
 int issue_counter;
@@ -320,7 +319,7 @@ void jump(int i, int f){
     all_pc[f] = all_labels[f][all_params[f][i][1]];
 }
 
-bool is_Dram_empty(){
+bool Is_Mrm_empty(){
     if (Dram_queue.size() == 0){return true;}
     else {
         for (auto j:Dram_queue){
@@ -485,12 +484,9 @@ int main(int argc, char *argv[]) {
         out<<"\n"<<"Clock Cycle "<<clock_cycle<<" -> "<<endl;
 
         //MRM
-        out<<"MRM :"<<endl;
         while(true){
-            // 
-            if (Is_dram_free && !is_Dram_empty()){
+            if (Is_dram_free && !Is_Mrm_empty()){
                 if (!assign_computed){
-                    out<<"DRM found Empty, MRM started working on assigning an Instruction to DRAM"<<endl;
                     int clock = 0;
                     if (executing_instruction.empty()){
                         for (auto i :Dram_queue){
@@ -505,7 +501,7 @@ int main(int argc, char *argv[]) {
                         int r = (a+CORE_MEMORY*stoi(executing_instruction[6]))/1024;
                         if (Dram_queue[r].size()>0){
                             executing_instruction = Dram_queue[r][0];
-                            clock = 1;
+                            clock = 2;
                         }else{
                             Dram_queue.erase(r);
                             bool flag2 = false;
@@ -533,21 +529,18 @@ int main(int argc, char *argv[]) {
                                 for (auto i :Dram_queue){
                                     if(i.second.size()>0){
                                         executing_instruction = i.second[0];
-                                        clock += 1;
+                                        clock = 3;
                                         break;
                                     }
                                 }
                             }
                         }
                     }
-                    MRM_Time += clock;
                     assign_computed = true;
                     total_assign_time = clock;
                     assign_counter = 1;
-                    //out<< "1/"<<total_assign_time<<" Completed for the process of assigning an Instruction to Dram"<<endl;
                 }else{
                     if (assign_counter!=total_assign_time){
-                        out<< assign_counter<<"/"<<total_assign_time<<" completed for the process of assigning an Instruction to Dram"<<endl;
                         assign_counter ++;
                         break;
                     }else{
@@ -557,8 +550,6 @@ int main(int argc, char *argv[]) {
                         // }
                         // cout<<endl;
                         //cout<<executing_instruction[1]<<" "<<executing_instruction[6]<<" "<<endl;
-                        out<< "Finished assignment to Dram "<<endl;
-                        out<< "Assigned Instruction "<<executing_instruction[7]<<" of Core "<<stoi(executing_instruction[6])+1<<" to Dram"<<endl; 
                         int row_of_executing_ins = (stoi(executing_instruction[1]) +CORE_MEMORY*stoi(executing_instruction[6]))/1024;
                         if (Dram_queue[row_of_executing_ins][0] != executing_instruction){cout<<"Error 10"<<endl;}
                         Dram_queue[row_of_executing_ins].erase(Dram_queue[row_of_executing_ins].begin());
@@ -591,7 +582,6 @@ int main(int argc, char *argv[]) {
                 //lw r1 1000, lw r1 2000
 
                 if (cache[0][0]=="0"){
-                    out<< "MRM received a request to queue Instruction : "<<issued_instruction[7]<<" of Core : "<<stoi(issued_instruction[6])+1<<endl;
                     int clock_count = 0;
                     int r = (stoi(issued_instruction[1])+CORE_MEMORY*stoi(issued_instruction[6]))/1024;
                     int a = stoi(issued_instruction[1]); 
@@ -617,7 +607,6 @@ int main(int argc, char *argv[]) {
                             j-= 1;
                         }
                     }else{
-
                         string redundant_register = issued_instruction[2];
                         int j = Dram_queue[r].size()-1; 
                         while(j>=0){
@@ -652,16 +641,15 @@ int main(int argc, char *argv[]) {
                         }                        
                     }
                     if (clock_count == 0 ){clock_count = 1;}
-                    cache[0][0] = to_string(clock_count);
+                    cache[0][0] = {to_string(clock_count)};
                     if(cache[2][0]=="0" && cache[5][0]=="0" && cache[7][0]=="0"){
                         cache[0][0]="1";
                     }  
-                    MRM_Time += clock_count;
-                    ////out<<"1/"<<cache[0][0]<<" completed for adding Instruction "<<issued_instruction[7]<<" of Core "<<issued_instruction[6]<<endl;
+                    
+
                     cache[1] = {"1"};
                 }else if(stoi(cache[1][0]) == stoi(cache[0][0])){
 
-                    out<<"Completed addition of Instruction "<<issued_instruction[7]<<" of Core "<<stoi(issued_instruction[6])+1<<endl;
                     int r = (stoi(cache[3][1])+CORE_MEMORY*stoi(cache[3][6]))/1024;
                     if (cache[2][0] == "0"){
                         // if (Dram_queue[r].size() == 0){
@@ -671,7 +659,6 @@ int main(int argc, char *argv[]) {
                         Dram_queue[r].push_back(temporary);
                         // }
                     }else{
-                        out<<"The instrution won't be added to the MRM queue because of sw-lw forwarding"<<endl;
                         all_regs[stoi(cache[3][6])][cache[3][2]] = stoi(cache[4][0]);
                         out<<"CORE "<< cache[3][6] << ": "<< cache[3][2] <<" = "<< cache[4][0]<<endl;
                         all_blocking_registers[stoi(cache[3][6])][cache[3][2]] -=1;
@@ -682,31 +669,27 @@ int main(int argc, char *argv[]) {
                     vector<string> s = {"0"};
                     if (cache[5] != s){
                         Dram_queue[stoi(cache[5][0])].erase(Dram_queue[stoi(cache[5][0])].begin()+stoi(cache[5][1]));
-                        out<<"Removed instruction "<<cache[6][7]<<" because of sw-sw redundancy with the newly added instruction"<<endl;
                     }
 
                     if (cache[7] != s){                       
                         Dram_queue[stoi(cache[7][0])].erase(Dram_queue[stoi(cache[7][0])].begin()+stoi(cache[7][1]));
-                        out<<"Removed instruction "<<cache[8][7]<<" because of lw-lw redundancy with the newly added instruction"<<endl;
                         all_blocking_registers[stoi(cache[8][6])][cache[8][2]] -=1;
                     }
 
                     cache = Initial_cache;
                     request_issued = false;
                 }else{
-                    out<<cache[1][0]<<"/"<<cache[0][0]<<" completed for adding Instruction "<<issued_instruction[7]<<" of Core "<<stoi(issued_instruction[6])+1<<endl;
                     cache[1] = {to_string((stoi(cache[1][0])+1))};
                 }
                 break;
-
             }else{
                 break;
             }
         }
 
         //DRAM
-        out<<"DRAM: "<<endl;
-        if(!Is_dram_free && executing_instruction.size()>0){
+        if(!Is_dram_free && !(executing_instruction.size()>0)){
+
             vector<string> Curr_executed = executing_instruction;
             int address = stoi(Curr_executed[1]);
             int row = (address+CORE_MEMORY*stoi(Curr_executed[6]))/1024;
@@ -716,7 +699,7 @@ int main(int argc, char *argv[]) {
                 exit(-1);
             }
             while(true){
-                if (((stoi(executing_instruction[6]) == mrm_writing_to_core) && mrm_writing) && (stoi(executing_instruction[3])==stoi(executing_instruction[4])-1)){
+                if (((stoi(executing_instruction[6]) == mrm_writing_to_core) && mrm_writing) && stoi(executing_instruction[3])==stoi(executing_instruction[4])-1){
                     break;
                 }
                 if (executing_instruction[3]=="0"){
@@ -788,8 +771,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
         }           
-        //Normal Commands
-        out<<"Core Execution :"<<endl; 
+        //Normal Commands 
         for(int i=0;i<N;i++){
             //cout<<i<<" "<<stopcore<<" "<<flag<<" "<<mrm_writing<<" "<<mrm_writing_to_core<<endl;
             if (i != stopcore && !flag && !((i == mrm_writing_to_core) && mrm_writing)){
@@ -802,11 +784,11 @@ int main(int argc, char *argv[]) {
                         string relevant_registor = all_params[i][all_pc[i]][1];
                         int offset = stoi(all_params[i][all_pc[i]][2]);
                         int address = offset+all_regs[i][all_params[i][all_pc[i]][3]];
-                        issued_instruction = {"lw",to_string(address),relevant_registor,"0","0",to_string(all_lines_numbers[i][all_pc[i]]),to_string(i),all_instructions[i][all_pc[i]]}; 
+                        issued_instruction = {"lw",to_string(address),relevant_registor,"0","0",to_string(all_lines_numbers[i][all_pc[i]]),to_string(i),"0","0"}; 
                         request_issued = true;
                         // ins,address,register/value,counter,total time,line number, file number
                         all_blocking_registers[i][relevant_registor] ++;
-                        out<<"File Number "<<i+1<< " : DRAM Request(Read) Issued for "<<all_instructions[i][all_pc[i]]<<" on Line "<<all_lines_numbers[i][all_pc[i]]<<endl;        
+                        out<<"File Number "<<i+1<< " : DRAM Request(Read) Issued for "<<"lw "<<address<<" "<<relevant_registor<<" on Line "<<all_lines_numbers[i][all_pc[i]]<<endl;        
                         all_pc[i]++;
                         continue;
                     }else if(Instruction == "sw"){
@@ -814,9 +796,9 @@ int main(int argc, char *argv[]) {
                         string relevant_registor = all_params[i][all_pc[i]][1];
                         int offset = stoi(all_params[i][all_pc[i]][2]);
                         int address = offset+all_regs[i][all_params[i][all_pc[i]][3]];
-                        issued_instruction = {"sw",to_string(address),to_string(all_regs[i][relevant_registor]),"0","0",to_string(all_lines_numbers[i][all_pc[i]]),to_string(i),all_instructions[i][all_pc[i]]};
+                        issued_instruction = {"sw",to_string(address),to_string(all_regs[i][relevant_registor]),"0","0",to_string(all_lines_numbers[i][all_pc[i]]),to_string(i)};
                         request_issued = true;
-                        out<<"File Number "<<i+1<< " : DRAM Request(Write) Issued for "<<all_instructions[i][all_pc[i]]<<" on Line "<<all_lines_numbers[i][all_pc[i]]<<endl;         
+                        out<<"File Number "<<i+1<< " : DRAM Request(Write) Issued for "<<"sw "<<address<<" "<<all_regs[i][relevant_registor]<<" on Line "<<all_lines_numbers[i][all_pc[i]]<<endl;         
                         all_pc[i]++;
                         continue;
                     }else if (Instruction == "add"){ 
@@ -850,7 +832,7 @@ int main(int argc, char *argv[]) {
                         continue;
                     }else{
                         total_int_executed--;
-                        all_pc[i--]++;
+                        all_pc[i]++;
                         continue;
                     }
                 };
@@ -864,79 +846,75 @@ int main(int argc, char *argv[]) {
                 cout<<"The value in Zero Registor is not mutable."<<endl;
                 exit(-1);
             }
-        }
+        } 
+        // bool completed_everything = false;
+        // if (Is_Mrm_empty()){
+        //     if (Is_dram_free){
+        //         completed_everything = true;
+        //         for (int i = 0;i<N;i++){
+        //             if (all_pc[i]<num_array[i]){
+        //                 completed_everything = false;
+        //                 break;
+        //             }
 
-        bool completed_everything = false;
-        if (is_Dram_empty() && !request_issued){
-            if (Is_dram_free){
-                completed_everything = true;
-                for (int i = 0;i<N;i++){
-                    if (all_pc[i]<num_array[i]){
-                        completed_everything = false;
-                        break;
-                    }
-
-                }
-            }
-        }
-        if (completed_everything){
-            cout<<"Completed in "<<clock_cycle<<endl;
-            break; 
-        }
-
-
-        // out<<"---------------------------------\n";
-        // for (auto const& j : Dram_queue){
-        //     int c = j.first;
-        //     vector<vector<string>> v = j.second;
-        //     out<<c<<"\n";
-        //     for(auto j: v){
-        //         for(auto k:j){
-        //             out<<k<<" ";
         //         }
-        //         out<<"\n";
         //     }
-        //     out<<"\n";
         // }
-        // out<<"MRM to DRAM"<<endl;
-        // out<<assign_computed<<" "<<total_assign_time<<" "<<assign_counter<<endl;
-        // out<<"CPU to MRM"<<endl;
-        // out<<cache[0][0]<<" "<<cache[1][0]<<" "<<endl; 
-        // out<<"Issued Instruction"<<endl;
-        // for(auto j:issued_instruction){
-        //     out<<j<<" ";
+        // if (completed_everything){
+        //     cout<<"Completed in "<<clock_cycle<<endl;
+        //     break; 
         // }
-        // out<<endl;
-        // out<<"Executing Instruction"<<endl;
-        // for(auto j:executing_instruction){
-        //     out<<j<<" ";
-        // }
-        // out<<endl;       
-        // out <<"All Blocking Registers"<<endl;
-        // for (int i = 0;i<N;i++){
-        //     for (auto j : all_blocking_registers[i]){
-        //         if(j.second!= 0){out<<j.first<<"->"<<j.second<<", ";}
-        //     }
-        //     out<<endl;
-        // }
-        // out <<"Cache"<<endl;
-        // for (int i = 0;i<9;i++){
-        //     for (auto j : cache[i]){
-        //         out<< j <<" ";
-        //     }
-        //     out<<endl;
-        // }
-        // out<<"---------------------------------\n";
+        out<<"---------------------------------\n";
+        out<<"MRM Queue :-"<<endl;
+        for (auto const& j : Dram_queue){
+            int c = j.first;
+            vector<vector<string>> v = j.second;
+            out<<c<<"\n";
+            for(auto j: v){
+                for(auto k:j){
+                    out<<k<<" ";
+                }
+                out<<"\n";
+            }
+            out<<"\n";
+        }
+        out<<"MRM to DRAM"<<endl;
+        out<<assign_computed<<" "<<total_assign_time<<" "<<assign_counter<<endl;
+        out<<"CPU to MRM"<<endl;
+        out<<cache[0][0]<<" "<<cache[1][0]<<" "<<endl; 
+        out<<"Issued Instruction"<<endl;
+        for(auto j:issued_instruction){
+            out<<j<<" ";
+        }
+        out<<endl;
+        out<<"Executing Instruction"<<endl;
+        for(auto j:executing_instruction){
+            out<<j<<" ";
+        }
+        out<<endl;       
+        out <<"All Blocking Registers"<<endl;
+        for (int i = 0;i<N;i++){
+            for (auto j : all_blocking_registers[i]){
+                if(j.second!= 0){out<<j.first<<"->"<<j.second<<", ";}
+            }
+            out<<endl;
+        }
+        out <<"Cache"<<endl;
+        for (int i = 0;i<9;i++){
+            for (auto j : cache[i]){
+                out<< j <<" ";
+            }
+            out<<endl;
+        }
+        out<<"---------------------------------\n";
 
     }
-    cout<<"Time Taken by MRM "<<MRM_Time<<endl;
-    cout<<"Total Number of instructions executed in "<<min(M,clock_cycle)<<" Clock Cycles : "<<total_int_executed<<endl;
+    cout<<"Total Number of instructions executed in "<<M<<" Clock Cycles : "<<total_int_executed<<endl;
     cout<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
 
     out<<"\n"<<"RELEVANT STATISTICS :->"<<endl;
-    out<<"Total Number of instructions executed in "<<min(M,clock_cycle)<<" Clock Cycles : "<<total_int_executed<<endl;
+    out<<"Total Number of instructions executed in "<<M<<" Clock Cycles : "<<total_int_executed<<endl;
     out<<"Total Number of Row Buffer Updates = "<<row_buffer_updates<<endl; 
-    out<<"Time Taken by MRM "<<MRM_Time<<endl;
 
 
 
@@ -957,4 +935,4 @@ int main(int argc, char *argv[]) {
     }
 	return 0;
 }
-//------------------------------------Execution Ends---------------------------------------------------------------------
+//------------------------------------Execution Ends---------------------------------------------------------------------s
