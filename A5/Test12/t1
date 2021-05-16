@@ -1,0 +1,23 @@
+sw $s1,100($zero)
+lw $s2,1100($zero)
+sw $s3,2100($zero)
+lw $s3,2108($zero)
+sw $s3,2100($zero)
+sw $s3,2100($zero)
+sw $s3,2100($zero)
+sw $s3,2100($zero)
+sw $s3,2100($zero)
+sw $s3,2100($zero)
+addi $s3,$s3,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+addi $s2,$s2,1
+
