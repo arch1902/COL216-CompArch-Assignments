@@ -1,0 +1,14 @@
+main:
+	addi $s1, $zero, 1
+	addi $s2, $zero, 2
+	sw $s1, 1000($zero)
+	sw $s2, 2000($zero)
+	
+	lw $s3, 1000($zero)
+	lw $s4, 2000($zero)
+	
+	add $s4, $s4, $s3
+		
+	sw $s4, 2000($zero)
+	
+exit:

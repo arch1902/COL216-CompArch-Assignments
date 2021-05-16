@@ -1,6 +1,6 @@
 all:
-	g++ method2.cpp -o a5.out -std=c++14
-	g++ final_assignment4.cpp -o a4.out -std=c++14
+	g++ assignment5.cpp -o a5.out -std=c++14
+	g++ assignment4.cpp -o a4.out -std=c++14
 run:
 	@echo "Final Assignment 5 Output - "
 	./a5.out 3 15000 t7 t8 t9 10 2

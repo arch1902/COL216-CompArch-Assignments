@@ -1,7 +1,0 @@
-addi $t0, $zero, 1
-add $t0, $t0, $t1
-addi $t0, $t0, 10
-sw $t0,1000($zero)
-addi $t3, $t3, 4  
-lw $t4,1000($zero) 	 
-add $t5, $t1, $t2
