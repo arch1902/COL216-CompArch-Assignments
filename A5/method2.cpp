@@ -617,21 +617,22 @@ int main(int argc, char *argv[]) {
                             j-= 1;
                         }
                     }else{
-
                         string redundant_register = issued_instruction[2];
                         int j = Dram_queue[r].size()-1; 
-                        while(j>=0){
-                            if (stoi(Dram_queue[r][j][1]) == a){
-                                if (Dram_queue[r][j][0] == "sw"){
-                                    // sw-lw forwarding - issue array
-                                    clock_count = min(j,s-j)+1;
-                                    cache[2] = {"1"};
-                                    cache[4] = {Dram_queue[r][j][2]};
-                                }else{
-                                    break;
+                        if(!(executing_instruction.size()>0 && !Is_dram_free && issued_instruction[6]==executing_instruction[6] && redundant_register == executing_instruction[2])){
+                            while(j>=0){
+                                if (stoi(Dram_queue[r][j][1]) == a){
+                                    if (Dram_queue[r][j][0] == "sw"){
+                                        // sw-lw forwarding - issue array
+                                        clock_count = min(j,s-j)+1;
+                                        cache[2] = {"1"};
+                                        cache[4] = {Dram_queue[r][j][2]};
+                                    }else{
+                                        break;
+                                    }
                                 }
+                                j-= 1;
                             }
-                            j-= 1;
                         }
                         for (auto i : Dram_queue){
                             int curr_row = i.first;
