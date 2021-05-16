@@ -1,0 +1,11 @@
+addi $s1 , $zero , 3 
+addi $s2 , $zero , 3
+mul $s3 , $s1 , $s2
+j x 
+addi $s3 , $s3 , -1
+slt $s4 ,  $s1,  $s2
+x:
+addi $s5 , $s1 , 4
+sw   $s5 , 0($zero)
+lw $s4 , 0($zero)
+slt $s1 , $s5 , $s3

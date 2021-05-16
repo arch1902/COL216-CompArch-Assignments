@@ -1,0 +1,9 @@
+main:
+    addi $s1,$zero,1000
+    addi $s2,$s2,1
+loop:
+    sw $s2,($s1)
+    addi $s1,$s1,4
+    addi $s2,$s2,1
+    bne $s2,10,loop
+exit:
