@@ -1,0 +1,187 @@
+
+Clock Cycle 1:
+addi $s0, $zero, 5
+$s0 = 5
+
+Clock Cycle 2:
+addi $s1, $zero, 0
+$s1 = 0
+
+Clock Cycle 3:
+addi $s2, $zero, 1
+$s2 = 1
+
+Clock Cycle 4:
+addi $s3, $zero, 1
+$s3 = 1
+
+Clock Cycle 5:
+addi $s4, $zero, 1
+$s4 = 1
+
+Clock Cycle 6:
+slt $t0, $s0, $s2
+$t0 = 0
+
+Clock Cycle 7:
+beq $t0, $zero, run
+
+Clock Cycle 8:
+add $s1, $s1, $s0
+$s1 = 5
+
+Clock Cycle 9:
+mul $s3, $s3, $s0
+$s3 = 5
+
+Clock Cycle 10:
+sub $s0, $s0, $s4
+$s0 = 4
+
+Clock Cycle 11:
+j check
+
+Clock Cycle 12:
+slt $t0, $s0, $s2
+$t0 = 0
+
+Clock Cycle 13:
+beq $t0, $zero, run
+
+Clock Cycle 14:
+add $s1, $s1, $s0
+$s1 = 9
+
+Clock Cycle 15:
+mul $s3, $s3, $s0
+$s3 = 20
+
+Clock Cycle 16:
+sub $s0, $s0, $s4
+$s0 = 3
+
+Clock Cycle 17:
+j check
+
+Clock Cycle 18:
+slt $t0, $s0, $s2
+$t0 = 0
+
+Clock Cycle 19:
+beq $t0, $zero, run
+
+Clock Cycle 20:
+add $s1, $s1, $s0
+$s1 = 12
+
+Clock Cycle 21:
+mul $s3, $s3, $s0
+$s3 = 60
+
+Clock Cycle 22:
+sub $s0, $s0, $s4
+$s0 = 2
+
+Clock Cycle 23:
+j check
+
+Clock Cycle 24:
+slt $t0, $s0, $s2
+$t0 = 0
+
+Clock Cycle 25:
+beq $t0, $zero, run
+
+Clock Cycle 26:
+add $s1, $s1, $s0
+$s1 = 14
+
+Clock Cycle 27:
+mul $s3, $s3, $s0
+$s3 = 120
+
+Clock Cycle 28:
+sub $s0, $s0, $s4
+$s0 = 1
+
+Clock Cycle 29:
+j check
+
+Clock Cycle 30:
+slt $t0, $s0, $s2
+$t0 = 0
+
+Clock Cycle 31:
+beq $t0, $zero, run
+
+Clock Cycle 32:
+add $s1, $s1, $s0
+$s1 = 15
+
+Clock Cycle 33:
+mul $s3, $s3, $s0
+$s3 = 120
+
+Clock Cycle 34:
+sub $s0, $s0, $s4
+$s0 = 0
+
+Clock Cycle 35:
+j check
+
+Clock Cycle 36:
+slt $t0, $s0, $s2
+$t0 = 1
+
+Clock Cycle 37:
+beq $t0, $zero, run
+
+Clock Cycle 38:
+bne $t0, $zero, loopexit
+
+Clock Cycle 39:
+add $s1, $s1, $zero
+$s1 = 15
+
+Clock Cycle 40:
+mul $s3, $s3, $s4
+$s3 = 120
+
+RELEVANT STATISTICS :->
+Total Number of cycles taken = 40
+Total Number of Row Buffer Updates = 0
+
+DRAM memory structure :
+
+Integer Register Values :
+zero = 0
+s0 = 0
+s1 = 15
+s2 = 1
+s3 = 120
+s4 = 1
+s5 = 0
+s6 = 0
+s7 = 0
+t0 = 1
+t1 = 0
+t2 = 0
+t3 = 0
+t4 = 0
+t5 = 0
+t6 = 0
+t7 = 0
+t8 = 0
+t9 = 0
+v0 = 0
+v1 = 0
+a0 = 0
+a1 = 0
+a2 = 0
+a3 = 0
+k0 = 0
+gp = 0
+sp = 0
+fp = 0
+ra = 0
+at = 0
